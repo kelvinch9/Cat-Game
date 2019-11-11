@@ -16,6 +16,13 @@ public class Object extends Main {
 	Image image;
 	// calculate collision with height and width
 	
+	/**
+	 * Constructor to initialize values
+	 * @param x
+	 * @param y
+	 * @param w
+	 * @param h
+	 */
 	Object(double x, double y, double w, double h){
 		xPosition = x;
 		yPosition = y;
@@ -23,37 +30,54 @@ public class Object extends Main {
 		height = h;
 	}
 	
+	/**
+	 * Getter for x position
+	 * @return
+	 */
 	public double getxPosition() {
 		return xPosition;
 	}
 
+	/**
+	 * Sets the x position
+	 * @param xPosition
+	 */
 	public void setxPosition(double xPosition) {
 		this.xPosition = xPosition;
 	}
 
+	/**
+	 * Getter for y position
+	 * @return
+	 */
 	public double getyPosition() {
 		return yPosition;
 	}
 
+	/**
+	 * Setter for y position
+	 * @param yPosition
+	 */
 	public void setyPosition(double yPosition) {
 		this.yPosition = yPosition;
 	}
 
+	/**
+	 * Gets object width
+	 * @return
+	 */
 	public double getWidth() {
 		return width;
 	}
 
-	public void setWidth(double width) {
-		this.width = width;
-	}
-
+	/**
+	 * Gets object height
+	 * @return
+	 */
 	public double getHeight() {
 		return height;
 	}
 
-	public void setHeight(double height) {
-		this.height = height;
-	}
 
 	public Image getImage() {
 		return image;

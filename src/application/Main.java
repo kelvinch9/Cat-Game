@@ -28,7 +28,33 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Main extends Application {
-	
+	private int distance;
+	private int mouseCount;
+
+	/**
+	 * Constructor to initialize values
+	 */
+	public Main(){
+		distance = 0;
+		mouseCount = 0;
+	}
+
+	/**
+	 * Getter for the total distance run
+	 * @return
+	 */
+	public int getDistance() {
+		return distance;
+	}
+
+	/**
+	 * Getter for the total mouse count
+	 * @return
+	 */
+	public int getMouseCount() {
+		return mouseCount;
+	}
+
 
 	public void start(Stage theStage) {
 		theStage.setTitle("Game!");
@@ -67,6 +93,7 @@ public class Main extends Application {
 		//final long startNanoTime = System.nanoTime();
 		new AnimationTimer() { // every 1/60 sec this happens
 			public void handle(long time) {
+				distance++;
 				//double t = (currentNanoTime - startNanoTime) / 1000000000.0;
 				if(mufi.getyPosition() != 200) { // this is hard-coding 100
 					mufi.setyPosition(mufi.getyPosition() + 1);
@@ -140,7 +167,7 @@ public class Main extends Application {
 		}
 		return collision;
 	}
-	
+
 	/**
 	 * This class will randomly generate objects at the end of
 	 * the platform. It will check to make sure that another object is
@@ -153,7 +180,7 @@ public class Main extends Application {
 	private ArrayList generateObjects(ArrayList objectList) {
 		return objectList;
 	}
-	
+
 
 	public static void main(String[] args) {
 		launch(args);
