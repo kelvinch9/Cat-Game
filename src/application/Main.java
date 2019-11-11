@@ -28,7 +28,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Main extends Application {
-
+	
 
 	public void start(Stage theStage) {
 		theStage.setTitle("Game!");
@@ -65,7 +65,6 @@ public class Main extends Application {
 		barrel.render(gc);
 
 		//final long startNanoTime = System.nanoTime();
-
 		new AnimationTimer() { // every 1/60 sec this happens
 			public void handle(long time) {
 				//double t = (currentNanoTime - startNanoTime) / 1000000000.0;
@@ -141,6 +140,20 @@ public class Main extends Application {
 		}
 		return collision;
 	}
+	
+	/**
+	 * This class will randomly generate objects at the end of
+	 * the platform. It will check to make sure that another object is
+	 * not too close (so that the character can successfully make the jump)
+	 * and if there's enough space, will call math.random to see if an object
+	 * will generate.
+	 * @param objectList
+	 * @return
+	 */
+	private ArrayList generateObjects(ArrayList objectList) {
+		return objectList;
+	}
+	
 
 	public static void main(String[] args) {
 		launch(args);
