@@ -2,8 +2,9 @@
 final-project-team68_platformer created by GitHub Classroom
 
 **Members:** Danielle Coates, Matthew Ordway, Kelvin Cheung
-**Overview:** We are creating a scrolling platformer game. The game theme is a cat who jumps over or ducks under obstacles.
-The cat can also collect mice for points. The gameplay gets faster as the game continues.
+
+**Overview:** We are creating a scrolling platformer game. The game theme is a cat who jumps over or ducks under obstacles. The cat can also collect mice for points. The gameplay gets faster as the game continues.
+
 
 **Initial breakdown of work:**
 
@@ -14,6 +15,7 @@ Matt: Game State
 Kelvin: Char input, Objects
 
 ****
+
 
 **Initial classes and methods:**
 
