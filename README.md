@@ -11,6 +11,7 @@ Danielle: Score, Collision Checker, Random Generation
 Matt: Game State
 Kelvin: Char input, Objects
 
+****
 
 **Initial classes and methods:**
 
@@ -25,7 +26,7 @@ Object Class (xPos, yPos, widt, height)
 	Coin Objects
 
 Main
-****
+
 Graphics Context
 Animation Timer
 	(Method) - Collision Checker
