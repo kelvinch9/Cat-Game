@@ -16,12 +16,20 @@ public class Cat extends Object {
 
 	boolean ableToJump = true;
 
+	/**
+	 * Allows the cat to jump by moving yPosition up 50 units. Sets ableToJump to false
+	 */ 
 	public void jump() {
 		setyPosition(getyPosition() - 50); // for some reason, minus is jump
 		//change the image
 		ableToJump = false;
+		
 	}
 	
+	/**
+	 * Allows the cat the move by moving x,y positions
+	 * @param input (W,A,S,D)
+	 */
 	public void move(String input) {
 		
 		switch(input) {
@@ -32,8 +40,7 @@ public class Cat extends Object {
 		break;
 		
 		}
-		
-		
+
 	}
     
 }
