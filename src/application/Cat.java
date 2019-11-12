@@ -27,7 +27,7 @@ public class Cat extends Object {
 	}
 	
 	/**
-	 * Allows the cat the move by moving x,y positions
+	 * Allows the cat the move by moving x,y positions. The input choices are controlled by the Event Handler in Main
 	 * @param input (W,A,S,D)
 	 */
 	public void move(String input) {
@@ -40,7 +40,15 @@ public class Cat extends Object {
 		break;
 		
 		}
-
 	}
-    
+	
+	/**
+	 * Allows the cat to "duck / crouch". The input choice is controlled by the Event Handler in Main
+	 * @param input
+	 */
+	public void duck(String input) {
+		// do we need a duck method? Should we build into move?
+	}
+	
+	
 }
