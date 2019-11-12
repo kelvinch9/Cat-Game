@@ -34,19 +34,19 @@ Object Class (xPos, yPos, widt, height)
 
 Main
 
-Graphics Context
+	Graphics Context
 
-Animation Timer
+	Animation Timer
 
-	(Method) - Collision Checker
+		(Method) - Collision Checker
 	
-	(Method) - Move objects
+		(Method) - Move objects
 	
-	(Method) - Event Handler (input)
+		(Method) - Event Handler (input)
 	
-	(Method) - Score [distance]
+		(Method) - Score [distance]
 	
-	(Method) - Random Stage Generator
+		(Method) - Random Stage Generator
 	
 	
 Player Score (int score)
