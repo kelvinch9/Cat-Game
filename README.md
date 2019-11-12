@@ -8,7 +8,9 @@ The cat can also collect mice for points. The gameplay gets faster as the game c
 **Initial breakdown of work:**
 
 Danielle: Score, Collision Checker, Random Generation 
+
 Matt: Game State
+
 Kelvin: Char input, Objects
 
 ****
