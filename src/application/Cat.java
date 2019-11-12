@@ -12,6 +12,7 @@ public class Cat extends Object {
 	Cat(double x, double y, double w, double h) {
 		super(x, y, w, h);
 //		// TODO Auto-generated constructor stub
+		this.hasCollision = true;
 	}
 
 	boolean ableToJump = true;
@@ -49,6 +50,13 @@ public class Cat extends Object {
 	public void duck(String input) {
 		// do we need a duck method? Should we build into move?
 	}
-	
+
+	/**
+	 * Getter for isAbleToJump
+	 * @return
+	 */
+	public boolean isAbleToJump() {
+		return ableToJump;
+	}
 	
 }

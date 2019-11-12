@@ -4,14 +4,16 @@ import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 
-public class Object extends Main {
+public class Object extends Stage { // changed from extends main
 
 	private double xPosition;
 	private double yPosition;
 	private double width;
 	private double height;
+	boolean hasCollision;
 
 	Image image;
 	// calculate collision with height and width
