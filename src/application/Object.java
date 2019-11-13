@@ -7,7 +7,15 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
- * This class is the parent class which creates objects in the game. Each object has an image, xPosition, yPosition, length, and width. The sub-classes which inherit from Object contain subclass specific properities/methods
+ * This class is the parent class which creates objects in the game. Each object has an 
+ * image, xPosition, yPosition, length, and width. The sub-classes which inherit from 
+ * Object contain subclass specific properties/methods
+ * 
+ * Methods:
+ * setyPosition: sets x-axis location of object
+ * setxPosition: sets y-axis location of object
+ * render: draw the object's image into graphics content in current x,y position
+ * 
  * @author Team68
  *
  */
@@ -71,7 +79,7 @@ public class Object extends Stage { // changed from extends main
 	 * Gets object width
 	 * @return
 	 */
-	public double getWidth() {
+	public double getObjectWidth() {
 		return width;
 	}
 
@@ -79,7 +87,7 @@ public class Object extends Stage { // changed from extends main
 	 * Gets object height
 	 * @return
 	 */
-	public double getHeight() {
+	public double getObjectHeight() {
 		return height;
 	}
 
@@ -100,7 +108,7 @@ public class Object extends Stage { // changed from extends main
 	}
 	
 	/**
-	 * Sets the actual image for Object
+	 * Sets the actual image for Object. filename = image path
 	 * @param filename
 	 */
 	public void setImage(String filename) {

@@ -26,10 +26,16 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-
+/**
+ * The main class is a mandatory class in running JavaFX. The main class includes the graphics context, stage, scene,
+ * AnimationTimer, EventHandler
+ * @author Team68
+ *
+ */
 public class Main extends Application {
 	private int distance;
 	private int mouseCount;
+	private GameState gameState;
 
 	/**
 	 * Constructor to initialize values
@@ -55,6 +61,9 @@ public class Main extends Application {
 		return mouseCount;
 	}
 
+	/**
+	 * Sets the beginning of the game (used in JavaFX)
+	 */
 	public void start(Stage theStage) {
 		theStage.setTitle("Game!");
 
@@ -90,10 +99,17 @@ public class Main extends Application {
 		barrel.render(gc);
 
 		//final long startNanoTime = System.nanoTime();
+		/**
+		 * The AnimationTimer (in JavaFX) executes the code inside every 1/60th second.
+		 * Every cycle:
+		 * a) It moves the cat down 1unit if it is not on the ground
+		 * b) It moves objects closer to the cat (scrolling mechanism)
+		 * c) It checks for collision
+		 */
 		new AnimationTimer() { // every 1/60 sec this happens
 			public void handle(long time) {
 				distance++;
-				//double t = (currentNanoTime - startNanoTime) / 1000000000.0;
+				//double t = (currentNanoTime - startNanoTime) / 1000000000.0;\
 				if(mufi.getyPosition() != 200) { // this is hard-coding 100
 					mufi.setyPosition(mufi.getyPosition() + 1);
 					gc.clearRect(mufi.getxPosition(), mufi.getyPosition(), 400, 600);
@@ -101,9 +117,9 @@ public class Main extends Application {
 					barrel.render(gc);
 				}
 				else {
-					mufi.ableToJump = true;
+					mufi.setAbleToJump(true);
 				}
-
+				
 				//double x = 100+t;
 				//gc.drawImage(barn, 0, 0);
 				//gc.drawImage(cat, x, 100);
@@ -111,29 +127,19 @@ public class Main extends Application {
 		}
 		.start();
 
+		/**
+		 * The EventHandler (in JavaFX) handles user inputs from keyboard and mouse and changes the 
+		 * objects / game accordingly
+		 */
 		theScene.setOnKeyPressed(new EventHandler<KeyEvent>(){
 			public void handle(KeyEvent ke) {
 				if(ke.getCode() == KeyCode.SPACE) {
-					if(mufi.ableToJump == true) {
+					if(mufi.isAbleToJump() == true) {
 						gc.clearRect(mufi.getxPosition(), mufi.getyPosition(), 400, 600);
 						//gc.drawImage(barn, 0, 0);
 						mufi.jump();
 						mufi.render(gc);
 					}
-				}
-
-				if(ke.getCode() == KeyCode.A) {
-					mufi.move("left");
-					gc.clearRect(mufi.getxPosition(), mufi.getyPosition(), 400, 600);
-					//gc.drawImage(barn, 0, 0);
-					mufi.render(gc);
-				}
-
-				if(ke.getCode() == KeyCode.D) {
-					mufi.move("right");
-					gc.clearRect(mufi.getxPosition(), mufi.getyPosition(), 400, 600);
-					//gc.drawImage(barn, 0, 0);
-					mufi.render(gc);
 				}
 			}
 		});
@@ -181,6 +187,10 @@ public class Main extends Application {
 	}
 
 
+	/**
+	 * Launches the game (JavaFX)
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		launch(args);
 	}

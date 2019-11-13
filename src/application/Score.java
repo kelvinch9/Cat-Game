@@ -3,21 +3,31 @@ package application;
 /** 
  * This class calculates the total score and keeps
  * track of the high score.
- * @return
+ * @author Team68
  */
 public class Score {
+	
+	private int maxScore;
+	private int score;
 
+	/**
+	 * Constructor for Score class. Sets maxScore to 0. Sets score to 0.
+	 * 
+	 */
+	public Score() {
+		maxScore = 0;
+		score = 0;
+	}
+	
 	/**
 	 * This method returns the total score for the player
 	 * It takes into account the total distance and the number
 	 * of mice caught.
 	 * @return
 	 */
-	public int totalScore() {
-		Main main = new Main();
-		int distance = main.getDistance();
-		int mice = main.getMouseCount();
-		return distance + mice * 1000;
+	public int totalScore(int distance, int mice) {
+		score = distance + mice * 1000;
+		return score;
 	}
 	
 	/**
@@ -27,11 +37,10 @@ public class Score {
 	 * @return
 	 */
 	public int calculateHighScore() {
-		int maximum = 0;
-		if(totalScore() > maximum) {
-			maximum = totalScore();
+		if(score > maxScore) {
+			maxScore = score;
 		}
-		return maximum;
+		return maxScore;
 	}
 
 }

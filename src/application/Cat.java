@@ -9,17 +9,28 @@ import javafx.util.Duration;
 
 /**
  * Cat class represents the main character of the game. It is a subclass of Object
+ * 
+ * This class has methods that allows cat to jump and duck
+ *
  * @author Team68
  *
  */
 public class Cat extends Object {
+	
+	private boolean ableToJump;
 
+	/**
+	 * Inherited constructor from Object. Creates cat based on xPosition, yPosition,
+	 * width, height
+	 * @param x
+	 * @param y
+	 * @param w
+	 * @param h
+	 */
 	Cat(double x, double y, double w, double h) {
 		super(x, y, w, h);
-//		// TODO Auto-generated constructor stub
+		ableToJump = true;
 	}
-
-	boolean ableToJump = true;
 
 	/**
 	 * Allows the cat to jump by moving yPosition up 50 units. Sets ableToJump to false to prevent double jumping
@@ -31,28 +42,13 @@ public class Cat extends Object {
 		
 	}
 	
-	/**
-	 * Allows the cat the move by moving x,y positions. The input choices are controlled by the Event Handler in Main
-	 * @param input (W,A,S,D)
-	 */
-	public void move(String input) {
-		
-		switch(input) {
-		case "left": setxPosition(getxPosition() - 5);
-		break;
-
-		case "right": setxPosition(getxPosition() + 5);
-		break;
-		
-		}
-	}
 	
 	/**
 	 * Allows the cat to "duck / crouch". The input choice is controlled by the Event Handler in Main
 	 * @param input
 	 */
 	public void duck(String input) {
-		// do we need a duck method? Should we build into move?
+		
 	}
 
 	/**
@@ -61,6 +57,13 @@ public class Cat extends Object {
 	 */
 	public boolean isAbleToJump() {
 		return ableToJump;
+	}
+	/**
+	 * Setter for ableToJump
+	 * @param a
+	 */
+	public void setAbleToJump(boolean a) {
+		this.ableToJump = a;
 	}
 	
 }

@@ -1,10 +1,25 @@
 package application;
 
-public class GameState extends Application {
+import javafx.application.Application;
+
+/**
+ * The GameState class displays the state of the game. There are three states:
+ * a) Intro - Displays the intro and allows player to start the game
+ * b) Start Game - Displays the opening scene
+ * c) End Game - Displays the score and allows player to replay the game
+ * @author Team68
+ *
+ */
+public class GameState {
 	
-	// game over instance variable?
-	// needs a constructor?
 	private boolean shouldReplay;
+	
+	/**
+	 * Creates GameState with shouldReplay = false
+	 */
+	public GameState(){
+		shouldReplay = false;
+	}
 	
 	/**
 	 * Creates the intro scene for the game. The intro scene
@@ -41,9 +56,27 @@ public class GameState extends Application {
 	 * 
 	 * 
 	 */
-	public void setGameEndScene() {
+	public void setGameEndScene(Score score) {
 		;
 	}
+
+	/**
+	 * Getter for shouldReplay
+	 * @return
+	 */
+	public boolean isShouldReplay() {
+		return shouldReplay;
+	}
+
+	/**
+	 * Setter for shouldReplay
+	 * @param shouldReplay
+	 */
+	public void setShouldReplay(boolean shouldReplay) {
+		this.shouldReplay = shouldReplay;
+	}
+	
+	
 
 
 }
