@@ -11,4 +11,5 @@ public class JumpObject extends Object{
 		super(x, y, w, h);
 		// TODO Auto-generated constructor stub
 	}
+	
 }
