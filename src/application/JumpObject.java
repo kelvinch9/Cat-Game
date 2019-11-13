@@ -3,7 +3,7 @@ package application;
 /**
  * JumpObject is a specific non-controllable object which inherits from object. The purpose is to create objects for which the cat can jump over
  * @author Team68
- *
+ * 
  */
 public class JumpObject extends Object{
 
