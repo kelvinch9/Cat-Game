@@ -12,7 +12,6 @@ public class Cat extends Object {
 	Cat(double x, double y, double w, double h) {
 		super(x, y, w, h);
 //		// TODO Auto-generated constructor stub
-		this.hasCollision = true;
 	}
 
 	boolean ableToJump = true;

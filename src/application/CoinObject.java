@@ -12,7 +12,6 @@ public class CoinObject extends Object{
 	CoinObject(double x, double y, double w, double h) {
 		super(x, y, w, h);
 		// TODO Auto-generated constructor stub
-		this.hasCollision = false;
 	}
 
 	/**

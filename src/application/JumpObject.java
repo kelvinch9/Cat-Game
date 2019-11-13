@@ -10,7 +10,6 @@ public class JumpObject extends Object{
 	JumpObject(double x, double y, double w, double h) {
 		super(x, y, w, h);
 		// TODO Auto-generated constructor stub
-		this.hasCollision = true;
 	}
 
 	

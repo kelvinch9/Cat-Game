@@ -13,7 +13,6 @@ public class Object extends Stage { // changed from extends main
 	private double yPosition;
 	private double width;
 	private double height;
-	boolean hasCollision;
 
 	Image image;
 	// calculate collision with height and width
