@@ -55,7 +55,6 @@ public class Main extends Application {
 		return mouseCount;
 	}
 
-
 	public void start(Stage theStage) {
 		theStage.setTitle("Game!");
 
