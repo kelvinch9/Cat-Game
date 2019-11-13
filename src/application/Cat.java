@@ -7,6 +7,11 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.util.Duration;
 
+/**
+ * Cat class represents the main character of the game. It is a subclass of Object
+ * @author Team68
+ *
+ */
 public class Cat extends Object {
 
 	Cat(double x, double y, double w, double h) {
@@ -17,9 +22,9 @@ public class Cat extends Object {
 	boolean ableToJump = true;
 
 	/**
-	 * Allows the cat to jump by moving yPosition up 50 units. Sets ableToJump to false
+	 * Allows the cat to jump by moving yPosition up 50 units. Sets ableToJump to false to prevent double jumping
 	 */ 
-	public void jump() {
+	public void jump() { 
 		setyPosition(getyPosition() - 50); // for some reason, minus is jump
 		//change the image
 		ableToJump = false;

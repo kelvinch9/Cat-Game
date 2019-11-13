@@ -2,7 +2,7 @@ package application;
 
 /**
  * CoinObject is a specific non-controllable object which inherits from Object. CoinObjects do not have collision. CoinObjects can be collected which increase the Player's score
- * @author Kelvin
+ * @author Team68
  *
  */
 public class CoinObject extends Object{
@@ -21,7 +21,5 @@ public class CoinObject extends Object{
 	public int getScoreValue() {
 		return scoreValue;
 	}
-	
-	
 
 }

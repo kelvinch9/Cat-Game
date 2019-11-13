@@ -2,7 +2,7 @@ package application;
 
 /**
  * DuckObject is a specific non-controllable object which inherits from object. The purpose is to create objects for which the cat can duck under
- * @author Kelvin
+ * @author Team68
  *
  */
 public class DuckObject extends Object {
