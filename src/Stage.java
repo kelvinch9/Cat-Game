@@ -21,11 +21,13 @@ public class Stage extends JPanel implements ActionListener {
     private Timer timer;
     private Cat cat;
     private List<Box> boxes;
+    private List<Coin> coins;
     private boolean ingame;
     private final int B_WIDTH = 400;
     private final int B_HEIGHT = 300;
     private final int DELAY = 15;
-    // test commit - kc
+    public final int FLOOR = 250; // this is considered the floor. Leave as public
+    private int coins_collected = 0;
     
     public Stage() {
 
@@ -41,9 +43,10 @@ public class Stage extends JPanel implements ActionListener {
 
         setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
 
-        cat = new Cat(40, 250);
+        cat = new Cat(40, FLOOR);
 
         initBoxes();
+        initCoins();
 
         timer = new Timer(DELAY, this);
         timer.start();
@@ -56,7 +59,17 @@ public class Stage extends JPanel implements ActionListener {
         for(int i = 0; i < 50; i++) {
         	Random rand = new Random();
         	int r = rand.nextInt(1000)+300;
-        	boxes.add(new Box(r, 250));
+        	boxes.add(new Box(r, FLOOR));
+        }    
+    }
+    
+    public void initCoins() {
+    	
+    	coins = new ArrayList<>();
+    	for(int i = 0; i < 50; i++) {
+        	Random rand = new Random();
+        	int r = rand.nextInt(1000)+300;
+        	coins.add(new Coin(r, FLOOR - 35));
         }    
     }
     
@@ -89,9 +102,15 @@ public class Stage extends JPanel implements ActionListener {
                 g.drawImage(box.getImage(), box.getX(), box.getY(), this);
             }
         }
+        
+        for (Coin coin : coins) {
+            if (coin.isVisible()) {
+                g.drawImage(coin.getImage(), coin.getX(), coin.getY(), this);
+            }
+        }
 
         g.setColor(Color.WHITE);
-        g.drawString("Boxes left: " + boxes.size(), 5, 15);
+        g.drawString("Coins: " + coins_collected, 5, 15);
         g.drawString("Score: 0" + boxes.size(), 5, 30);
     }
 
@@ -114,6 +133,7 @@ public class Stage extends JPanel implements ActionListener {
 
         updateCat();
         updateBoxes();
+        updateCoins();
 
         checkCollisions();
 
@@ -148,6 +168,20 @@ public class Stage extends JPanel implements ActionListener {
             }
         }
     }
+    
+    private void updateCoins() {
+
+        for (int i = 0; i < coins.size(); i++) {
+
+            Coin a = coins.get(i);
+            
+            if (a.isVisible()) {
+                a.move();
+            } else {
+            	coins.remove(i);
+            }
+        }
+    }
 
     public void checkCollisions() {
 
@@ -173,6 +207,14 @@ public class Stage extends JPanel implements ActionListener {
         		cat.setVisible(false);
         	}
         }
+        
+        for(Coin coin : coins) {
+        	Rectangle coin_collision = coin.getBounds();
+        	if(cat_collision.intersects(coin_collision)) {
+        		coins_collected++;
+        	}
+        }
+        
 
     }
 

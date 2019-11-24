@@ -35,7 +35,7 @@ public class Cat extends Object{
 	
 	public void jump() {
 		
-		dy  = 1;
+		dy  = -1;
 //		if(can_jump) {
 //			dy = 1;
 //			can_jump = true;
