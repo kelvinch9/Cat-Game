@@ -25,6 +25,7 @@ public class Stage extends JPanel implements ActionListener {
     private final int B_WIDTH = 400;
     private final int B_HEIGHT = 300;
     private final int DELAY = 15;
+    // test commit - kc
     
     public Stage() {
 
