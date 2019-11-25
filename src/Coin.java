@@ -1,6 +1,17 @@
-
+/**
+ * This class represents a coin object for
+ * the cat to obtain. It extends the object class.
+ * @author Team 68
+ *
+ */
 public class Coin extends Object{
 
+	/**
+	 * Constructor to initialize values
+	 * Sets the image and its dimensions
+	 * @param x
+	 * @param y
+	 */
 	public Coin(int x, int y) {
 		super (x,y);
 		
@@ -8,6 +19,11 @@ public class Coin extends Object{
 		getImageDimensions();
 	}
 	
+	/**
+	 * This method moves the coins towards the
+	 * cat to give the scrolling effect that the
+	 * cat is running
+	 */
 	public void move() {
 		
 		if(x < 0) {

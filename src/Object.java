@@ -2,6 +2,13 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
+/**
+ * This class represents the objects, including the cat 
+ * and what it interacts with. It can represent barriers 
+ * that cause game over or coins to improve score.
+ * @author Team 68
+ *
+ */
 public class Object {
 	
     protected int x;
@@ -11,6 +18,11 @@ public class Object {
     protected boolean visible;
     protected Image image;
 
+    /**
+     * Constructor to initialize values
+     * @param x
+     * @param y
+     */
     public Object(int x, int y) {
 
         this.x = x;
@@ -18,6 +30,9 @@ public class Object {
         visible = true;
     }
 
+    /**
+     * This gets the image dimensions to determine a collision
+     */
     protected void getImageDimensions() {
 
         width = image.getWidth(null);
@@ -31,26 +46,58 @@ public class Object {
         image = ii.getImage();
     }
 
+    /**
+     * Getter for the image
+     * @return
+     */
     public Image getImage() { 
         return image;
     }
 
+    /**
+     * Getter for the object's x
+     * @return
+     */
     public int getX() {
         return x;
     }
 
+    /**
+     * Setter to set the object's x    
+     * @param x
+     */
+    public void setX(int x) {
+		this.x = x;
+	}
+
+	/**
+     * Getter for the object's y
+     * @return
+     */
     public int getY() {
         return y;
     }
 
+    /**
+     * Getter to determine if the object is visible
+     * @return
+     */
     public boolean isVisible() {
         return visible;
     }
 
+    /**
+     * Sets the object's visibility
+     * @param visible
+     */
     public void setVisible(Boolean visible) {
         this.visible = visible;
     }
 
+    /**
+     * Getter for the bounds of a rectangle
+     * @return
+     */
     public Rectangle getBounds() {
         return new Rectangle(x, y, width, height);
     }

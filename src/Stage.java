@@ -16,213 +16,264 @@ import java.util.Random;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+/**
+ * This class represents the stage of the game. It extends
+ * JPanel and implements ActionListener, both of which are
+ * parts of the Swing library
+ * @author Team 68
+ *
+ */
 public class Stage extends JPanel implements ActionListener {
 
-    private Timer timer;
-    private Cat cat;
-    private List<Box> boxes;
-    private List<Coin> coins;
-    private boolean ingame;
-    private final int B_WIDTH = 400;
-    private final int B_HEIGHT = 300;
-    private final int DELAY = 15;
-    public final int FLOOR = 250; // this is considered the floor. Leave as public
-    private int coins_collected = 0;
-    
-    public Stage() {
+	private Timer timer;
+	private Cat cat;
+	private List<Box> boxes;
+	private List<Coin> coins;
+	private boolean ingame;
+	private final int B_WIDTH = 400;
+	private final int B_HEIGHT = 300;
+	private final int DELAY = 15;
+	public final int FLOOR = 250; // this is considered the floor. Leave as public
+	private int coins_collected = 0;
 
-        initStage();
-    }
+	/**
+	 * This method calls to set the stage of the game
+	 */
+	public Stage() {
 
-    private void initStage() { // for the initial state of the game
+		initStage();
+	}
 
-        addKeyListener(new TAdapter());
-        setFocusable(true);
-        setBackground(Color.BLACK);
-        ingame = true;
+	/**
+	 * This method sets the initial state of the game
+	 */
+	private void initStage() { 
 
-        setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
+		addKeyListener(new TAdapter());
+		setFocusable(true);
+		//background color
+		setBackground(Color.BLACK);
+		ingame = true;
 
-        cat = new Cat(40, FLOOR);
+		//sets the dimensions of the game
+		setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
 
-        initBoxes();
-        initCoins();
+		//creates the cat, the player character
+		cat = new Cat(40, FLOOR);
 
-        timer = new Timer(DELAY, this);
-        timer.start();
-    }
+		//creates initial boxes and coins
+		initBoxes();
+		initCoins();
 
-    public void initBoxes() {
-        
-        boxes = new ArrayList<>();
-        
-        for(int i = 0; i < 50; i++) {
-        	Random rand = new Random();
-        	int r = rand.nextInt(1000)+300;
-        	boxes.add(new Box(r, FLOOR));
-        }    
-    }
-    
-    public void initCoins() {
-    	
-    	coins = new ArrayList<>();
-    	for(int i = 0; i < 50; i++) {
-        	Random rand = new Random();
-        	int r = rand.nextInt(1000)+300;
-        	coins.add(new Coin(r, FLOOR - 35));
-        }    
-    }
-    
+		//the timer for the game, which allows the game to 
+		//continuously run
+		timer = new Timer(DELAY, this);
+		timer.start();
+	}
 
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
+	/**
+	 * This method creates the array list of boxes
+	 * for the cat to avoid and sets the first box
+	 */
+	public void initBoxes() {
 
-        if (ingame) {
+		boxes = new ArrayList<>();
+		boxes.add(new Box(B_WIDTH, FLOOR));
+	}
 
-            drawObjects(g);
+	/**
+	 * This method creates the array list of coins
+	 * for the cat to collect and sets the first coin 
+	 */
+	public void initCoins() {
 
-        } else {
+		coins = new ArrayList<>();
+		coins.add(new Coin((B_WIDTH - 200), FLOOR - 35));
+	}
 
-            drawGameOver(g);
-        }
 
-        Toolkit.getDefaultToolkit().sync();
-    }
 
-    private void drawObjects(Graphics g) {
+	@Override
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
 
-        if (cat.isVisible()) {
-            g.drawImage(cat.getImage(), cat.getX(), cat.getY(),
-                    this);
-        }
+		if (ingame) {
 
-        for (Box box : boxes) {
-            if (box.isVisible()) {
-                g.drawImage(box.getImage(), box.getX(), box.getY(), this);
-            }
-        }
-        
-        for (Coin coin : coins) {
-            if (coin.isVisible()) {
-                g.drawImage(coin.getImage(), coin.getX(), coin.getY(), this);
-            }
-        }
+			drawObjects(g);
 
-        g.setColor(Color.WHITE);
-        g.drawString("Coins: " + coins_collected, 5, 15);
-        g.drawString("Score: 0" + boxes.size(), 5, 30);
-    }
+		} else {
 
-    private void drawGameOver(Graphics g) {
+			drawGameOver(g);
+		}
 
-        String msg = "Game Over";
-        Font small = new Font("Helvetica", Font.BOLD, 14);
-        FontMetrics fm = getFontMetrics(small);
+		Toolkit.getDefaultToolkit().sync();
+	}
 
-        g.setColor(Color.white);
-        g.setFont(small);
-        g.drawString(msg, (B_WIDTH - fm.stringWidth(msg)) / 2,
-                B_HEIGHT / 2);
-    }
+	private void drawObjects(Graphics g) {
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
+		if (cat.isVisible()) {
+			g.drawImage(cat.getImage(), cat.getX(), cat.getY(),
+					this);
+		}
 
-        inGame();
+		for (Box box : boxes) {
+			if (box.isVisible()) {
+				g.drawImage(box.getImage(), box.getX(), box.getY(), this);
+			}
+		}
 
-        updateCat();
-        updateBoxes();
-        updateCoins();
+		for (Coin coin : coins) {
+			if (coin.isVisible()) {
+				g.drawImage(coin.getImage(), coin.getX(), coin.getY(), this);
+			}
+		}
 
-        checkCollisions();
+		g.setColor(Color.WHITE);
+		g.drawString("Coins: " + coins_collected, 5, 15);
+		g.drawString("Score: 0" + boxes.size(), 5, 30);
+	}
 
-        repaint();
-    }
+	private void drawGameOver(Graphics g) {
 
-    private void inGame() {
+		String msg = "Game Over";
+		Font small = new Font("Helvetica", Font.BOLD, 14);
+		FontMetrics fm = getFontMetrics(small);
 
-        if (!ingame) {
-            timer.stop();
-        }
-    }
+		g.setColor(Color.white);
+		g.setFont(small);
+		g.drawString(msg, (B_WIDTH - fm.stringWidth(msg)) / 2,
+				B_HEIGHT / 2);
+	}
 
-    private void updateCat() {
+	@Override
+	public void actionPerformed(ActionEvent e) {
 
-        if (cat.isVisible()) {
-        	
-            cat.move();
-        }
-    }
+		inGame();
 
-    private void updateBoxes() {
+		updateCat();
+		updateBoxes();
+		updateCoins();
 
-        for (int i = 0; i < boxes.size(); i++) {
+		checkCollisions();
 
-            Box a = boxes.get(i);
-            
-            if (a.isVisible()) {
-                a.move();
-            } else {
-            	boxes.remove(i);
-            }
-        }
-    }
-    
-    private void updateCoins() {
+		repaint();
+	}
 
-        for (int i = 0; i < coins.size(); i++) {
+	private void inGame() {
 
-            Coin a = coins.get(i);
-            
-            if (a.isVisible()) {
-                a.move();
-            } else {
-            	coins.remove(i);
-            }
-        }
-    }
+		if (!ingame) {
+			timer.stop();
+		}
+	}
 
-    public void checkCollisions() {
+	/**
+	 * This method updates the cat's position
+	 */
+	private void updateCat() {
 
-        Rectangle r3 = cat.getBounds();
+		if (cat.isVisible()) {
 
-        for (Box box : boxes) {
-            
-            Rectangle r2 = box.getBounds(); // get the bounds of collision
+			cat.move();
+		}
+	}
 
-            if (r3.intersects(r2)) {
-                
-                cat.setVisible(false);
-                box.setVisible(false);
-                ingame = false;
-            }
-        }
+	/**
+	 * This method updates the boxes' positions
+	 * It also checks to see if a new box will be
+	 * randomly generated and if it is, it adds it
+	 * to the boxes array list
+	 */
+	private void updateBoxes() {
 
-        Rectangle cat_collision = cat.getBounds();
-        
-        for(Box box : boxes) {
-        	Rectangle box_collision = box.getBounds();
-        	if(cat_collision.intersects(box_collision)) { // intersects is a Rectangle method
-        		cat.setVisible(false);
-        	}
-        }
-        
-        for(Coin coin : coins) {
-        	Rectangle coin_collision = coin.getBounds();
-        	if(cat_collision.intersects(coin_collision)) {
-        		coins_collected++;
-        	}
-        }
-        
+		//if there are boxes in the array list
+		if(!boxes.isEmpty()) {
+			//5% chance to create a box if there is enough
+			//distance between boxes
+			if(Math.random() < 0.05
+					&& boxes.get(boxes.size() - 1).getX() <= 225) {
+				Box temp = new Box(400, 250);
+				boxes.add(temp);
+			}
+		}
+		//add a box to the end of the screen if no current boxes
+		else {
+			Box temp = new Box(400, 250);
+			boxes.add(temp);
+		}
 
-    }
+		//for each box, move it through the screen
+		for (int i = 0; i < boxes.size(); i++) {
 
-    private class TAdapter extends KeyAdapter {
+			Box a = boxes.get(i);
 
-        @Override
-        public void keyPressed(KeyEvent e) {
-            cat.keyPressed(e);
-        }
-    }
+			if (a.isVisible()) {
+				a.move();
+			} else {
+				boxes.remove(i);
+			}
+		}
+	}
+
+	/**
+	 * This method updates the coins on screen by moving
+	 * them across the screen. It also randomly generates
+	 * more coins
+	 */
+	private void updateCoins() {
+
+		//randomly adds a coin
+		if(Math.random() < 0.01) {
+			Coin temp = new Coin(400, FLOOR - 35);
+			coins.add(temp);
+		}
+
+		//for each coin, moves it across the screen
+		for (int i = 0; i < coins.size(); i++) {
+
+			Coin a = coins.get(i);
+
+			if (a.isVisible()) {
+				a.move();
+			} else {
+				coins.remove(i);
+			}
+		}
+	}
+	
+	/**
+	 * This method checks to see if the cat collides with
+	 * objects. If it hits a box, the game is over. If it hits
+	 * a coin, the score is updated.
+	 */
+	public void checkCollisions() {
+
+		Rectangle cat_collision = cat.getBounds();
+
+		for(Box box : boxes) {
+			Rectangle box_collision = box.getBounds();
+			if(cat_collision.intersects(box_collision)) { // intersects is a Rectangle method
+				cat.setVisible(false);
+				box.setVisible(false);
+				ingame = false;
+			}
+		}
+
+		//need to update so that it only increases by 1 
+		for(Coin coin : coins) {
+			Rectangle coin_collision = coin.getBounds();
+			if(cat_collision.intersects(coin_collision)) {
+				coins_collected++;
+			}
+		}
+
+
+	}
+
+	private class TAdapter extends KeyAdapter {
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			cat.keyPressed(e);
+		}
+	}
 }
