@@ -35,9 +35,10 @@ public class Object {
      */
     protected void getImageDimensions() {
 
-        width = image.getWidth(null);
-        height = image.getHeight(null);
-        // the dimensions determine collision
+    	// the dimensions determine collision
+    	// subtracted 5 to make the visual look more accurate
+        width = image.getWidth(null) - 5;
+        height = image.getHeight(null) - 5;
     }
 
     protected void loadImage(String imageName) {

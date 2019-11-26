@@ -35,6 +35,7 @@ public class Stage extends JPanel implements ActionListener {
 	private final int DELAY = 15;
 	public final int FLOOR = 250; // this is considered the floor. Leave as public
 	private int coins_collected = 0;
+	private int distance = 0;
 
 	/**
 	 * This method calls to set the stage of the game
@@ -51,8 +52,11 @@ public class Stage extends JPanel implements ActionListener {
 
 		addKeyListener(new TAdapter());
 		setFocusable(true);
+
 		//background color
 		setBackground(Color.BLACK);
+
+		//no game over
 		ingame = true;
 
 		//sets the dimensions of the game
@@ -61,7 +65,7 @@ public class Stage extends JPanel implements ActionListener {
 		//creates the cat, the player character
 		cat = new Cat(40, FLOOR);
 
-		//creates initial boxes and coins
+		//creates arraylist for boxes and coins
 		initBoxes();
 		initCoins();
 
@@ -78,7 +82,7 @@ public class Stage extends JPanel implements ActionListener {
 	public void initBoxes() {
 
 		boxes = new ArrayList<>();
-		boxes.add(new Box(B_WIDTH, FLOOR));
+		boxes.add(new Box(400, FLOOR));
 	}
 
 	/**
@@ -88,7 +92,7 @@ public class Stage extends JPanel implements ActionListener {
 	public void initCoins() {
 
 		coins = new ArrayList<>();
-		coins.add(new Coin((B_WIDTH - 200), FLOOR - 35));
+		coins.add(new Coin(250, FLOOR - 40));
 	}
 
 
@@ -109,33 +113,47 @@ public class Stage extends JPanel implements ActionListener {
 		Toolkit.getDefaultToolkit().sync();
 	}
 
+
+	/**
+	 * This method draws the objects (cat, boxes, and coins)
+	 * @param g
+	 */
 	private void drawObjects(Graphics g) {
 
+		//draws the cat
 		if (cat.isVisible()) {
 			g.drawImage(cat.getImage(), cat.getX(), cat.getY(),
 					this);
 		}
 
+		//draws the boxes
 		for (Box box : boxes) {
 			if (box.isVisible()) {
 				g.drawImage(box.getImage(), box.getX(), box.getY(), this);
 			}
 		}
 
+		//draws the coins
 		for (Coin coin : coins) {
 			if (coin.isVisible()) {
 				g.drawImage(coin.getImage(), coin.getX(), coin.getY(), this);
 			}
 		}
 
+		//writes the scores
 		g.setColor(Color.WHITE);
 		g.drawString("Coins: " + coins_collected, 5, 15);
-		g.drawString("Score: 0" + boxes.size(), 5, 30);
+		g.drawString("Score: 0" + distance, 5, 30);
 	}
 
+	/**
+	 * This displays the game over screen and a player's final score
+	 * @param g
+	 */
 	private void drawGameOver(Graphics g) {
 
-		String msg = "Game Over";
+		//final score is 100 points per coin plus total distance traveled
+		String msg = "Game Over!  Final score: " + (coins_collected * 100 + distance);
 		Font small = new Font("Helvetica", Font.BOLD, 14);
 		FontMetrics fm = getFontMetrics(small);
 
@@ -148,17 +166,24 @@ public class Stage extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
+		//check that game isn't over
 		inGame();
 
+		//update the location of cat, boxes, and coins
 		updateCat();
 		updateBoxes();
 		updateCoins();
 
+		//checks if the objects collide
 		checkCollisions();
 
+		//repaints the game 
 		repaint();
 	}
 
+	/**
+	 * This method stops the time if the game is over
+	 */
 	private void inGame() {
 
 		if (!ingame) {
@@ -167,13 +192,14 @@ public class Stage extends JPanel implements ActionListener {
 	}
 
 	/**
-	 * This method updates the cat's position
+	 * This method updates the cat's position and its distance
 	 */
 	private void updateCat() {
 
 		if (cat.isVisible()) {
 
 			cat.move();
+			distance++;
 		}
 	}
 
@@ -185,22 +211,6 @@ public class Stage extends JPanel implements ActionListener {
 	 */
 	private void updateBoxes() {
 
-		//if there are boxes in the array list
-		if(!boxes.isEmpty()) {
-			//5% chance to create a box if there is enough
-			//distance between boxes
-			if(Math.random() < 0.05
-					&& boxes.get(boxes.size() - 1).getX() <= 225) {
-				Box temp = new Box(400, 250);
-				boxes.add(temp);
-			}
-		}
-		//add a box to the end of the screen if no current boxes
-		else {
-			Box temp = new Box(400, 250);
-			boxes.add(temp);
-		}
-
 		//for each box, move it through the screen
 		for (int i = 0; i < boxes.size(); i++) {
 
@@ -208,10 +218,33 @@ public class Stage extends JPanel implements ActionListener {
 
 			if (a.isVisible()) {
 				a.move();
-			} else {
+				if(a.getX() < 2) {
+					boxes.remove(i);
+				}
+			} 
+
+			else {
 				boxes.remove(i);
 			}
 		}
+
+		//if there are boxes in the array list
+		if(!boxes.isEmpty()) {
+			//checks if there is enough distance between boxes
+			if(boxes.get(boxes.size() - 1).getX() <= 250) {
+				if(Math.random() < 0.03) {
+				Box temp = new Box(400, FLOOR);
+				boxes.add(temp);
+				}
+			}
+		}
+		//add a box to the end of the screen if no current boxes
+		else {
+			Box temp = new Box(400, FLOOR);
+			boxes.add(temp);
+		}
+
+
 	}
 
 	/**
@@ -222,9 +255,13 @@ public class Stage extends JPanel implements ActionListener {
 	private void updateCoins() {
 
 		//randomly adds a coin
-		if(Math.random() < 0.01) {
+		
+		if(!coins.isEmpty()) {
+		if(coins.get(coins.size() - 1).getX() <= 100) {
+		//if(Math.random() < 0.01) {
 			Coin temp = new Coin(400, FLOOR - 35);
 			coins.add(temp);
+		}
 		}
 
 		//for each coin, moves it across the screen
@@ -239,7 +276,7 @@ public class Stage extends JPanel implements ActionListener {
 			}
 		}
 	}
-	
+
 	/**
 	 * This method checks to see if the cat collides with
 	 * objects. If it hits a box, the game is over. If it hits
@@ -249,6 +286,7 @@ public class Stage extends JPanel implements ActionListener {
 
 		Rectangle cat_collision = cat.getBounds();
 
+		//checks to see if the cat hits a box, if so, game over
 		for(Box box : boxes) {
 			Rectangle box_collision = box.getBounds();
 			if(cat_collision.intersects(box_collision)) { // intersects is a Rectangle method
@@ -258,11 +296,13 @@ public class Stage extends JPanel implements ActionListener {
 			}
 		}
 
-		//need to update so that it only increases by 1 
-		for(Coin coin : coins) {
+		//checks if the cat get a coin, if so, it removes it
+		for(int i = 0; i < coins.size(); i++) {
+			Coin coin = coins.get(i);
 			Rectangle coin_collision = coin.getBounds();
 			if(cat_collision.intersects(coin_collision)) {
 				coins_collected++;
+				coins.remove(i);
 			}
 		}
 

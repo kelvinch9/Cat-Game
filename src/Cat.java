@@ -33,8 +33,8 @@ public class Cat extends Object{
 
         y += dy;
 
-        if (y < 170) {
-            y = 170;
+        if (y < 190) {
+            y = 190;
             dy = 1;
         }
         
