@@ -231,7 +231,7 @@ public class Stage extends JPanel implements ActionListener {
 		//if there are boxes in the array list
 		if(!boxes.isEmpty()) {
 			//checks if there is enough distance between boxes
-			if(boxes.get(boxes.size() - 1).getX() <= 250) {
+			if(boxes.get(boxes.size() - 1).getX() <= 230) {
 				if(Math.random() < 0.03) {
 				Box temp = new Box(400, FLOOR);
 				boxes.add(temp);
@@ -243,8 +243,6 @@ public class Stage extends JPanel implements ActionListener {
 			Box temp = new Box(400, FLOOR);
 			boxes.add(temp);
 		}
-
-
 	}
 
 	/**
@@ -305,9 +303,18 @@ public class Stage extends JPanel implements ActionListener {
 				coins.remove(i);
 			}
 		}
-
-
 	}
+	
+	
+	/**
+	 * Getter for the distance traveled
+	 * @return
+	 */
+	public int getDistance() {
+		return distance;
+	}
+
+
 
 	private class TAdapter extends KeyAdapter {
 

@@ -33,9 +33,9 @@ public class Cat extends Object{
 
         y += dy;
 
-        if (y < 190) {
-            y = 190;
-            dy = 1;
+        if (y < 180) {
+            y = 180;
+            dy = 2;
         }
         
         if(y >= 250) {
@@ -64,7 +64,7 @@ public class Cat extends Object{
 	 */
 	public void jump() {
 		if(canJump()) {
-			dy  = -1;
+			dy  = -2;
 		}
 	}
 	

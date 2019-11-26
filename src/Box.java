@@ -31,7 +31,7 @@ public class Box extends Object{
 		if(x < 0) {
 			x = 400;
 		}
-		x -= 1;	
+		x -= 2;	
 	}
 	
 }
