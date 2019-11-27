@@ -35,7 +35,8 @@ public class Stage extends JPanel implements ActionListener {
 	private final int DELAY = 15;
 	public final int FLOOR = 250; // this is considered the floor. Leave as public
 	private int coins_collected = 0;
-	private int distance = 0;
+	private int distance = 1;
+	private int factor = 1;
 
 	/**
 	 * This method calls to set the stage of the game
@@ -144,6 +145,7 @@ public class Stage extends JPanel implements ActionListener {
 		g.setColor(Color.WHITE);
 		g.drawString("Coins: " + coins_collected, 5, 15);
 		g.drawString("Score: 0" + distance, 5, 30);
+		g.drawLine(0, 280, B_WIDTH, 280);
 	}
 
 	/**
@@ -200,6 +202,14 @@ public class Stage extends JPanel implements ActionListener {
 
 			cat.move();
 			distance++;
+			
+			//increases the speed of the game after every 2000 traveled
+			if(distance % 1000 == 0) {
+				factor++;
+				cat.setFactor(factor);
+			}
+			
+			
 		}
 	}
 
@@ -218,6 +228,7 @@ public class Stage extends JPanel implements ActionListener {
 
 			if (a.isVisible()) {
 				a.move();
+				a.setFactor(factor);
 				if(a.getX() < 2) {
 					boxes.remove(i);
 				}
@@ -233,8 +244,8 @@ public class Stage extends JPanel implements ActionListener {
 			//checks if there is enough distance between boxes
 			if(boxes.get(boxes.size() - 1).getX() <= 230) {
 				if(Math.random() < 0.03) {
-				Box temp = new Box(400, FLOOR);
-				boxes.add(temp);
+					Box temp = new Box(400, FLOOR);
+					boxes.add(temp);
 				}
 			}
 		}
@@ -253,13 +264,13 @@ public class Stage extends JPanel implements ActionListener {
 	private void updateCoins() {
 
 		//randomly adds a coin
-		
+
 		if(!coins.isEmpty()) {
-		if(coins.get(coins.size() - 1).getX() <= 100) {
-		//if(Math.random() < 0.01) {
-			Coin temp = new Coin(400, FLOOR - 35);
-			coins.add(temp);
-		}
+			if(Math.random() < 0.005) {
+				Coin temp = new Coin(400, FLOOR - 35);
+				coins.add(temp);
+
+			}
 		}
 
 		//for each coin, moves it across the screen
@@ -269,7 +280,9 @@ public class Stage extends JPanel implements ActionListener {
 
 			if (a.isVisible()) {
 				a.move();
-			} else {
+				a.setFactor(factor);
+			} 
+			else {
 				coins.remove(i);
 			}
 		}
@@ -287,7 +300,8 @@ public class Stage extends JPanel implements ActionListener {
 		//checks to see if the cat hits a box, if so, game over
 		for(Box box : boxes) {
 			Rectangle box_collision = box.getBounds();
-			if(cat_collision.intersects(box_collision)) { // intersects is a Rectangle method
+			// intersects is a Rectangle method
+			if(cat_collision.intersects(box_collision)) { 
 				cat.setVisible(false);
 				box.setVisible(false);
 				ingame = false;
@@ -304,16 +318,6 @@ public class Stage extends JPanel implements ActionListener {
 			}
 		}
 	}
-	
-	
-	/**
-	 * Getter for the distance traveled
-	 * @return
-	 */
-	public int getDistance() {
-		return distance;
-	}
-
 
 
 	private class TAdapter extends KeyAdapter {

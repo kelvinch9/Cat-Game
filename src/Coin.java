@@ -29,7 +29,7 @@ public class Coin extends Object{
 		if(x < 0) {
 			x = 400;
 		}
-		x -= 2;	
+		x -= 1 * factor;	
 	}
 
 }

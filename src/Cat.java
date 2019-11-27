@@ -30,12 +30,11 @@ public class Cat extends Object{
 	 * It will pull the cat back down after it jumps
 	 */
 	public void move() {
-
         y += dy;
 
         if (y < 180) {
             y = 180;
-            dy = 2;
+            dy = 1 * factor;
         }
         
         if(y >= 250) {
@@ -64,7 +63,7 @@ public class Cat extends Object{
 	 */
 	public void jump() {
 		if(canJump()) {
-			dy  = -2;
+			dy  = -1 * factor;
 		}
 	}
 	
@@ -77,4 +76,5 @@ public class Cat extends Object{
 		if(y == 250) return true;
 		else return false;
 	}
+
 }

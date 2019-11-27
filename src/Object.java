@@ -13,6 +13,7 @@ public class Object {
 	
     protected int x;
     protected int y;
+    protected int factor;
     protected int width;
     protected int height;
     protected boolean visible;
@@ -28,6 +29,7 @@ public class Object {
         this.x = x;
         this.y = y;
         visible = true;
+        factor = 1;
     }
 
     /**
@@ -78,8 +80,24 @@ public class Object {
     public int getY() {
         return y;
     }
-
+    
     /**
+	 * Gets the factor to increase speed by
+	 * @return
+	 */
+	public int getFactor() {
+		return factor;
+	}
+	
+	/**
+	 * Sets the factor to increase speed by
+	 * @param factor
+	 */
+	public void setFactor(int factor) {
+		this.factor = factor;
+	}
+
+	/**
      * Getter to determine if the object is visible
      * @return
      */
