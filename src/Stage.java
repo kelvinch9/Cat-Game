@@ -37,6 +37,7 @@ public class Stage extends JPanel implements ActionListener {
 	private int coins_collected = 0;
 	private int distance = 1;
 	private int factor = 1;
+	private int speedUpDistance = 1000;
 
 	/**
 	 * This method calls to set the stage of the game
@@ -144,8 +145,14 @@ public class Stage extends JPanel implements ActionListener {
 		//writes the scores
 		g.setColor(Color.WHITE);
 		g.drawString("Coins: " + coins_collected, 5, 15);
-		g.drawString("Score: 0" + distance, 5, 30);
+		g.drawString("Distance: 0" + distance, 5, 30);
 		g.drawLine(0, 280, B_WIDTH, 280);
+
+		//displays a message before the speed up
+		if(((speedUpDistance * factor) - distance) < 50) {
+			g.drawString("SPEED UP!", (B_WIDTH - 60) / 2,
+					B_HEIGHT / 2);
+		}
 	}
 
 	/**
@@ -202,14 +209,14 @@ public class Stage extends JPanel implements ActionListener {
 
 			cat.move();
 			distance++;
-			
-			//increases the speed of the game after every 2000 traveled
-			if(distance % 1000 == 0) {
+
+			//increases the speed of the game after every 1000 traveled
+			if(distance % speedUpDistance == 0) {
 				factor++;
 				cat.setFactor(factor);
 			}
-			
-			
+
+
 		}
 	}
 
@@ -229,30 +236,31 @@ public class Stage extends JPanel implements ActionListener {
 			if (a.isVisible()) {
 				a.move();
 				a.setFactor(factor);
+				//if the box moves off the screen, remove it
 				if(a.getX() < 2) {
 					boxes.remove(i);
 				}
 			} 
-
 			else {
 				boxes.remove(i);
 			}
 		}
-
-		//if there are boxes in the array list
-		if(!boxes.isEmpty()) {
-			//checks if there is enough distance between boxes
-			if(boxes.get(boxes.size() - 1).getX() <= 230) {
-				if(Math.random() < 0.03) {
-					Box temp = new Box(400, FLOOR);
-					boxes.add(temp);
+		if(!(((speedUpDistance * factor) - distance - 200) < 0)) {
+			//if there are boxes in the array list
+			if(!boxes.isEmpty()) {
+				//checks if there is enough distance between boxes
+				if(boxes.get(boxes.size() - 1).getX() <= 230) {
+					if(Math.random() < 0.03) {
+						Box temp = new Box(400, FLOOR);
+						boxes.add(temp);
+					}
 				}
 			}
-		}
-		//add a box to the end of the screen if no current boxes
-		else {
-			Box temp = new Box(400, FLOOR);
-			boxes.add(temp);
+			//add a box to the end of the screen if no current boxes
+			else {
+				Box temp = new Box(400, FLOOR);
+				boxes.add(temp);
+			}
 		}
 	}
 
@@ -264,14 +272,17 @@ public class Stage extends JPanel implements ActionListener {
 	private void updateCoins() {
 
 		//randomly adds a coin
-
-		if(!coins.isEmpty()) {
-			if(Math.random() < 0.005) {
-				Coin temp = new Coin(400, FLOOR - 35);
+		if(Math.random() < 0.005) {
+			Coin temp = new Coin(400, FLOOR - 35);
+			coins.add(temp);
+		}
+		else if(Math.random() < .01) {
+			if(!(boxes.get(boxes.size() - 1).getX() >= 360)) {
+				Coin temp = new Coin(390, FLOOR);
 				coins.add(temp);
-
 			}
 		}
+
 
 		//for each coin, moves it across the screen
 		for (int i = 0; i < coins.size(); i++) {
@@ -280,6 +291,9 @@ public class Stage extends JPanel implements ActionListener {
 
 			if (a.isVisible()) {
 				a.move();
+				if(a.getX() < 2) {
+					coins.remove(i);
+				}
 				a.setFactor(factor);
 			} 
 			else {
