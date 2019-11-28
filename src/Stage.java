@@ -162,14 +162,23 @@ public class Stage extends JPanel implements ActionListener {
 	private void drawGameOver(Graphics g) {
 
 		//final score is 100 points per coin plus total distance traveled
-		String msg = "Game Over!  Final score: " + (coins_collected * 100 + distance);
+		String msg = "Game Over!  Final score: " + (coins_collected * 100 + distance) + 
+				"\nWould you like to replay?\nPress 'y' to replay";
 		Font small = new Font("Helvetica", Font.BOLD, 14);
 		FontMetrics fm = getFontMetrics(small);
 
 		g.setColor(Color.white);
 		g.setFont(small);
-		g.drawString(msg, (B_WIDTH - fm.stringWidth(msg)) / 2,
-				B_HEIGHT / 2);
+		
+		int lineDisplayHeight = (B_HEIGHT / 2);
+		
+		// drawString does not handle new line characters
+		for (String line : msg.split("\n")) {
+			g.drawString(line, (B_WIDTH - fm.stringWidth(line)) / 2,
+					lineDisplayHeight);
+			lineDisplayHeight += fm.getHeight() + 5;
+		}
+		
 	}
 
 	@Override
