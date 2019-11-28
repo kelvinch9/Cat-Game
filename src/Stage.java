@@ -38,6 +38,9 @@ public class Stage extends JPanel implements ActionListener {
 	private int distance = 1;
 	private int factor = 1;
 	private int speedUpDistance = 1000;
+	private int score = 0;
+	private int highScore = 0;
+	private boolean ifGameRetried = false; // determine if this is first play of game. used for scoring
 
 	/**
 	 * This method calls to set the stage of the game
@@ -154,6 +157,32 @@ public class Stage extends JPanel implements ActionListener {
 					B_HEIGHT / 2);
 		}
 	}
+	
+	
+	private void calcHighScore(int score) {
+		if (score > highScore) {
+			highScore = score;
+		}
+	}
+	
+	private String displayHighScore(int score) {
+		String highScoreString = "\nHigh Score: " + highScore;
+		
+		// if first time playing, score will be the high score
+		if (ifGameRetried == false && score == highScore) {
+			return highScoreString + "\nIt's your first time. You get the high score!";
+		}
+		else if (ifGameRetried == true && score == highScore) {
+			return highScoreString + "\nNice try! You almost beat the high score.";
+		}
+		else if (score < highScore) {
+			return highScoreString + "\nBetter luck next time";
+		}
+		else {
+			return highScoreString + "\nCongrats! New High Score!";
+		}
+		
+	}
 
 	/**
 	 * This displays the game over screen and a player's final score
@@ -162,8 +191,8 @@ public class Stage extends JPanel implements ActionListener {
 	private void drawGameOver(Graphics g) {
 
 		//final score is 100 points per coin plus total distance traveled
-		String msg = "Game Over!  Final score: " + (coins_collected * 100 + distance) + 
-				"\nWould you like to replay?\nPress 'Enter' to replay";
+		String msg = "Game Over!  Total Score: " + score + 
+				"\n\nPress 'Enter' to replay\n" + displayHighScore(score);
 		Font small = new Font("Helvetica", Font.BOLD, 14);
 		FontMetrics fm = getFontMetrics(small);
 
@@ -198,6 +227,10 @@ public class Stage extends JPanel implements ActionListener {
 			coins_collected = 0;
 			distance = 1;
 			factor = 1;
+			score = 0;
+			
+			// sets game retry to true
+			ifGameRetried = true;
 		}
 	}
 
@@ -221,12 +254,16 @@ public class Stage extends JPanel implements ActionListener {
 	}
 
 	/**
-	 * This method stops the time if the game is over
+	 * This method stops the time if the game is over and calculates the score
 	 */
 	private void inGame() {
 
 		if (!ingame) {
 			timer.stop();
+			score = coins_collected * 100 + distance;
+			System.out.println(score);// testing
+			calcHighScore(score);
+			
 		}
 	}
 
