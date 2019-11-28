@@ -163,7 +163,7 @@ public class Stage extends JPanel implements ActionListener {
 
 		//final score is 100 points per coin plus total distance traveled
 		String msg = "Game Over!  Final score: " + (coins_collected * 100 + distance) + 
-				"\nWould you like to replay?\nPress 'y' to replay";
+				"\nWould you like to replay?\nPress 'Enter' to replay";
 		Font small = new Font("Helvetica", Font.BOLD, 14);
 		FontMetrics fm = getFontMetrics(small);
 
@@ -172,13 +172,33 @@ public class Stage extends JPanel implements ActionListener {
 		
 		int lineDisplayHeight = (B_HEIGHT / 2);
 		
-		// drawString does not handle new line characters
+		// drawString does not handle new line characters - split on "\n"
 		for (String line : msg.split("\n")) {
 			g.drawString(line, (B_WIDTH - fm.stringWidth(line)) / 2,
 					lineDisplayHeight);
 			lineDisplayHeight += fm.getHeight() + 5;
 		}
 		
+	}
+	
+
+	/**
+	 * Replay method. Called in TAdapter Class at bottom.
+	 * If user presses enter, restart the game.
+	 * @param e
+	 */
+	public void replay(KeyEvent e) {
+		
+		int key = e.getKeyCode();
+		
+		if(key == KeyEvent.VK_ENTER) {
+			initStage();
+			
+			// reset instance variables
+			coins_collected = 0;
+			distance = 1;
+			factor = 1;
+		}
 	}
 
 	@Override
@@ -197,6 +217,7 @@ public class Stage extends JPanel implements ActionListener {
 
 		//repaints the game 
 		repaint();
+		
 	}
 
 	/**
@@ -358,6 +379,12 @@ public class Stage extends JPanel implements ActionListener {
 		@Override
 		public void keyPressed(KeyEvent e) {
 			cat.keyPressed(e);
+			
+			// allow replay if not in game
+			if(!ingame) {
+				replay(e);  
+			}
+			
 		}
 	}
 }
