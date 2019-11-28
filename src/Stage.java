@@ -38,7 +38,11 @@ public class Stage extends JPanel implements ActionListener {
 	private int distance = 1;
 	private int factor = 1;
 	private int speedUpDistance = 1000;
+	
+	
 	private int score = 0;
+	private int prevHighScore = 0; // bug in displaying high score - high score calculated right away
+								// result is that score can never beat high score (this is workaround)
 	private int highScore = 0;
 	private boolean ifGameRetried = false; // determine if this is first play of game. used for scoring
 
@@ -160,22 +164,23 @@ public class Stage extends JPanel implements ActionListener {
 	
 	
 	private void calcHighScore(int score) {
+		prevHighScore = highScore;
 		if (score > highScore) {
 			highScore = score;
 		}
 	}
 	
 	private String displayHighScore(int score) {
-		String highScoreString = "\nHigh Score: " + highScore;
+		String highScoreString = "High Score: " + highScore;
 		
 		// if first time playing, score will be the high score
-		if (ifGameRetried == false && score == highScore) {
+		if (ifGameRetried == false) {
 			return highScoreString + "\nIt's your first time. You get the high score!";
 		}
-		else if (ifGameRetried == true && score == highScore) {
+		else if (ifGameRetried == true && score == prevHighScore) {
 			return highScoreString + "\nNice try! You almost beat the high score.";
 		}
-		else if (score < highScore) {
+		else if (score < prevHighScore) {
 			return highScoreString + "\nBetter luck next time";
 		}
 		else {
@@ -191,15 +196,16 @@ public class Stage extends JPanel implements ActionListener {
 	private void drawGameOver(Graphics g) {
 
 		//final score is 100 points per coin plus total distance traveled
-		String msg = "Game Over!  Total Score: " + score + 
-				"\n\nPress 'Enter' to replay\n" + displayHighScore(score);
+		String msg = "Game Over!\n\nTotal Score: " + score + "    |    " +
+				displayHighScore(score) + 
+				"\n\nPress 'Enter' to replay\n";
 		Font small = new Font("Helvetica", Font.BOLD, 14);
 		FontMetrics fm = getFontMetrics(small);
 
 		g.setColor(Color.white);
 		g.setFont(small);
 		
-		int lineDisplayHeight = (B_HEIGHT / 2);
+		int lineDisplayHeight = (B_HEIGHT / 3);
 		
 		// drawString does not handle new line characters - split on "\n"
 		for (String line : msg.split("\n")) {
@@ -261,7 +267,6 @@ public class Stage extends JPanel implements ActionListener {
 		if (!ingame) {
 			timer.stop();
 			score = coins_collected * 100 + distance;
-			System.out.println(score);// testing
 			calcHighScore(score);
 			
 		}
