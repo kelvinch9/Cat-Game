@@ -37,7 +37,7 @@ public class Stage extends JPanel implements ActionListener {
 	private int coins_collected = 0;
 	private int distance = 1;
 	private int factor = 1;
-	private int speedUpDistance = 100;
+	private int speedUpDistance = 1000;
 
 	/**
 	 * This method calls to set the stage of the game
