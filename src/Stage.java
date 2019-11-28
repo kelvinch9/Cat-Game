@@ -37,7 +37,7 @@ public class Stage extends JPanel implements ActionListener {
 	private int coins_collected = 0;
 	private int distance = 1;
 	private int factor = 1;
-	private int speedUpDistance = 1000;
+	private int speedUpDistance = 100;
 
 	/**
 	 * This method calls to set the stage of the game
@@ -228,21 +228,23 @@ public class Stage extends JPanel implements ActionListener {
 	 */
 	private void updateBoxes() {
 
-		//for each box, move it through the screen
-		for (int i = 0; i < boxes.size(); i++) {
+		if(!boxes.isEmpty()) {
+			//for each box, move it through the screen
+			for (int i = 0; i < boxes.size(); i++) {
 
-			Box a = boxes.get(i);
+				Box a = boxes.get(i);
 
-			if (a.isVisible()) {
-				a.move();
-				a.setFactor(factor);
-				//if the box moves off the screen, remove it
-				if(a.getX() < 2) {
+				if (a.isVisible()) {
+					a.move();
+					a.setFactor(factor);
+					//if the box moves off the screen, remove it
+					if(a.getX() < 2) {
+						boxes.remove(i);
+					}
+				} 
+				else {
 					boxes.remove(i);
 				}
-			} 
-			else {
-				boxes.remove(i);
 			}
 		}
 		if(!(((speedUpDistance * factor) - distance - 200) < 0)) {
@@ -277,27 +279,35 @@ public class Stage extends JPanel implements ActionListener {
 			coins.add(temp);
 		}
 		else if(Math.random() < .01) {
-			if(!(boxes.get(boxes.size() - 1).getX() >= 360)) {
-				Coin temp = new Coin(390, FLOOR);
+			if(!boxes.isEmpty()) {
+				if(!(boxes.get(boxes.size() - 1).getX() >= 360)) {
+					Coin temp = new Coin(390, FLOOR);
+					coins.add(temp);
+				}
+			}
+			else {
+				Coin temp = new Coin (390, FLOOR);
 				coins.add(temp);
 			}
 		}
 
 
-		//for each coin, moves it across the screen
-		for (int i = 0; i < coins.size(); i++) {
+		if(!coins.isEmpty()) {
+			//for each coin, moves it across the screen
+			for (int i = 0; i < coins.size(); i++) {
 
-			Coin a = coins.get(i);
+				Coin a = coins.get(i);
 
-			if (a.isVisible()) {
-				a.move();
-				if(a.getX() < 2) {
+				if (a.isVisible()) {
+					a.move();
+					if(a.getX() < 2) {
+						coins.remove(i);
+					}
+					a.setFactor(factor);
+				} 
+				else {
 					coins.remove(i);
 				}
-				a.setFactor(factor);
-			} 
-			else {
-				coins.remove(i);
 			}
 		}
 	}
