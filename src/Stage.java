@@ -78,7 +78,7 @@ public class Stage extends JPanel implements ActionListener {
 	 */
 	private void drawGameStart(Graphics g) {
 		String msg = "Cat game!\n\nPress space to jump. "  + 
-				"\n\nPress the right arrow key to play.\n";
+				"\n\nPress the ENTER key to play.\n";
 		Font small = new Font("Helvetica", Font.BOLD, 14);
 		FontMetrics fm = getFontMetrics(small);
 
