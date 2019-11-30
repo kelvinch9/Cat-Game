@@ -29,7 +29,7 @@ public class Stage extends JPanel implements ActionListener {
 	private Cat cat;
 	private List<Box> boxes;
 	private List<Coin> coins;
-	private boolean ingame;
+	private int ingame;
 	private final int B_WIDTH = 400;
 	private final int B_HEIGHT = 300;
 	private final int DELAY = 15;
@@ -50,26 +50,55 @@ public class Stage extends JPanel implements ActionListener {
 	 * This method calls to set the stage of the game
 	 */
 	public Stage() {
-
-		initStage();
+		
+		ingame = 0;
+		gameStart();
+		
 	}
-
+	
 	/**
-	 * This method sets the initial state of the game
+	 * Sets up the game screen
 	 */
-	private void initStage() { 
+	private void gameStart() {
 
 		addKeyListener(new TAdapter());
 		setFocusable(true);
 
 		//background color
 		setBackground(Color.BLACK);
-
-		//no game over
-		ingame = true;
-
-		//sets the dimensions of the game
+		
 		setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
+		
+		
+	}
+	
+	/**
+	 * Start screen for the game
+	 * @param g
+	 */
+	private void drawGameStart(Graphics g) {
+		String msg = "Cat game!\n\nPress space to jump. "  + 
+				"\n\nPress the right arrow key to play.\n";
+		Font small = new Font("Helvetica", Font.BOLD, 14);
+		FontMetrics fm = getFontMetrics(small);
+
+		g.setColor(Color.white);
+		g.setFont(small);
+		
+		int lineDisplayHeight = (B_HEIGHT / 3);
+		
+		// drawString does not handle new line characters - split on "\n"
+		for (String line : msg.split("\n")) {
+			g.drawString(line, (B_WIDTH - fm.stringWidth(line)) / 2,
+					lineDisplayHeight);
+			lineDisplayHeight += fm.getHeight() + 5;
+		}
+		
+	}
+	/**
+	 * This method sets the initial state of the game
+	 */
+	private void initStage() { 
 
 		//creates the cat, the player character
 		cat = new Cat(40, FLOOR);
@@ -104,17 +133,28 @@ public class Stage extends JPanel implements ActionListener {
 		coins.add(new Coin(250, FLOOR - 40));
 	}
 
-
-
+	
+	/**
+	 * This method paints the screen
+	 * @param g
+	 */
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
-		if (ingame) {
+		//start screen
+		if (ingame == 0) {
+			
+			drawGameStart(g);
+		}
+		//in game
+		else if( ingame == 1) {
 
 			drawObjects(g);
 
-		} else {
+		}
+		//game over
+		else {
 
 			drawGameOver(g);
 		}
@@ -162,7 +202,10 @@ public class Stage extends JPanel implements ActionListener {
 		}
 	}
 	
-	
+	/**
+	 * This method calculates the high score
+	 * @param score
+	 */
 	private void calcHighScore(int score) {
 		prevHighScore = highScore;
 		if (score > highScore) {
@@ -170,6 +213,12 @@ public class Stage extends JPanel implements ActionListener {
 		}
 	}
 	
+	/**
+	 * This method displays a message for the high score depending
+	 * on how well the player did
+	 * @param score
+	 * @return
+	 */
 	private String displayHighScore(int score) {
 		String highScoreString = "High Score: " + highScore;
 		
@@ -216,6 +265,21 @@ public class Stage extends JPanel implements ActionListener {
 		
 	}
 	
+	/**
+	 * Replay method. Called in TAdapter Class at bottom.
+	 * If user presses enter, restart the game.
+	 * @param e
+	 */
+	public void play(KeyEvent e) {
+		
+		int key = e.getKeyCode();
+		
+		if(key == KeyEvent.VK_RIGHT) {
+			ingame = 1;
+			initStage();
+		}
+	}
+	
 
 	/**
 	 * Replay method. Called in TAdapter Class at bottom.
@@ -227,6 +291,7 @@ public class Stage extends JPanel implements ActionListener {
 		int key = e.getKeyCode();
 		
 		if(key == KeyEvent.VK_ENTER) {
+			ingame = 1;
 			initStage();
 			
 			// reset instance variables
@@ -264,7 +329,7 @@ public class Stage extends JPanel implements ActionListener {
 	 */
 	private void inGame() {
 
-		if (!ingame) {
+		if (ingame == 2) {
 			timer.stop();
 			score = coins_collected * 100 + distance;
 			calcHighScore(score);
@@ -400,7 +465,7 @@ public class Stage extends JPanel implements ActionListener {
 			if(cat_collision.intersects(box_collision)) { 
 				cat.setVisible(false);
 				box.setVisible(false);
-				ingame = false;
+				ingame = 2;
 			}
 		}
 
@@ -420,10 +485,14 @@ public class Stage extends JPanel implements ActionListener {
 
 		@Override
 		public void keyPressed(KeyEvent e) {
+			if(ingame == 0) {
+				play(e);
+			}
+			
 			cat.keyPressed(e);
 			
 			// allow replay if not in game
-			if(!ingame) {
+			if(ingame == 2) {
 				replay(e);  
 			}
 			
