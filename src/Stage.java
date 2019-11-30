@@ -264,44 +264,32 @@ public class Stage extends JPanel implements ActionListener {
 		}
 		
 	}
-	
+
+
 	/**
-	 * Replay method. Called in TAdapter Class at bottom.
-	 * If user presses enter, restart the game.
+	 * Play / replay method. Called in TAdapter Class at bottom.
+	 * If user presses enter, starts the game.
 	 * @param e
 	 */
 	public void play(KeyEvent e) {
 		
 		int key = e.getKeyCode();
 		
-		if(key == KeyEvent.VK_RIGHT) {
-			ingame = 1;
-			initStage();
-		}
-	}
-	
-
-	/**
-	 * Replay method. Called in TAdapter Class at bottom.
-	 * If user presses enter, restart the game.
-	 * @param e
-	 */
-	public void replay(KeyEvent e) {
-		
-		int key = e.getKeyCode();
-		
 		if(key == KeyEvent.VK_ENTER) {
+			if(ingame == 2) {
+
+				// reset instance variables
+				coins_collected = 0;
+				distance = 1;
+				factor = 1;
+				score = 0;
+				
+				// sets game retry to true
+				ifGameRetried = true;
+			}
 			ingame = 1;
 			initStage();
 			
-			// reset instance variables
-			coins_collected = 0;
-			distance = 1;
-			factor = 1;
-			score = 0;
-			
-			// sets game retry to true
-			ifGameRetried = true;
 		}
 	}
 
@@ -384,7 +372,8 @@ public class Stage extends JPanel implements ActionListener {
 				}
 			}
 		}
-		if(!(((speedUpDistance * factor) - distance - 200) < 0)) {
+		if(!(((speedUpDistance * factor) - distance < 400) &&
+				((speedUpDistance * factor) - distance > 200))){
 			//if there are boxes in the array list
 			if(!boxes.isEmpty()) {
 				//checks if there is enough distance between boxes
@@ -485,16 +474,12 @@ public class Stage extends JPanel implements ActionListener {
 
 		@Override
 		public void keyPressed(KeyEvent e) {
-			if(ingame == 0) {
+			if(ingame == 0 || ingame == 2) {
+
 				play(e);
 			}
 			
 			cat.keyPressed(e);
-			
-			// allow replay if not in game
-			if(ingame == 2) {
-				replay(e);  
-			}
 			
 		}
 	}
