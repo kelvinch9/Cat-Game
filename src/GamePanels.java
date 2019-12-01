@@ -89,18 +89,44 @@ public class GamePanels extends JFrame {
 	 */
 	private JPanel createStartPanel() {
 		JPanel startPanel = new JPanel();
-		startPanel.setBackground(Color.ORANGE);
+		startPanel.setLayout(new BorderLayout()); // BorderLayout is a layout manager for JPanel
 		
 		// create buttons to access other panels
 		JButton start = new JButton("Play");
 		JButton guide = new JButton("Guide");
 		JButton credits = new JButton("Credits");
+		
+		// create a JLabel to display text for the panel
+		String startString = "<html><div style='text-align: center;'>"
+				+ "<p><b>Welcome to Team 68's Cat Game!</b></p> "
+				+ "<br>" // line break
+				+ "<br>" // line break
+//				+ "<p><i>Italicized text.</i></p>"
+				+ "</div></html>";
 
-		// add the buttons to the panel
-		startPanel.add(start);
-		startPanel.add(guide);
-		startPanel.add(credits);
+		JLabel startText = new JLabel(startString);
+		startText.setFont(new Font("Verdana",Font.PLAIN,16));
 
+		// create sub-panels for label and buttons - this is for formatting
+		JPanel labelPanel = new JPanel();
+		JPanel buttonPanel = new JPanel();
+		
+		// add labels and buttons to respective panels
+		buttonPanel.add(start);
+		buttonPanel.add(guide);
+		buttonPanel.add(credits);
+		labelPanel.add(startText);
+		
+		// add label and button panels to main Panel
+		startPanel.add(buttonPanel, BorderLayout.CENTER);
+		startPanel.add(labelPanel, BorderLayout.PAGE_START);
+		
+		// set backgrounds of each panel making up the main panel
+		buttonPanel.setBackground(Color.ORANGE);
+		labelPanel.setBackground(Color.ORANGE);
+
+		
+		
 		// add action to "start" button
 		// if you click start, the panel changes to the gamePanel
 		start.addActionListener(new ActionListener() {
@@ -128,28 +154,6 @@ public class GamePanels extends JFrame {
 				cards.show(UI, "creditsPanel");
 			}
 		});
-
-
-		// PICTURES - code to add a picture if desired
-		//		startPanel.setFocusable(true);
-
-		// add background picture for game
-		//		BufferedImage myPicture;
-		//		try {
-		//		
-		//			myPicture = ImageIO.read(new File("full-background.png"));
-		//			JLabel picLabel = new JLabel(new ImageIcon(myPicture));
-		//			startPanel.add(picLabel);
-		//		} catch (IOException e1) {
-		//			e1.printStackTrace();
-		//		}
-
-
-		//		JPanel test = new JPanel();
-		//        test.add(start);
-		//        test.add(hello);
-		//        startPanel.setLayout(new BorderLayout());
-		//        startPanel.add(test, BorderLayout.CENTER);
 
 
 		return startPanel;
