@@ -2,6 +2,7 @@
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.awt.Panel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -92,10 +93,17 @@ public class Runner extends JFrame{
 		// Create Panel for Guide
 		JPanel guidePanel = new JPanel();
 		guidePanel.add(guideBack);
+
+		JLabel guideText = new JLabel("Jump (space bar) to avoid obstacles. Collect coins");
+		guideText.setFont(new Font("Verdana",Font.PLAIN,16));
+		guidePanel.add(guideText);
 		
 		// Create Panel for Credits
 		JPanel creditsPanel = new JPanel();
 		creditsPanel.add(creditsBack);
+		JLabel creditsText = new JLabel("Created by Team 68. Danielle Coates, Kelvin Cheung, Matthew Ordway");
+		creditsText.setFont(new Font("Verdana",Font.PLAIN,16));
+		creditsPanel.add(creditsText);
 		
 		
 		
