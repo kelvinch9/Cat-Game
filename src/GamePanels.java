@@ -1,7 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -96,7 +95,8 @@ public class GamePanels extends JFrame {
 		JButton guide = new JButton("Guide");
 		JButton credits = new JButton("Credits");
 		
-		// create a JLabel to display text for the panel
+		
+		// create a JLabel to display text for the panel - includes HTML for formatting
 		String startString = "<html><div style='text-align: center;'>"
 				+ "<p><b>Welcome to Team 68's Cat Game!</b></p> "
 				+ "<br>" // line break
