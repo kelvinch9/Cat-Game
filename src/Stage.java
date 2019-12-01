@@ -9,8 +9,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -66,8 +72,7 @@ public class Stage extends JPanel implements ActionListener {
 		setBackground(Color.BLACK);
 		
 		setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
-		
-		
+			
 	}
 	
 	/**
@@ -100,6 +105,9 @@ public class Stage extends JPanel implements ActionListener {
 		//creates the cat, the player character
 		cat = new Cat(40, FLOOR);
 
+		//create background image
+		ImageIcon background = new ImageIcon("background.png");
+		
 		//creates arraylist for boxes and coins
 		initBoxes();
 		initCoins();
@@ -165,6 +173,10 @@ public class Stage extends JPanel implements ActionListener {
 	 * @param g
 	 */
 	private void drawObjects(Graphics g) {
+		
+		//draw background
+		ImageIcon background = new ImageIcon("background.png");
+		g.drawImage(background.getImage(), 0, 0, null);
 
 		//draws the cat
 		if (cat.isVisible()) {
