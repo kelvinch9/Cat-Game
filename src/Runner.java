@@ -20,11 +20,13 @@ public class Runner extends JFrame{
 	
 	
 	Stage game;
+	boolean inGamePanel = false;
 
 	/**
 	 * This method runs the game
 	 */
 	public Runner() {
+		
 		
 		initUI();
 		
@@ -73,6 +75,7 @@ public class Runner extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				cards.next(UI);
+				inGamePanel = true;
 				
 			}
 			
@@ -93,10 +96,16 @@ public class Runner extends JFrame{
 	}
 	
 	
+	/**
+	 * 
+	 * KeyListener
+	 * @author matthewordway
+	 *
+	 */
 	private class MyKeyListener extends KeyAdapter {
 		@Override
 		public void keyPressed(KeyEvent e) {
-			if(game.getIngame() == 0 || game.getIngame() == 2) {
+			if( inGamePanel == true && (game.getIngame() == 0 || game.getIngame() == 2) ) {
 
 				game.play(e);
 			}
