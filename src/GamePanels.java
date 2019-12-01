@@ -1,5 +1,7 @@
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -162,24 +164,36 @@ public class GamePanels extends JFrame {
 	private JPanel createGuidePanel() {
 		// Create Panel for Guide
 		JPanel guidePanel = new JPanel();
-		
+		guidePanel.setLayout(new BorderLayout()); // BorderLayout is a layout manager for JPanel
 		
 		// create back button to go back to the startPanel
 		JButton guideBack = new JButton("Back");
-		guidePanel.add(guideBack);
 
-		
 		// create a JLabel to display text for the panel
 		String guideString = "<html><div style='text-align: center;'>"
-				+ "<p>The cat, Mufi, is hungry for coins.</p> "
+				+ "<p><b>The cat, Mufi, is hungry for coins.</b></p> "
 				+ "<br>" // line break
 				+ "<p>Press space to jump and</p>"
 				+ "<p>avoid the boxes.</p>"
+				+ "<br>" // line break
+				+ "<p>Watch out for speed increases!</p>"
+				+ "<p><i>Speed increases every 1000 distance.</i></p>"
 				+ "</div></html>";
 
 		JLabel guideText = new JLabel(guideString);
 		guideText.setFont(new Font("Verdana",Font.PLAIN,16));
-		guidePanel.add(guideText);
+
+		// add panels for the Button and the JLabel - this is for formatting 
+		JPanel labelPanel = new JPanel();
+		JPanel buttonPanel = new JPanel();
+		
+		// add labels and buttons to respective panels
+		labelPanel.add(guideText);
+		buttonPanel.add(guideBack);
+		
+		// add label and button panels to main Panel
+		guidePanel.add(labelPanel, BorderLayout.NORTH); // puts in north quadrant
+		guidePanel.add(buttonPanel, BorderLayout.SOUTH); // puts in south quadrant
 
 		
 		// add action to "back" button
@@ -205,16 +219,16 @@ public class GamePanels extends JFrame {
 		
 		// Create Panel for Credits
 		JPanel creditsPanel = new JPanel();
+		creditsPanel.setLayout(new BorderLayout()); // BorderLayout is a layout manager for JPanel
 		
 		
 		// create back button to go back to the startPanel
 		JButton creditsBack = new JButton("Back");
-		creditsPanel.add(creditsBack);
 		
 		
 		// create a JLabel to display text for the panel - w/ HTML for display
 		String creditsString = "<html><div style='text-align: center;'>"
-				+ "<p>Created by Team 68.</p> "
+				+ "<p><b>Created by Team 68.</b></p> "
 				+ "<br>" // line break
 				+ "<p>Danielle Coates, Kelvin Cheung,</p>"
 				+ "<p>and Matthew Ordway</p>"
@@ -222,6 +236,19 @@ public class GamePanels extends JFrame {
 		JLabel creditsText = new JLabel(creditsString);
 		creditsText.setFont(new Font("Verdana",Font.PLAIN,16));
 		creditsPanel.add(creditsText);
+
+
+		// add panels for the Button and the JLabel - this is for formatting 
+		JPanel labelPanel = new JPanel();
+		JPanel buttonPanel = new JPanel();
+
+		// add labels and buttons to respective panels
+		labelPanel.add(creditsText);
+		buttonPanel.add(creditsBack);
+
+		// add label and button panels to main Panel
+		creditsPanel.add(labelPanel, BorderLayout.NORTH); // puts in north quadrant
+		creditsPanel.add(buttonPanel, BorderLayout.SOUTH); // puts in south quadrant
 
 
 		// add action to "back" button
