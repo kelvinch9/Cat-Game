@@ -14,21 +14,29 @@ import javax.swing.JPanel;
 
 
 /**
- * working on making this into a separate Class
+ * Class for all the Panels in the game. Includes:
+ * (1) gamePanel - the actual game (Stage class)
+ * (2) guidePanel - instructions on game
+ * (3) creditsPanel - credits for game
  * 
  * @author matthewordway
  *
  */
 public class GamePanels extends JFrame {
 
-	
-	// mark private and make getters
-	Stage game;
-	boolean inGamePanel;
-	JPanel UI;
-	
-	
+	private Stage game;
+	private boolean inGamePanel;   // is panel currently in focus the gamePanel
+	private JPanel UI;	// main JPanel
+	CardLayout cards;   // cards organized the JPanels (layout-related)
 
+
+
+	/**
+	 * Contructor for the GamePanels class.
+	 * The constructor creates all the panels in the Game UI.
+	 * 
+	 * @param game
+	 */
 	GamePanels(Stage game) {
 		this.game = game;
 		inGamePanel = false;
@@ -36,27 +44,89 @@ public class GamePanels extends JFrame {
 
 	}
 
+	
+	/**
+	 * The method is called in the Constructor and is responsible
+	 * for creating all of the panels.
+	 * 
+	 */
+	private void createPanels() {
 
-	public void createPanels() {
-
-		CardLayout cards = new CardLayout();
+		// creating main JPanel (UI) that holds all the other JPanels (Guide, Credits, Game)
+		cards = new CardLayout();
 		UI = new JPanel();
 		UI.setLayout(cards);
 		UI.setFocusable(true);
-		UI.addKeyListener(new MyKeyListener());
+		UI.addKeyListener(new MyKeyListener()); // allows KeyListener to work across panels
+
+		// call helper methods to create each panel and respective buttons / formatting
+		JPanel startPanel = createStartPanel();
+		JPanel guidePanel = createGuidePanel();
+		JPanel creditsPanel = createCreditsPanel();
+		JPanel gamePanel = createGamePanel();
 
 
-		// Create Panel for Start of Game
+		// add all panels to the UI (main panel)
+		UI.add("startPanel", startPanel);
+		UI.add("guidePanel", guidePanel);
+		UI.add("creditsPanel", creditsPanel);
+		UI.add("gamePanel", gamePanel);
+		this.setContentPane(UI);
+		cards.show(UI, "1");
+
+
+	}
+
+
+	/**
+	 * Helper method to create the startPanel.
+	 * The startPanel allows you to access the other panels (Game, Guide, Credits).
+	 * 
+	 * @return
+	 */
+	private JPanel createStartPanel() {
 		JPanel startPanel = new JPanel();
+		
+		// create buttons to access other panels
 		JButton start = new JButton("Play");
 		JButton guide = new JButton("Guide");
 		JButton credits = new JButton("Credits");
 
+		// add the buttons to the panel
 		startPanel.add(start);
 		startPanel.add(guide);
 		startPanel.add(credits);
 
+		// add action to "start" button
+		// if you click start, the panel changes to the gamePanel
+		start.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cards.show(UI, "gamePanel");
+				inGamePanel = true;
+			}
+		});
 
+		// add action to "guide" button
+		// if you click guide, the panel changes to the guidePanel 
+		guide.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cards.show(UI, "guidePanel");
+			}
+		});
+
+		// add action to "credits" button
+		// if you click credits, the panel changes to the creditsPanel 
+		credits.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cards.show(UI, "creditsPanel");
+			}
+		});
+
+
+		// PICTURES - code to add a picture if desired
 		//		startPanel.setFocusable(true);
 
 		// add background picture for game
@@ -77,122 +147,136 @@ public class GamePanels extends JFrame {
 		//        startPanel.setLayout(new BorderLayout());
 		//        startPanel.add(test, BorderLayout.CENTER);
 
-		// create back button
-		JButton guideBack = new JButton("Back");
-		JButton creditsBack = new JButton("Back");
 
+		return startPanel;
+	}
+
+
+	/**
+	 * Helper method to create the guidePanel.
+	 * 
+	 * @return
+	 */
+	private JPanel createGuidePanel() {
 		// Create Panel for Guide
 		JPanel guidePanel = new JPanel();
+		
+		
+		// create back button to go back to the startPanel
+		JButton guideBack = new JButton("Back");
 		guidePanel.add(guideBack);
 
+		
+		// create a JLabel to display text for the panel
 		JLabel guideText = new JLabel("Jump (space bar) to avoid obstacles. Collect coins");
 		guideText.setFont(new Font("Verdana",Font.PLAIN,16));
 		guidePanel.add(guideText);
 
+		
+		// add action to "back" button
+		// if you click back, the panel changes back to the startPanel 
+		guideBack.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cards.show(UI, "startPanel");
+			}
+		});
+
+
+		return guidePanel;
+	}
+
+
+	/**
+	 * Helper method for the creditsPanel.
+	 * 
+	 * @return
+	 */
+	private JPanel createCreditsPanel() {
+		
 		// Create Panel for Credits
 		JPanel creditsPanel = new JPanel();
+		
+		
+		// create back button to go back to the startPanel
+		JButton creditsBack = new JButton("Back");
 		creditsPanel.add(creditsBack);
+		
+		
+		// create a JLabel to display text for the panel
 		JLabel creditsText = new JLabel("Created by Team 68. Danielle Coates, Kelvin Cheung, Matthew Ordway");
 		creditsText.setFont(new Font("Verdana",Font.PLAIN,16));
 		creditsPanel.add(creditsText);
 
 
+		// add action to "back" button
+		// if you click back, the panel changes back to the startPanel
+		creditsBack.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cards.show(UI, "startPanel");
+			}
+		});
 
+
+		return creditsPanel;
+	}
+
+
+	/**
+	 * Helper method to create the gamePanel.
+	 * 
+	 * 
+	 * @return
+	 */
+	private JPanel createGamePanel() {
 		// Create Panel for Game
 		JPanel gamePanel = new JPanel();
+		
+		// Add the game (Stage Class) to the gamePanel
 		game = new Stage();
 		gamePanel.add(game);
 		//		gamePanel.setFocusable(true);
-
-
-		// UI - add panels to UI Main panel
-		UI.add("startPanel", startPanel);
-		UI.add("guidePanel", guidePanel);
-		UI.add("creditsPanel", creditsPanel);
-		UI.add("gamePanel", gamePanel);
-		this.setContentPane(UI);
-		cards.show(UI, "1");
-
-		// add action for start button - When you click start button, it goes to 
-		// next panel which is gamePanel
-		start.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				cards.show(UI, "gamePanel");
-				inGamePanel = true;
-			}
-		});
-
-		// add action for back button 
-		creditsBack.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				cards.show(UI, "startPanel");
-
-			}
-		});
-
-		// add action for back button 
-		guideBack.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				cards.show(UI, "startPanel");
-
-			}
-		});
-
-		// add action for guide button 
-		guide.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				cards.show(UI, "guidePanel");
-
-			}
-		});
-
-		// add action for guide button 
-		credits.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				cards.show(UI, "creditsPanel");
-
-			}
-		});
-
-
-
+		
+		return gamePanel;
 	}
 	
+	
 	/**
+	 * Getter for the UI JPanel.
 	 * 
-	 * KeyListener
+	 * @return
+	 */
+	public JPanel getUI() {
+		return UI;
+	}
+
+
+
+
+
+
+	/**
+	 * MyKeyListener Class that allows keys to be pressed in the gamePanel (Stage Class). 
+	 * 
 	 * @author matthewordway
 	 *
 	 */
 	private class MyKeyListener extends KeyAdapter {
 		@Override
 		public void keyPressed(KeyEvent e) {
-			
+
 			// allow replay if at beginning or cat died
 			if( inGamePanel == true && (game.getIngame() == 0 || game.getIngame() == 2) ) {
 				game.play(e);
 			}
-			
+
 			// if inGamePanel and not in start screen
 			if (inGamePanel == true && game.getIngame() != 0 ) {
 				game.getCat().keyPressed(e);
 			}
-			
-			
 		}
-		
 	}
-	
 
 
 
