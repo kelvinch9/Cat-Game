@@ -227,7 +227,7 @@ public class Stage extends JPanel implements ActionListener {
 			return highScoreString + "\nNice try! You almost beat the high score.";
 		}
 		else if (score < prevHighScore) {
-			return highScoreString + "\nBetter luck next time";
+			return highScoreString + "\nBetter luck next time!";
 		}
 		else {
 			return highScoreString + "\nCongrats! New High Score!";

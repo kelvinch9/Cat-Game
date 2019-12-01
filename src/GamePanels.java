@@ -170,9 +170,12 @@ public class GamePanels extends JFrame {
 
 		
 		// create a JLabel to display text for the panel
-		String guideString = "<html><p>The cat, Mufi, is hungry for coins.</p> "
-				+ "<p>Press space to jump and avoid the boxes.</p>"
-				+ "</html>";
+		String guideString = "<html><div style='text-align: center;'>"
+				+ "<p>The cat, Mufi, is hungry for coins.</p> "
+				+ "<br>" // line break
+				+ "<p>Press space to jump and</p>"
+				+ "<p>avoid the boxes.</p>"
+				+ "</div></html>";
 
 		JLabel guideText = new JLabel(guideString);
 		guideText.setFont(new Font("Verdana",Font.PLAIN,16));
@@ -210,10 +213,12 @@ public class GamePanels extends JFrame {
 		
 		
 		// create a JLabel to display text for the panel - w/ HTML for display
-		String creditsString = "<html><p>Created by Team 68.</p> "
+		String creditsString = "<html><div style='text-align: center;'>"
+				+ "<p>Created by Team 68.</p> "
+				+ "<br>" // line break
 				+ "<p>Danielle Coates, Kelvin Cheung,</p>"
 				+ "<p>and Matthew Ordway</p>"
-				+ "</html>";
+				+ "</div></html>";
 		JLabel creditsText = new JLabel(creditsString);
 		creditsText.setFont(new Font("Verdana",Font.PLAIN,16));
 		creditsPanel.add(creditsText);
