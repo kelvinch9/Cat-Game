@@ -1,3 +1,5 @@
+
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.EventQueue;
 import java.awt.Panel;
@@ -5,9 +7,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -47,22 +55,62 @@ public class Runner extends JFrame{
 	
 		
 		// Create Panel for Start of Game
-		Panel startPanel = new Panel();
-		JButton start = new JButton("start");		
+		JPanel startPanel = new JPanel();
+		JButton start = new JButton("Play");
+		JButton guide = new JButton("Guide");
+		JButton credits = new JButton("Credits");
+		
 		startPanel.add(start);
+		startPanel.add(guide);
+		startPanel.add(credits);
+		
+		
 //		startPanel.setFocusable(true);
+		
+		// add background picture for game
+//		BufferedImage myPicture;
+//		try {
+//		
+//			myPicture = ImageIO.read(new File("full-background.png"));
+//			JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+//			startPanel.add(picLabel);
+//		} catch (IOException e1) {
+//			e1.printStackTrace();
+//		}
+		
+		
+//		JPanel test = new JPanel();
+//        test.add(start);
+//        test.add(hello);
+//        startPanel.setLayout(new BorderLayout());
+//        startPanel.add(test, BorderLayout.CENTER);
+		
+		// create back button
+		JButton guideBack = new JButton("Back");
+		JButton creditsBack = new JButton("Back");
+		
+		// Create Panel for Guide
+		JPanel guidePanel = new JPanel();
+		guidePanel.add(guideBack);
+		
+		// Create Panel for Credits
+		JPanel creditsPanel = new JPanel();
+		creditsPanel.add(creditsBack);
+		
 		
 		
 		// Create Panel for Game
-		Panel gamePanel = new Panel();
+		JPanel gamePanel = new JPanel();
 		game = new Stage();
 		gamePanel.add(game);
 //		gamePanel.setFocusable(true);
 		
 		
 		// UI - add panels to UI Main panel
-		UI.add("2", startPanel);
-		UI.add("3", gamePanel);
+		UI.add("startPanel", startPanel);
+		UI.add("guidePanel", guidePanel);
+		UI.add("creditsPanel", creditsPanel);
+		UI.add("gamePanel", gamePanel);
 		this.setContentPane(UI);
 		cards.show(UI, "1");
 		
@@ -72,13 +120,51 @@ public class Runner extends JFrame{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				cards.next(UI);
+				cards.show(UI, "gamePanel");
 				inGamePanel = true;
-				
 			}
-			
+		});
+
+		// add action for back button 
+		creditsBack.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cards.show(UI, "startPanel");
+
+			}
 		});
 		
+		// add action for back button 
+				guideBack.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						cards.show(UI, "startPanel");
+
+					}
+				});
+
+		// add action for guide button 
+		guide.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cards.show(UI, "guidePanel");
+
+			}
+		});
+
+		// add action for guide button 
+		credits.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				cards.show(UI, "creditsPanel");
+
+			}
+		});
+
 		
 
 		setResizable(false);
