@@ -75,15 +75,14 @@ public class Stage extends JPanel implements ActionListener {
 	 * @param g
 	 */
 	private void drawGameStart(Graphics g) {
-		String msg = "Cat game!\n\nPress space to jump. "  + 
-				"\n\nPress the ENTER key to play.\n";
+		String msg = "Press ENTER to play!";
 		Font small = new Font("Helvetica", Font.BOLD, 14);
 		FontMetrics fm = getFontMetrics(small);
 
 		g.setColor(Color.white);
 		g.setFont(small);
 		
-		int lineDisplayHeight = (B_HEIGHT / 3);
+		int lineDisplayHeight = (B_HEIGHT / 2);
 		
 		// drawString does not handle new line characters - split on "\n"
 		for (String line : msg.split("\n")) {
