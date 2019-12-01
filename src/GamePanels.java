@@ -1,4 +1,5 @@
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -86,6 +87,7 @@ public class GamePanels extends JFrame {
 	 */
 	private JPanel createStartPanel() {
 		JPanel startPanel = new JPanel();
+		startPanel.setBackground(Color.ORANGE);
 		
 		// create buttons to access other panels
 		JButton start = new JButton("Play");
@@ -209,7 +211,8 @@ public class GamePanels extends JFrame {
 		
 		// create a JLabel to display text for the panel - w/ HTML for display
 		String creditsString = "<html><p>Created by Team 68.</p> "
-				+ "<p>Danielle Coates, Kelvin Cheung, Matthew Ordway</p>"
+				+ "<p>Danielle Coates, Kelvin Cheung,</p>"
+				+ "<p>and Matthew Ordway</p>"
 				+ "</html>";
 		JLabel creditsText = new JLabel(creditsString);
 		creditsText.setFont(new Font("Verdana",Font.PLAIN,16));
@@ -239,6 +242,7 @@ public class GamePanels extends JFrame {
 	private JPanel createGamePanel() {
 		// Create Panel for Game
 		JPanel gamePanel = new JPanel();
+		gamePanel.setBackground(Color.BLACK);
 		
 		// Add the game (Stage Class) to the gamePanel
 		game = new Stage();
