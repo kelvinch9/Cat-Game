@@ -42,6 +42,7 @@ public class Stage extends JPanel implements ActionListener {
 	private int distance = 1;
 	private int factor = 1;
 	private int speedUpDistance = 1000;
+	private final ImageIcon background = new ImageIcon("grass.png");
 	
 	
 	private int score = 0;
@@ -172,7 +173,6 @@ public class Stage extends JPanel implements ActionListener {
 	private void drawObjects(Graphics g) {
 		
 		//draw background
-		ImageIcon background = new ImageIcon("grass.png");
 		g.drawImage(background.getImage(), 0, 0, null);
 
 		//draws the cat
