@@ -470,6 +470,15 @@ public class Stage extends JPanel implements ActionListener {
 	}
 
 
+	public Cat getCat() {
+		return cat;
+	}
+
+	public int getIngame() {
+		return ingame;
+	}
+
+
 	private class TAdapter extends KeyAdapter {
 
 		@Override
