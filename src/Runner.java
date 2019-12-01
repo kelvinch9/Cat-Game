@@ -10,15 +10,13 @@ import javax.swing.JFrame;
  */
 public class Runner extends JFrame{
 	
-	
-	Stage game;
-	boolean inGamePanel = false;
+	GamePanels panels;
 
 	/**
 	 * This method runs the game
 	 */
 	public Runner() {
-		this.game = new Stage();
+		
 		initUI();
 		
 	}
@@ -28,7 +26,7 @@ public class Runner extends JFrame{
 	 */
 	private void initUI() {
 		
-		GamePanels panels = new GamePanels(game);
+		panels = new GamePanels(new Stage());
 		add(panels.getUI());
 
 		setResizable(false);
