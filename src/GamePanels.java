@@ -168,7 +168,11 @@ public class GamePanels extends JFrame {
 
 		
 		// create a JLabel to display text for the panel
-		JLabel guideText = new JLabel("Jump (space bar) to avoid obstacles. Collect coins");
+		String guideString = "<html><p>The cat, Mufi, is hungry for coins.</p> "
+				+ "<p>Press space to jump and avoid the boxes.</p>"
+				+ "</html>";
+
+		JLabel guideText = new JLabel(guideString);
 		guideText.setFont(new Font("Verdana",Font.PLAIN,16));
 		guidePanel.add(guideText);
 
@@ -203,8 +207,11 @@ public class GamePanels extends JFrame {
 		creditsPanel.add(creditsBack);
 		
 		
-		// create a JLabel to display text for the panel
-		JLabel creditsText = new JLabel("Created by Team 68. Danielle Coates, Kelvin Cheung, Matthew Ordway");
+		// create a JLabel to display text for the panel - w/ HTML for display
+		String creditsString = "<html><p>Created by Team 68.</p> "
+				+ "<p>Danielle Coates, Kelvin Cheung, Matthew Ordway</p>"
+				+ "</html>";
+		JLabel creditsText = new JLabel(creditsString);
 		creditsText.setFont(new Font("Verdana",Font.PLAIN,16));
 		creditsPanel.add(creditsText);
 
