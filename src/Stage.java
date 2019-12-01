@@ -104,10 +104,7 @@ public class Stage extends JPanel implements ActionListener {
 
 		//creates the cat, the player character
 		cat = new Cat(40, FLOOR);
-
-		//create background image
-		ImageIcon background = new ImageIcon("background.png");
-		
+	
 		//creates arraylist for boxes and coins
 		initBoxes();
 		initCoins();
@@ -175,7 +172,7 @@ public class Stage extends JPanel implements ActionListener {
 	private void drawObjects(Graphics g) {
 		
 		//draw background
-		ImageIcon background = new ImageIcon("background.png");
+		ImageIcon background = new ImageIcon("grass.png");
 		g.drawImage(background.getImage(), 0, 0, null);
 
 		//draws the cat
