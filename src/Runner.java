@@ -105,12 +105,17 @@ public class Runner extends JFrame{
 	private class MyKeyListener extends KeyAdapter {
 		@Override
 		public void keyPressed(KeyEvent e) {
+			
+			// allow replay if at beginning or cat died
 			if( inGamePanel == true && (game.getIngame() == 0 || game.getIngame() == 2) ) {
-
 				game.play(e);
 			}
 			
-			game.getCat().keyPressed(e);
+			// if inGamePanel and not in start screen
+			if (inGamePanel == true && game.getIngame() != 0 ) {
+				game.getCat().keyPressed(e);
+			}
+			
 			
 		}
 		
