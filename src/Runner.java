@@ -46,8 +46,6 @@ public class Runner extends JFrame{
 		UI.addKeyListener(new MyKeyListener());
 	
 		
-//		contentPane.setLayout(cardLayout);
-		
 		// Create Panel for Start of Game
 		Panel startPanel = new Panel();
 		JButton start = new JButton("start");		
@@ -82,12 +80,7 @@ public class Runner extends JFrame{
 		});
 		
 		
-		
-// --------- END - TEST OF JPANELS --------- 		
-		
-		
-		// COMMENTED OUT
-//		add(new Stage());
+
 		setResizable(false);
 		pack(); // automatically sets size of JFrame
 		setTitle("Cat Game");

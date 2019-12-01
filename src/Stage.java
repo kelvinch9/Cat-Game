@@ -11,8 +11,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
-
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
