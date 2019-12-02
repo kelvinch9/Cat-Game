@@ -314,12 +314,12 @@ public class GamePanels extends JFrame {
 		public void keyPressed(KeyEvent e) {
 
 			// allow replay if at beginning or cat died
-			if( inGamePanel == true && (game.getIngame() == 0 || game.getIngame() == 2) ) {
+			if( inGamePanel == true && (game.getStageOfGame() == 0 || game.getStageOfGame() == 2) ) {
 				game.play(e);
 			}
 
 			// if inGamePanel and not in start screen
-			if (inGamePanel == true && game.getIngame() != 0 ) {
+			if (inGamePanel == true && game.getStageOfGame() != 0 ) {
 				game.getCat().keyPressed(e);
 			}
 		}

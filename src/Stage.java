@@ -45,6 +45,7 @@ public class Stage extends JPanel implements ActionListener {
 	private final ImageIcon background = new ImageIcon("grass.png");
 	
 	Score gameScore;
+	GameGraphics gameGraphics;
 	
 
 	/**
@@ -56,6 +57,9 @@ public class Stage extends JPanel implements ActionListener {
 		gameScore = new Score();
 		stageOfGame = 0;
 		
+		// NOTE: I READ THAT PASSING THIS IN CONSTRUCTOR IS BAD IDEA - MAY NEED TO CHANGE
+		gameGraphics = new GameGraphics(this, background);
+		
 		// settings for JPanel (game window)
 		addKeyListener(new TAdapter());
 		setFocusable(true);
@@ -65,28 +69,7 @@ public class Stage extends JPanel implements ActionListener {
 	}
 	
 
-	/**
-	 * Start screen for the game
-	 * @param g
-	 */
-	private void drawGameStart(Graphics g) {
-		String msg = "Press ENTER to play!";
-		Font small = new Font("Helvetica", Font.BOLD, 14);
-		FontMetrics fm = getFontMetrics(small);
 
-		g.setColor(Color.white);
-		g.setFont(small);
-		
-		int lineDisplayHeight = (B_HEIGHT / 2);
-		
-		// drawString does not handle new line characters - split on "\n"
-		for (String line : msg.split("\n")) {
-			g.drawString(line, (B_WIDTH - fm.stringWidth(line)) / 2,
-					lineDisplayHeight);
-			lineDisplayHeight += fm.getHeight() + 5;
-		}
-		
-	}
 	/**
 	 * This method sets the initial state of the game
 	 */
@@ -124,94 +107,27 @@ public class Stage extends JPanel implements ActionListener {
 		//start screen
 		if (stageOfGame == 0) {
 			
-			drawGameStart(g);
+			gameGraphics.drawGameStart(g);
 		}
 		//in game
 		else if( stageOfGame == 1) {
 
-			drawObjects(g);
+			gameGraphics.drawObjects(g);
 
 		}
 		//game over
 		else {
 
-			drawGameOver(g);
+			gameGraphics.drawGameOver(g);
 		}
 
 		Toolkit.getDefaultToolkit().sync();
 	}
 
 
-	/**
-	 * This method draws the objects (cat, boxes, and coins)
-	 * @param g
-	 */
-	private void drawObjects(Graphics g) {
-		
-		//draw background
-		g.drawImage(background.getImage(), 0, 0, null);
-
-		//draws the cat
-		if (cat.isVisible()) {
-			g.drawImage(cat.getImage(), cat.getX(), cat.getY(),
-					this);
-		}
-
-		//draws the boxes
-		for (Box box : boxes) {
-			if (box.isVisible()) {
-				g.drawImage(box.getImage(), box.getX(), box.getY(), this);
-			}
-		}
-
-		//draws the coins
-		for (Coin coin : coins) {
-			if (coin.isVisible()) {
-				g.drawImage(coin.getImage(), coin.getX(), coin.getY(), this);
-			}
-		}
-
-		//writes the scores
-		g.setColor(Color.WHITE);
-		g.drawString("Coins: " + coinsCollected, 5, 15);
-		g.drawString("Distance: 0" + distance, 5, 30);
-		g.drawLine(0, 280, B_WIDTH, 280);
-
-		//displays a message before the speed up
-		if(((speedUpDistance * factor) - distance) < 50) {
-			g.drawString("SPEED UP!", (B_WIDTH - 60) / 2,
-					B_HEIGHT / 2);
-		}
-	}
-	
 
 
-	/**
-	 * This displays the game over screen and a player's final score
-	 * @param g
-	 */
-	private void drawGameOver(Graphics g) {
 
-		//final score is 100 points per coin plus total distance traveled
-		String msg = "Game Over!\n\nTotal Score: " + gameScore.getScore() + "    |    " +
-				gameScore.displayHighScore(gameScore.getScore()) + 
-				"\n\nPress 'Enter' to replay\n";
-		Font small = new Font("Helvetica", Font.BOLD, 14);
-		FontMetrics fm = getFontMetrics(small);
-
-		g.setColor(Color.white);
-		g.setFont(small);
-		
-		int lineDisplayHeight = (B_HEIGHT / 3);
-		
-		// drawString does not handle new line characters - split on "\n"
-		for (String line : msg.split("\n")) {
-			g.drawString(line, (B_WIDTH - fm.stringWidth(line)) / 2,
-					lineDisplayHeight);
-			lineDisplayHeight += fm.getHeight() + 5;
-		}
-		
-	}
 
 
 	/**
@@ -426,6 +342,50 @@ public class Stage extends JPanel implements ActionListener {
 	public int getStageOfGame() {
 		return stageOfGame;
 	}
+
+	public List<Box> getBoxes() {
+		return boxes;
+	}
+
+
+	public List<Coin> getCoins() {
+		return coins;
+	}
+
+
+	public int getB_WIDTH() {
+		return B_WIDTH;
+	}
+
+
+	public int getB_HEIGHT() {
+		return B_HEIGHT;
+	}
+
+
+	public int getCoinsCollected() {
+		return coinsCollected;
+	}
+
+
+	public int getDistance() {
+		return distance;
+	}
+
+
+	public int getFactor() {
+		return factor;
+	}
+
+
+	public int getSpeedUpDistance() {
+		return speedUpDistance;
+	}
+
+
+
+
+
 
 
 	private class TAdapter extends KeyAdapter {
