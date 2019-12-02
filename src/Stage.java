@@ -44,18 +44,15 @@ public class Stage extends JPanel implements ActionListener {
 	private int speedUpDistance = 1000;
 	private final ImageIcon background = new ImageIcon("grass.png");
 	
+	Score gameScore;
 	
-	private int score = 0;
-	private int prevHighScore = 0; // bug in displaying high score - high score calculated right away
-								// result is that score can never beat high score (this is workaround)
-	private int highScore = 0;
-	private boolean ifGameRetried = false; // determine if this is first play of game. used for scoring
+	
 
 	/**
 	 * This method calls to set the stage of the game
 	 */
 	public Stage() {
-		
+		gameScore = new Score();
 		ingame = 0;
 		gameStart();
 		
@@ -208,41 +205,7 @@ public class Stage extends JPanel implements ActionListener {
 		}
 	}
 	
-	/**
-	 * This method calculates the high score
-	 * @param score
-	 */
-	private void calcHighScore(int score) {
-		prevHighScore = highScore;
-		if (score > highScore) {
-			highScore = score;
-		}
-	}
-	
-	/**
-	 * This method displays a message for the high score depending
-	 * on how well the player did
-	 * @param score
-	 * @return
-	 */
-	private String displayHighScore(int score) {
-		String highScoreString = "High Score: " + highScore;
-		
-		// if first time playing, score will be the high score
-		if (ifGameRetried == false) {
-			return highScoreString + "\nIt's your first time. You get the high score!";
-		}
-		else if (ifGameRetried == true && score == prevHighScore) {
-			return highScoreString + "\nNice try! You almost beat the high score.";
-		}
-		else if (score < prevHighScore) {
-			return highScoreString + "\nBetter luck next time!";
-		}
-		else {
-			return highScoreString + "\nCongrats! New High Score!";
-		}
-		
-	}
+
 
 	/**
 	 * This displays the game over screen and a player's final score
@@ -251,8 +214,8 @@ public class Stage extends JPanel implements ActionListener {
 	private void drawGameOver(Graphics g) {
 
 		//final score is 100 points per coin plus total distance traveled
-		String msg = "Game Over!\n\nTotal Score: " + score + "    |    " +
-				displayHighScore(score) + 
+		String msg = "Game Over!\n\nTotal Score: " + gameScore.getScore() + "    |    " +
+				gameScore.displayHighScore(gameScore.getScore()) + 
 				"\n\nPress 'Enter' to replay\n";
 		Font small = new Font("Helvetica", Font.BOLD, 14);
 		FontMetrics fm = getFontMetrics(small);
@@ -288,10 +251,10 @@ public class Stage extends JPanel implements ActionListener {
 				coins_collected = 0;
 				distance = 1;
 				factor = 1;
-				score = 0;
+				gameScore.setScore(0);
 				
 				// sets game retry to true
-				ifGameRetried = true;
+				gameScore.setIfGameRetried(true);
 			}
 			ingame = 1;
 			initStage();
@@ -325,8 +288,9 @@ public class Stage extends JPanel implements ActionListener {
 
 		if (ingame == 2) {
 			timer.stop();
-			score = coins_collected * 100 + distance;
-			calcHighScore(score);
+			int score = gameScore.calcScore(coins_collected, distance);
+			gameScore.setScore(score);
+			gameScore.calcHighScore(score);
 			
 		}
 	}
