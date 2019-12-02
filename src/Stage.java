@@ -147,7 +147,7 @@ public class Stage extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		//check that game isn't over
+		//check if game is over
 		ifGameOver();
 
 		//update the location of cat, boxes, and coins
@@ -192,7 +192,6 @@ public class Stage extends JPanel implements ActionListener {
 				factor++;
 				cat.setFactor(factor);
 			}
-
 
 		}
 	}
