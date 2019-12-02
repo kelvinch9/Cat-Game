@@ -29,7 +29,6 @@ public class Runner extends JFrame{
 		setLocationRelativeTo(null); // centers the window onto screen
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // exit game if window is closed
 		
-		
 	}
 
 

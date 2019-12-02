@@ -74,6 +74,10 @@ public class GameGraphics extends JPanel {
 				g.drawImage(coin.getImage(), coin.getX(), coin.getY(), stage);
 			}
 		}
+		
+		//draws the bird
+		g.drawImage(stage.getBird().getImage(), stage.getBird().getX(), 
+				stage.getBird().getY(), stage);
 
 		//writes the scores
 		g.setColor(Color.WHITE);

@@ -79,7 +79,7 @@ public class Stage extends JPanel implements ActionListener {
 		coins.add(new Coin(250, FLOOR - 40));
 
 		//creates bird
-		bird = new Bird(40, FLOOR - 40);
+		bird = new Bird(400, FLOOR - 90);
 
 		//the timer for the game, which allows the game to 
 		//continuously run
@@ -334,6 +334,10 @@ public class Stage extends JPanel implements ActionListener {
 
 	public Cat getCat() {
 		return cat;
+	}
+	
+	public Bird getBird() {
+		return bird;
 	}
 
 	public int getStageOfGame() {
