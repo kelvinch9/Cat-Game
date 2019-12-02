@@ -58,20 +58,20 @@ public class GameGraphics extends JPanel {
 		//draws the cat
 		if (stage.getCat().isVisible()) {
 			g.drawImage(stage.getCat().getImage(), stage.getCat().getX(), 
-					stage.getCat().getY(), this);
+					stage.getCat().getY(), stage);
 		}
 
 		//draws the boxes
 		for (Box box : stage.getBoxes()) {
 			if (box.isVisible()) {
-				g.drawImage(box.getImage(), box.getX(), box.getY(), this);
+				g.drawImage(box.getImage(), box.getX(), box.getY(), stage);
 			}
 		}
 
 		//draws the coins
 		for (Coin coin : stage.getCoins()) {
 			if (coin.isVisible()) {
-				g.drawImage(coin.getImage(), coin.getX(), coin.getY(), this);
+				g.drawImage(coin.getImage(), coin.getX(), coin.getY(), stage);
 			}
 		}
 

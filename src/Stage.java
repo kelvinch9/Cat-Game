@@ -348,7 +348,7 @@ public class Stage extends JPanel implements ActionListener {
 
 
 	public int getB_HEIGHT() {
-		return B_HEIGHT;
+		return B_HEIGHT; 
 	}
 
 
