@@ -33,12 +33,12 @@ public class Stage extends JPanel implements ActionListener {
 	private Cat cat;
 	private List<Box> boxes;
 	private List<Coin> coins;
-	private int ingame;
-	private final int B_WIDTH = 400;
-	private final int B_HEIGHT = 300;
+	private int stageOfGame;   // 0 = start screen; 1 = in game; 2 = game over
+	private final int B_WIDTH = 400; // screen width
+	private final int B_HEIGHT = 300; // screen height
 	private final int DELAY = 15;
 	public final int FLOOR = 250; // this is considered the floor. Leave as public
-	private int coins_collected = 0;
+	private int coinsCollected = 0;
 	private int distance = 1;
 	private int factor = 1;
 	private int speedUpDistance = 1000;
@@ -46,32 +46,25 @@ public class Stage extends JPanel implements ActionListener {
 	
 	Score gameScore;
 	
-	
 
 	/**
 	 * This method calls to set the stage of the game
 	 */
 	public Stage() {
+		
+		// initialize variables
 		gameScore = new Score();
-		ingame = 0;
-		gameStart();
+		stageOfGame = 0;
+		
+		// settings for JPanel (game window)
+		addKeyListener(new TAdapter());
+		setFocusable(true);
+		setBackground(Color.BLACK);
+		setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
 		
 	}
 	
-	/**
-	 * Sets up the game screen
-	 */
-	private void gameStart() {
 
-		addKeyListener(new TAdapter());
-		setFocusable(true);
-
-		//background color
-		setBackground(Color.BLACK);
-		setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
-			
-	}
-	
 	/**
 	 * Start screen for the game
 	 * @param g
@@ -129,12 +122,12 @@ public class Stage extends JPanel implements ActionListener {
 		super.paintComponent(g);
 
 		//start screen
-		if (ingame == 0) {
+		if (stageOfGame == 0) {
 			
 			drawGameStart(g);
 		}
 		//in game
-		else if( ingame == 1) {
+		else if( stageOfGame == 1) {
 
 			drawObjects(g);
 
@@ -180,7 +173,7 @@ public class Stage extends JPanel implements ActionListener {
 
 		//writes the scores
 		g.setColor(Color.WHITE);
-		g.drawString("Coins: " + coins_collected, 5, 15);
+		g.drawString("Coins: " + coinsCollected, 5, 15);
 		g.drawString("Distance: 0" + distance, 5, 30);
 		g.drawLine(0, 280, B_WIDTH, 280);
 
@@ -231,10 +224,10 @@ public class Stage extends JPanel implements ActionListener {
 		int key = e.getKeyCode();
 		
 		if(key == KeyEvent.VK_ENTER) {
-			if(ingame == 2) {
+			if(stageOfGame == 2) {
 
 				// reset instance variables
-				coins_collected = 0;
+				coinsCollected = 0;
 				distance = 1;
 				factor = 1;
 				gameScore.setScore(0);
@@ -242,7 +235,7 @@ public class Stage extends JPanel implements ActionListener {
 				// sets game retry to true
 				gameScore.setIfGameRetried(true);
 			}
-			ingame = 1;
+			stageOfGame = 1;
 			initStage();
 			
 		}
@@ -252,7 +245,7 @@ public class Stage extends JPanel implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		//check that game isn't over
-		inGame();
+		ifGameOver();
 
 		//update the location of cat, boxes, and coins
 		updateCat();
@@ -270,11 +263,11 @@ public class Stage extends JPanel implements ActionListener {
 	/**
 	 * This method stops the time if the game is over and calculates the score
 	 */
-	private void inGame() {
+	private void ifGameOver() {
 
-		if (ingame == 2) {
+		if (stageOfGame == 2) {
 			timer.stop();
-			int score = gameScore.calcScore(coins_collected, distance);
+			int score = gameScore.calcScore(coinsCollected, distance);
 			gameScore.setScore(score);
 			gameScore.calcHighScore(score);
 			
@@ -410,7 +403,7 @@ public class Stage extends JPanel implements ActionListener {
 			if(cat_collision.intersects(box_collision)) { 
 				cat.setVisible(false);
 				box.setVisible(false);
-				ingame = 2;
+				stageOfGame = 2;
 			}
 		}
 
@@ -419,7 +412,7 @@ public class Stage extends JPanel implements ActionListener {
 			Coin coin = coins.get(i);
 			Rectangle coin_collision = coin.getBounds();
 			if(cat_collision.intersects(coin_collision)) {
-				coins_collected++;
+				coinsCollected++;
 				coins.remove(i);
 			}
 		}
@@ -430,8 +423,8 @@ public class Stage extends JPanel implements ActionListener {
 		return cat;
 	}
 
-	public int getIngame() {
-		return ingame;
+	public int getStageOfGame() {
+		return stageOfGame;
 	}
 
 
@@ -439,7 +432,7 @@ public class Stage extends JPanel implements ActionListener {
 
 		@Override
 		public void keyPressed(KeyEvent e) {
-			if(ingame == 0 || ingame == 2) {
+			if(stageOfGame == 0 || stageOfGame == 2) {
 
 				play(e);
 			}
