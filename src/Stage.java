@@ -1,7 +1,5 @@
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
@@ -9,13 +7,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
@@ -56,8 +49,6 @@ public class Stage extends JPanel implements ActionListener {
 		// initialize variables
 		gameScore = new Score();
 		stageOfGame = 0;
-		
-		// NOTE: I READ THAT PASSING THIS IN CONSTRUCTOR IS BAD IDEA - MAY NEED TO CHANGE
 		gameGraphics = new GameGraphics(this, background);
 		
 		// settings for JPanel (game window)
@@ -104,28 +95,23 @@ public class Stage extends JPanel implements ActionListener {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
-		//start screen
+		// draw start screen
 		if (stageOfGame == 0) {
-			
 			gameGraphics.drawGameStart(g);
 		}
-		//in game
+		
+		// draw objects when in game
 		else if( stageOfGame == 1) {
-
 			gameGraphics.drawObjects(g);
 
 		}
-		//game over
+		
+		// draw game over when game over
 		else {
-
 			gameGraphics.drawGameOver(g);
 		}
-
 		Toolkit.getDefaultToolkit().sync();
 	}
-
-
-
 
 
 
@@ -157,6 +143,7 @@ public class Stage extends JPanel implements ActionListener {
 		}
 	}
 
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -303,6 +290,8 @@ public class Stage extends JPanel implements ActionListener {
 		}
 	}
 
+	
+	
 	/**
 	 * This method checks to see if the cat collides with
 	 * objects. If it hits a box, the game is over. If it hits
@@ -392,8 +381,8 @@ public class Stage extends JPanel implements ActionListener {
 
 		@Override
 		public void keyPressed(KeyEvent e) {
+			
 			if(stageOfGame == 0 || stageOfGame == 2) {
-
 				play(e);
 			}
 			
