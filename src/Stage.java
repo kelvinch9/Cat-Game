@@ -24,6 +24,7 @@ public class Stage extends JPanel implements ActionListener {
 
 	private Timer timer;
 	private Cat cat;
+	private Bird bird;
 	private List<Box> boxes;
 	private List<Coin> coins;
 	private int stageOfGame;   // 0 = start screen; 1 = in game; 2 = game over
@@ -77,6 +78,8 @@ public class Stage extends JPanel implements ActionListener {
 		coins = new ArrayList<>();
 		coins.add(new Coin(250, FLOOR - 40));
 
+		//creates bird
+		bird = new Bird(40, FLOOR - 40);
 
 		//the timer for the game, which allows the game to 
 		//continuously run
@@ -150,10 +153,11 @@ public class Stage extends JPanel implements ActionListener {
 		//check if game is over
 		ifGameOver();
 
-		//update the location of cat, boxes, and coins
+		//update the location of cat, boxes, coins, and bird
 		updateCat();
 		updateBoxes();
 		updateCoins();
+		bird.move();
 
 		//checks if the objects collide
 		checkCollisions();
@@ -192,8 +196,13 @@ public class Stage extends JPanel implements ActionListener {
 				factor++;
 				cat.setFactor(factor);
 			}
-
 		}
+		
+//		if(cat.getGhost()) {
+//			int temp = factor;
+//			factor = 2*factor;
+//		}
+		
 	}
 
 	/**
@@ -203,7 +212,7 @@ public class Stage extends JPanel implements ActionListener {
 	 * to the boxes array list
 	 */
 	private void updateBoxes() {
-
+		
 		if(!boxes.isEmpty()) {
 			//for each box, move it through the screen
 			for (int i = 0; i < boxes.size(); i++) {
@@ -304,7 +313,7 @@ public class Stage extends JPanel implements ActionListener {
 		for(Box box : boxes) {
 			Rectangle box_collision = box.getBounds();
 			// intersects is a Rectangle method
-			if(cat_collision.intersects(box_collision)) { 
+			if(cat_collision.intersects(box_collision) && (!cat.getGhost())) { 
 				cat.setVisible(false);
 				box.setVisible(false);
 				stageOfGame = 2;
@@ -369,12 +378,6 @@ public class Stage extends JPanel implements ActionListener {
 	public int getSpeedUpDistance() {
 		return speedUpDistance;
 	}
-
-
-
-
-
-
 
 	private class TAdapter extends KeyAdapter {
 
