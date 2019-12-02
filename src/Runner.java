@@ -11,32 +11,27 @@ import javax.swing.JFrame;
 public class Runner extends JFrame{
 	
 	GamePanels panels;
+	Stage gameStage;
 
 	/**
 	 * This method runs the game
 	 */
 	public Runner() {
-		
-		initUI();
-		
-	}
-	
-	/**
-	 * This method sets the window and opens the game
-	 */
-	private void initUI() {
-		
-		panels = new GamePanels(new Stage());
-		add(panels.getUI());
+		// instantiate Stage and GamePanels variables
+		gameStage = new Stage();
+		panels = new GamePanels(gameStage);
+		add(panels.getUI()); // add UI JPanel to JFrame
 
+		// various settings for JFrame
 		setResizable(false);
 		pack(); // automatically sets size of JFrame
 		setTitle("Cat Game");
 		setLocationRelativeTo(null); // centers the window onto screen
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // if window is close it exits game
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // exit game if window is closed
+		
+		
 	}
-	
-	
+
 
 	/**
 	 * Main method to run the game and set it to be visible
