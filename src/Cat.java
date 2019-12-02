@@ -17,7 +17,7 @@ public class Cat extends Object{
 
 	private int dx;
 	private int dy;
-	public int birds_collected;
+	public int ghostsCollected = 0;
 	private boolean ghost_mode = false;
 	private Image normal_cat;
 	private Image ghost_cat;
@@ -30,7 +30,7 @@ public class Cat extends Object{
 	 */
 	public Cat(int x, int y) {
 		super(x, y);
-		birds_collected = 0;
+		ghostsCollected = 0;
 		
 		ImageIcon normal = new ImageIcon("small_cat.png");
 		normal_cat = normal.getImage();
@@ -83,7 +83,10 @@ public class Cat extends Object{
 		}
 		// no other actions but can add some
 		if(key == KeyEvent.VK_L) {
-			ghost();
+			if(ghostsCollected > 0) {
+				ghost();
+				ghostsCollected--;
+			}
 		}
 	}
 	
@@ -107,13 +110,9 @@ public class Cat extends Object{
 	}
 	
 	/**
-	 * Setter for ghost mode
-	 */
-	public void setGhost() {
-		this.ghost_mode = !(this.ghost_mode);
-	}
-	
-	void ghost() {
+	 * Activates ghost mode w/ timer
+	 */	
+	public void ghost() {
 		
 		ghost_mode = true;
 		

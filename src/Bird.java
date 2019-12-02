@@ -1,8 +1,8 @@
 import java.util.Random;
 
 /**
- * This class represents a bird that the cat
- * can catch. It extends from the object class.
+ * This class represents a bird for animation purposes.
+ * It extends from the object class.
  * @author Team 68
  *
  */

@@ -27,6 +27,7 @@ public class Stage extends JPanel implements ActionListener {
 	private Bird bird;
 	private List<Box> boxes;
 	private List<Coin> coins;
+	private List<Ghost> ghosts;
 	private int stageOfGame;   // 0 = start screen; 1 = in game; 2 = game over
 	private final int B_WIDTH = 400; // screen width
 	private final int B_HEIGHT = 300; // screen height
@@ -41,7 +42,6 @@ public class Stage extends JPanel implements ActionListener {
 	Score gameScore;
 	GameGraphics gameGraphics;
 	
-
 	/**
 	 * This method calls to set the stage of the game
 	 */
@@ -78,6 +78,10 @@ public class Stage extends JPanel implements ActionListener {
 		coins = new ArrayList<>();
 		coins.add(new Coin(250, FLOOR - 40));
 
+		//creates ArrayList for ghost and sets the first ghost
+		ghosts = new ArrayList<>();
+		ghosts.add(new Ghost(250, FLOOR - 40));
+		
 		//creates bird
 		bird = new Bird(400, FLOOR - 90);
 
@@ -87,9 +91,6 @@ public class Stage extends JPanel implements ActionListener {
 		timer.start();
 	}
 
-	
-
-	
 	/**
 	 * This method paints the screen
 	 * @param g
@@ -157,6 +158,7 @@ public class Stage extends JPanel implements ActionListener {
 		updateCat();
 		updateBoxes();
 		updateCoins();
+		updateGhosts();
 		bird.move();
 
 		//checks if the objects collide
@@ -197,12 +199,6 @@ public class Stage extends JPanel implements ActionListener {
 				cat.setFactor(factor);
 			}
 		}
-		
-//		if(cat.getGhost()) {
-//			int temp = factor;
-//			factor = 2*factor;
-//		}
-		
 	}
 
 	/**
@@ -253,12 +249,57 @@ public class Stage extends JPanel implements ActionListener {
 	}
 
 	/**
+	 * This method updates the ghosts on screen by moving
+	 * them across the screen. It also randomly generates
+	 * more ghosts
+	 */
+	private void updateGhosts() {
+
+		//randomly adds a ghost
+		if(Math.random() < 0.0007) {
+			Ghost temp = new Ghost(400, FLOOR - 35);
+			ghosts.add(temp);
+		}
+		else if(Math.random() < .0007) {
+			if(!ghosts.isEmpty()) {
+				if(!(ghosts.get(ghosts.size() - 1).getX() >= 360)) {
+					Ghost temp = new Ghost(390, FLOOR);
+					ghosts.add(temp);
+				}
+			}
+			else {
+				Ghost temp = new Ghost (390, FLOOR);
+				ghosts.add(temp);
+			}
+		}
+
+
+		if(!coins.isEmpty()) {
+			//for each coin, moves it across the screen
+			for (int i = 0; i < ghosts.size(); i++) {
+
+				Ghost a = ghosts.get(i);
+
+				if (a.isVisible()) {
+					a.move();
+					if(a.getX() < 2) {
+						ghosts.remove(i);
+					}
+					a.setFactor(factor);
+				} 
+				else {
+					ghosts.remove(i);
+				}
+			}
+		}
+	}
+	
+	/**
 	 * This method updates the coins on screen by moving
 	 * them across the screen. It also randomly generates
 	 * more coins
 	 */
 	private void updateCoins() {
-
 		//randomly adds a coin
 		if(Math.random() < 0.005) {
 			Coin temp = new Coin(400, FLOOR - 35);
@@ -329,6 +370,15 @@ public class Stage extends JPanel implements ActionListener {
 				coins.remove(i);
 			}
 		}
+		
+		for(int i = 0; i < ghosts.size(); i++) {
+			Ghost ghost = ghosts.get(i);
+			Rectangle ghost_collision = ghost.getBounds();
+			if(cat_collision.intersects(ghost_collision)) {
+				cat.ghostsCollected++;
+				ghosts.remove(i); 
+			}
+	}
 	}
 
 
@@ -352,6 +402,10 @@ public class Stage extends JPanel implements ActionListener {
 	public List<Coin> getCoins() {
 		return coins;
 	}
+	
+	public List<Ghost> getGhosts(){
+		return ghosts;
+	}
 
 
 	public int getB_WIDTH() {
@@ -367,7 +421,6 @@ public class Stage extends JPanel implements ActionListener {
 	public int getCoinsCollected() {
 		return coinsCollected;
 	}
-
 
 	public int getDistance() {
 		return distance;

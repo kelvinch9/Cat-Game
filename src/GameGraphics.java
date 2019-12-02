@@ -75,6 +75,13 @@ public class GameGraphics extends JPanel {
 			}
 		}
 		
+		//draws the ghosts
+		for (Ghost ghost : stage.getGhosts()) {
+			if (ghost.isVisible()) {
+				g.drawImage(ghost.getImage(), ghost.getX(), ghost.getY(), stage);
+			}
+		}
+		
 		//draws the bird
 		g.drawImage(stage.getBird().getImage(), stage.getBird().getX(), 
 				stage.getBird().getY(), stage);
@@ -82,13 +89,21 @@ public class GameGraphics extends JPanel {
 		//writes the scores
 		g.setColor(Color.WHITE);
 		g.drawString("Coins: " + stage.getCoinsCollected(), 5, 15);
-		g.drawString("Distance: 0" + stage.getDistance(), 5, 30);
+		g.drawString("Ghosts:" + stage.getCat().ghostsCollected, 5, 30);
+		g.drawString("Distance: 0" + stage.getDistance(), 5, 45);
 		g.drawLine(0, 280, stage.getB_WIDTH(), 280);
 
 		//displays a message before the speed up
 		if(((stage.getSpeedUpDistance() * stage.getFactor()) - stage.getDistance()) < 50) {
 			g.drawString("SPEED UP!", (stage.getB_WIDTH() - 60) / 2,
 					stage.getB_HEIGHT() / 2);
+		}
+		
+		//displays a message while in ghost mode
+		if(stage.getCat().getGhost()) {
+			g.setColor(Color.RED);
+			g.drawString("GHOST MODE", (stage.getB_WIDTH() - 60) / 2,
+					stage.getB_HEIGHT() / 3);
 		}
 	}
 
