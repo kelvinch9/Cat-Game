@@ -68,7 +68,6 @@ public class Stage extends JPanel implements ActionListener {
 
 		//background color
 		setBackground(Color.BLACK);
-		
 		setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
 			
 	}
@@ -103,9 +102,14 @@ public class Stage extends JPanel implements ActionListener {
 		//creates the cat, the player character
 		cat = new Cat(40, FLOOR);
 	
-		//creates arraylist for boxes and coins
-		initBoxes();
-		initCoins();
+		//creates ArrayList for boxes and sets the first box
+		boxes = new ArrayList<>();
+		boxes.add(new Box(400, FLOOR));
+		
+		//creates ArrayList for coins and sets the first coin
+		coins = new ArrayList<>();
+		coins.add(new Coin(250, FLOOR - 40));
+
 
 		//the timer for the game, which allows the game to 
 		//continuously run
@@ -113,25 +117,7 @@ public class Stage extends JPanel implements ActionListener {
 		timer.start();
 	}
 
-	/**
-	 * This method creates the array list of boxes
-	 * for the cat to avoid and sets the first box
-	 */
-	public void initBoxes() {
-
-		boxes = new ArrayList<>();
-		boxes.add(new Box(400, FLOOR));
-	}
-
-	/**
-	 * This method creates the array list of coins
-	 * for the cat to collect and sets the first coin 
-	 */
-	public void initCoins() {
-
-		coins = new ArrayList<>();
-		coins.add(new Coin(250, FLOOR - 40));
-	}
+	
 
 	
 	/**
