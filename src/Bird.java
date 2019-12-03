@@ -24,7 +24,7 @@ public class Bird extends Object{
 	public void move() {
 		
 		Random random = new Random();
-		int r = random.nextInt(1)-1;
+		int r = random.nextInt(50)-1;
 		
 //		if(y < 180) {
 //			y+=1;
@@ -40,8 +40,11 @@ public class Bird extends Object{
 		
 		if(x < 0) {
 			x = 400;
+			y = (250 - 90) + r;
 		}
-		x -= 1 * factor;	
+		
+		
+		x -= 1 * factor;
 //		y -=1;
 		
 
