@@ -81,9 +81,10 @@ public class Cat extends Object{
 		if(key == KeyEvent.VK_SPACE) {
 			jump();
 		}
+		
 		// no other actions but can add some
 		if(key == KeyEvent.VK_L) {
-			if(ghostsCollected > 0) {
+			if(ghostsCollected > 0 && !ghost_mode) {
 				ghost();
 				ghostsCollected--;
 			}
