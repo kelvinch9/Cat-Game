@@ -13,15 +13,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
-
-
 /**
  * Class for all the Panels in the game. Includes:
  * (1) gamePanel - the actual game (Stage class)
  * (2) guidePanel - instructions on game
  * (3) creditsPanel - credits for game
  * 
- * @author matthewordway
+ * @author Team 68
  *
  */
 public class GamePanels extends JFrame {
@@ -34,7 +32,7 @@ public class GamePanels extends JFrame {
 
 
 	/**
-	 * Contructor for the GamePanels class.
+	 * Constructor for the GamePanels class.
 	 * The constructor creates all the panels in the Game UI.
 	 * 
 	 * @param game
@@ -50,7 +48,6 @@ public class GamePanels extends JFrame {
 	/**
 	 * The method is called in the Constructor and is responsible
 	 * for creating all of the panels.
-	 * 
 	 */
 	private void createPanels() {
 
@@ -83,7 +80,6 @@ public class GamePanels extends JFrame {
 	/**
 	 * Helper method to create the startPanel.
 	 * The startPanel allows you to access the other panels (Game, Guide, Credits).
-	 * 
 	 * @return
 	 */
 	private JPanel createStartPanel() {
@@ -182,6 +178,11 @@ public class GamePanels extends JFrame {
 				+ "<br>" // line break
 				+ "<p>Watch out for speed increases!</p>"
 				+ "<p><i>Speed increases every 1000 distance.</i></p>"
+				+ "<br>" // line break
+				+ "<p>Collect ghosts to active ghost mode!</p>"
+				+ "<p>Press the L key to activate ghost mode.</p>"
+				+ "<p><i>In ghost mode, you can run through boxes </i></p>"
+				+ "<p><i>for a short period of time. </i></p>"
 				+ "</div></html>";
 
 		JLabel guideText = new JLabel(guideString);

@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 /**
  * This class runs the game. It extends the JFrame class
  * to use the Swing library.
- * @author Danielle
+ * @author Team 68
  *
  */
 public class Runner extends JFrame{

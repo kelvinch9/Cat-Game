@@ -7,8 +7,9 @@ import javax.swing.JPanel;
 import java.awt.Graphics;
 
 /**
- * 
- * Graphics for game
+ * This class sets up all of the graphics for the game
+ * It draws the game start screen and game over screen
+ * It also draws all of the objects 
  * @author Team 68
  *
  */
@@ -52,7 +53,8 @@ public class GameGraphics extends JPanel {
 
 
 	/**
-	 * This method draws the objects (cat, boxes, and coins)
+	 * This method draws the objects 
+	 * (cat, boxes, coins, ghosts, and birds)
 	 * @param g
 	 */
 	public void drawObjects(Graphics g) {

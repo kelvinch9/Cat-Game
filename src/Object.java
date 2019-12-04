@@ -43,6 +43,10 @@ public class Object {
         height = image.getHeight(null) - 5;
     }
 
+    /**
+     * This method loads the image
+     * @param imageName
+     */
     protected void loadImage(String imageName) {
 
         ImageIcon ii = new ImageIcon(imageName);

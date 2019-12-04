@@ -20,6 +20,9 @@ public class Ghost extends Object{
 		getImageDimensions();
 	}
 	
+	/**
+	 * This method moves the ghost across the screen
+	 */
 	public void move() {
 		if(x < 0) {
 			x = 400;
