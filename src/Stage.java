@@ -65,7 +65,8 @@ public class Stage extends JPanel implements ActionListener {
 	/**
 	 * This method sets the initial state of the game
 	 */
-	private void initStage() { 
+	//for JUnit, this need to be public, can set to private when not running JUnit
+	public void initStage() { 
 
 		//creates the cat, the player character
 		cat = new Cat(40, FLOOR);
@@ -119,7 +120,6 @@ public class Stage extends JPanel implements ActionListener {
 
 
 
-
 	/**
 	 * Play / replay method. Called in TAdapter Class at bottom.
 	 * If user presses enter, starts the game.
@@ -143,7 +143,6 @@ public class Stage extends JPanel implements ActionListener {
 			}
 			stageOfGame = 1;
 			initStage();
-			
 		}
 	}
 

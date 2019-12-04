@@ -9,7 +9,7 @@ import java.awt.Graphics;
 /**
  * 
  * Graphics for game
- * @author matthewordway
+ * @author Team 68
  *
  */
 public class GameGraphics extends JPanel {
@@ -17,6 +17,11 @@ public class GameGraphics extends JPanel {
 	Stage stage;
 	ImageIcon gameBackground;
 
+	/**
+	 * Constructor to initialize values
+	 * @param stage
+	 * @param gameBackground
+	 */
 	public GameGraphics(Stage stage, ImageIcon gameBackground) {
 		this.stage = stage;
 		this.gameBackground = gameBackground;

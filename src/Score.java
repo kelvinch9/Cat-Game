@@ -1,9 +1,10 @@
 /**
- * 
- * Score class
- * 
- * @author matthewordway
- *
+ * This class creates a score for the game just played
+ * It compares the previous high score to the current high score
+ * to set the current high score
+ * It also checks if the game has been played before to display
+ * a unique message after the first game
+ * @author Team 68
  */
 public class Score {
 	
@@ -12,7 +13,9 @@ public class Score {
 	private int highScore;
 	private boolean ifGameRetried; // determine if this is first play of game. used for scoring
 	
-	
+	/**
+	 * Constructor to initialize values
+	 */
 	public Score() {
 		this.score = 0;
 		this.prevHighScore = 0;
@@ -20,6 +23,14 @@ public class Score {
 		this.ifGameRetried = false;
 	}
 	
+	/**
+	 * This method calculates the score
+	 * 100 points are given for each coin, which is added to the
+	 * total distance traveled
+	 * @param coinsCollected
+	 * @param distance
+	 * @return
+	 */
 	public int calcScore(int coinsCollected, int distance) {
 		int score = coinsCollected * 100 + distance;
 		return score;
@@ -31,14 +42,13 @@ public class Score {
 	 * @param score
 	 */
 	public void calcHighScore(int score) {
+		//prevHighScore helps determine if the score has been tied
 		prevHighScore = highScore;
 		if (score > highScore) {
 			highScore = score;
 		}
 	}
 	
-
-
 
 	/**
 	 * This method displays a message for the high score depending
@@ -54,7 +64,7 @@ public class Score {
 			return highScoreString + "\nIt's your first time. You get the high score!";
 		}
 		else if (ifGameRetried == true && score == prevHighScore) {
-			return highScoreString + "\nNice try! You almost beat the high score.";
+			return highScoreString + "\nNice try! You tied the high score.";
 		}
 		else if (score < prevHighScore) {
 			return highScoreString + "\nBetter luck next time!";
@@ -62,57 +72,58 @@ public class Score {
 		else {
 			return highScoreString + "\nCongrats! New High Score!";
 		}
-		
 	}
 	
-	
-
-	public int getScore() {
-		return score;
-	}
-
-
-
+	/**
+	 * Setter to set current score
+	 * @param score
+	 */
 	public void setScore(int score) {
 		this.score = score;
 	}
 
-
-
-	public int getPrevHighScore() {
-		return prevHighScore;
-	}
-
-
-
-	public void setPrevHighScore(int prevHighScore) {
-		this.prevHighScore = prevHighScore;
-	}
-
-
-
-	public int getHighScore() {
-		return highScore;
-	}
-
-
-
-	public void setHighScore(int highScore) {
-		this.highScore = highScore;
-	}
-
-
-
-	public boolean isIfGameRetried() {
-		return ifGameRetried;
-	}
-
-
-
+	/**
+	 * Setter to set if the game has been replayed
+	 * @param ifGameRetried
+	 */
 	public void setIfGameRetried(boolean ifGameRetried) {
 		this.ifGameRetried = ifGameRetried;
 	}
 	
+	/**
+	 * Gets the current score
+	 * @return
+	 */
+	public int getScore() {
+		return score;
+	}
+	
+	
+	//The rest of these getters and setters are only used for JUnit
+	//They can be commented out while the program is running
 	
 
+	/**
+	 * Sets the previous high score
+	 * @param prevHighScore
+	 */
+	public void setPrevHighScore(int prevHighScore) {
+		this.prevHighScore = prevHighScore;
+	}
+
+	/**
+	 * Gets the current high score
+	 * @return
+	 */
+	public int getHighScore() {
+		return highScore;
+	}
+
+	/**
+	 * Sets the current high score
+	 * @param highScore
+	 */
+	public void setHighScore(int highScore) {
+		this.highScore = highScore;
+	}
 }
