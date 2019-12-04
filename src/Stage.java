@@ -38,28 +38,28 @@ public class Stage extends JPanel implements ActionListener {
 	private int factor = 1;
 	private int speedUpDistance = 1000;
 	private final ImageIcon background = new ImageIcon("grass.png");
-	
+
 	Score gameScore;
 	GameGraphics gameGraphics;
-	
+
 	/**
 	 * This method calls to set the stage of the game
 	 */
 	public Stage() {
-		
+
 		// initialize variables
 		gameScore = new Score();
 		stageOfGame = 0;
 		gameGraphics = new GameGraphics(this, background);
-		
+
 		// settings for JPanel (game window)
 		addKeyListener(new TAdapter());
 		setFocusable(true);
 		setBackground(Color.BLACK);
 		setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
-		
+
 	}
-	
+
 
 
 	/**
@@ -70,19 +70,19 @@ public class Stage extends JPanel implements ActionListener {
 
 		//creates the cat, the player character
 		cat = new Cat(40, FLOOR);
-	
+
 		//creates ArrayList for boxes and sets the first box
 		boxes = new ArrayList<>();
 		boxes.add(new Box(400, FLOOR));
-		
+
 		//creates ArrayList for coins and sets the first coin
 		coins = new ArrayList<>();
 		coins.add(new Coin(250, FLOOR - 40));
 
 		//creates ArrayList for ghost and sets the first ghost
 		ghosts = new ArrayList<>();
-		ghosts.add(new Ghost(250, FLOOR - 40));
-		
+		ghosts.add(new Ghost(600, FLOOR - 40));
+
 		//creates bird
 		bird = new Bird(400, FLOOR - 90);
 
@@ -104,13 +104,13 @@ public class Stage extends JPanel implements ActionListener {
 		if (stageOfGame == 0) {
 			gameGraphics.drawGameStart(g);
 		}
-		
+
 		// draw objects when in game
 		else if( stageOfGame == 1) {
 			gameGraphics.drawObjects(g);
 
 		}
-		
+
 		// draw game over when game over
 		else {
 			gameGraphics.drawGameOver(g);
@@ -126,9 +126,9 @@ public class Stage extends JPanel implements ActionListener {
 	 * @param e
 	 */
 	public void play(KeyEvent e) {
-		
+
 		int key = e.getKeyCode();
-		
+
 		if(key == KeyEvent.VK_ENTER) {
 			if(stageOfGame == 2) {
 
@@ -137,7 +137,7 @@ public class Stage extends JPanel implements ActionListener {
 				distance = 1;
 				factor = 1;
 				gameScore.setScore(0);
-				
+
 				// sets game retry to true
 				gameScore.setIfGameRetried(true);
 			}
@@ -146,7 +146,7 @@ public class Stage extends JPanel implements ActionListener {
 		}
 	}
 
-	
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -165,7 +165,7 @@ public class Stage extends JPanel implements ActionListener {
 
 		//repaints the game 
 		repaint();
-		
+
 	}
 
 	/**
@@ -178,7 +178,7 @@ public class Stage extends JPanel implements ActionListener {
 			int score = gameScore.calcScore(coinsCollected, distance);
 			gameScore.setScore(score);
 			gameScore.calcHighScore(score);
-			
+
 		}
 	}
 
@@ -207,7 +207,7 @@ public class Stage extends JPanel implements ActionListener {
 	 * to the boxes array list
 	 */
 	private void updateBoxes() {
-		
+
 		if(!boxes.isEmpty()) {
 			//for each box, move it through the screen
 			for (int i = 0; i < boxes.size(); i++) {
@@ -259,6 +259,7 @@ public class Stage extends JPanel implements ActionListener {
 			Ghost temp = new Ghost(400, FLOOR - 35);
 			ghosts.add(temp);
 		}
+
 		else if(Math.random() < .0007) {
 			if(!ghosts.isEmpty()) {
 				if(!(ghosts.get(ghosts.size() - 1).getX() >= 360)) {
@@ -270,10 +271,10 @@ public class Stage extends JPanel implements ActionListener {
 				Ghost temp = new Ghost (390, FLOOR);
 				ghosts.add(temp);
 			}
-		}
 
+		}
 		if(!ghosts.isEmpty()) {
-			//for each coin, moves it across the screen
+			//for each ghost, moves it across the screen
 			for (int i = 0; i < ghosts.size(); i++) {
 
 				Ghost a = ghosts.get(i);
@@ -290,8 +291,9 @@ public class Stage extends JPanel implements ActionListener {
 				}
 			}
 		}
+
 	}
-	
+
 	/**
 	 * This method updates the coins on screen by moving
 	 * them across the screen. It also randomly generates
@@ -337,8 +339,8 @@ public class Stage extends JPanel implements ActionListener {
 		}
 	}
 
-	
-	
+
+
 	/**
 	 * This method checks to see if the cat collides with
 	 * objects. If it hits a box, the game is over. If it hits
@@ -368,7 +370,7 @@ public class Stage extends JPanel implements ActionListener {
 				coins.remove(i);
 			}
 		}
-		
+
 		for(int i = 0; i < ghosts.size(); i++) {
 			Ghost ghost = ghosts.get(i);
 			Rectangle ghost_collision = ghost.getBounds();
@@ -376,14 +378,14 @@ public class Stage extends JPanel implements ActionListener {
 				cat.ghostsCollected++;
 				ghosts.remove(i); 
 			}
-	}
+		}
 	}
 
 
 	public Cat getCat() {
 		return cat;
 	}
-	
+
 	public Bird getBird() {
 		return bird;
 	}
@@ -400,7 +402,7 @@ public class Stage extends JPanel implements ActionListener {
 	public List<Coin> getCoins() {
 		return coins;
 	}
-	
+
 	public List<Ghost> getGhosts(){
 		return ghosts;
 	}
@@ -438,13 +440,13 @@ public class Stage extends JPanel implements ActionListener {
 
 		@Override
 		public void keyPressed(KeyEvent e) {
-			
+
 			if(stageOfGame == 0 || stageOfGame == 2) {
 				play(e);
 			}
-			
+
 			cat.keyPressed(e);
-			
+
 		}
 	}
 }
