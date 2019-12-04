@@ -272,8 +272,7 @@ public class Stage extends JPanel implements ActionListener {
 			}
 		}
 
-
-		if(!coins.isEmpty()) {
+		if(!ghosts.isEmpty()) {
 			//for each coin, moves it across the screen
 			for (int i = 0; i < ghosts.size(); i++) {
 

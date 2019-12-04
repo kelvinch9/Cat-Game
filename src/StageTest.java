@@ -55,11 +55,9 @@ class StageTest {
 		assertEquals(("High Score: " + score.getHighScore() +
 				"\nCongrats! New High Score!"), 
 				score.displayHighScore(1000));
-		/*
 		assertEquals(("High Score: " + score.getHighScore() +
-				"\nNice try! You tied the high score."), 
-			score.displayHighScore(100));
-			*/
+				"\nBetter luck next time!"), 
+			score.displayHighScore(1));
 	}
 	/*
 
