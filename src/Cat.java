@@ -40,6 +40,7 @@ public class Cat extends Object{
 		ghost_cat = ghost.getImage();
 		
 		getImageDimensions();
+		
 	}
 	
 	/**
@@ -117,6 +118,8 @@ public class Cat extends Object{
 		
 		ghost_mode = true;
 		
+		
+		
 		Timer timer = new Timer();
 		
 		TimerTask task = new TimerTask() {
@@ -125,8 +128,9 @@ public class Cat extends Object{
 			}
 		};
 		timer.schedule(task, 6000); // waits 6000 milliseconds, then sets ghost_mode = false;
-	}
 	
+	}
+
 	/**
 	 * Getter for ghost mode
 	 */

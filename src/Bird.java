@@ -21,33 +21,22 @@ public class Bird extends Object{
 		getImageDimensions();
 	}
 	
+	/**
+	 * This method moves the bird
+	 */
 	public void move() {
 		
 		Random random = new Random();
 		int r = random.nextInt(50)-1;
+
+		x -= 1 * factor;
 		
-//		if(y < 180) {
-//			y+=1;
-//		}
-//		
-//		if(y > 250) {
-//			y-=1;
-//		}
-//		
-//		if(x < 0) {
-//			x = 400;
-//		}
 		
 		if(x < 0) {
 			x = 400;
 			y = (250 - 90) + r;
 		}
 		
-		
-		x -= 1 * factor;
-//		y -=1;
-		
-
 	}
 
 }

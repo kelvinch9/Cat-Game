@@ -5,6 +5,8 @@ import java.awt.FontMetrics;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import java.awt.Graphics;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * This class sets up all of the graphics for the game
@@ -17,6 +19,8 @@ public class GameGraphics extends JPanel {
 
 	Stage stage;
 	ImageIcon gameBackground;
+	Timer timer;
+
 
 	/**
 	 * Constructor to initialize values
@@ -26,6 +30,8 @@ public class GameGraphics extends JPanel {
 	public GameGraphics(Stage stage, ImageIcon gameBackground) {
 		this.stage = stage;
 		this.gameBackground = gameBackground;
+		timer = new Timer();
+
 	}
 
 	/**
@@ -81,14 +87,14 @@ public class GameGraphics extends JPanel {
 				g.drawImage(coin.getImage(), coin.getX(), coin.getY(), stage);
 			}
 		}
-		
+
 		//draws the ghosts
 		for (Ghost ghost : stage.getGhosts()) {
 			if (ghost.isVisible()) {
 				g.drawImage(ghost.getImage(), ghost.getX(), ghost.getY(), stage);
 			}
 		}
-		
+
 		//draws the bird
 		g.drawImage(stage.getBird().getImage(), stage.getBird().getX(), 
 				stage.getBird().getY(), stage);
@@ -105,14 +111,16 @@ public class GameGraphics extends JPanel {
 			g.drawString("SPEED UP!", (stage.getB_WIDTH() - 60) / 2,
 					stage.getB_HEIGHT() / 2);
 		}
-		
+
 		//displays a message while in ghost mode
 		if(stage.getCat().getGhost()) {
 			g.setColor(Color.RED);
-			g.drawString("GHOST MODE", (stage.getB_WIDTH() - 60) / 2,
+			g.drawString("GHOST MODE", (stage.getB_WIDTH() - 80) / 2,
 					stage.getB_HEIGHT() / 3);
+
 		}
 	}
+
 
 
 
