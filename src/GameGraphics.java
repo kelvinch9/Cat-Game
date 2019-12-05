@@ -19,7 +19,6 @@ public class GameGraphics extends JPanel {
 
 	Stage stage;
 	ImageIcon gameBackground;
-	Timer timer;
 
 
 	/**
@@ -30,7 +29,6 @@ public class GameGraphics extends JPanel {
 	public GameGraphics(Stage stage, ImageIcon gameBackground) {
 		this.stage = stage;
 		this.gameBackground = gameBackground;
-		timer = new Timer();
 
 	}
 
@@ -117,11 +115,10 @@ public class GameGraphics extends JPanel {
 			g.setColor(Color.RED);
 			g.drawString("GHOST MODE", (stage.getB_WIDTH() - 80) / 2,
 					stage.getB_HEIGHT() / 3);
-
+			
 		}
 	}
-
-
+	
 
 
 	/**

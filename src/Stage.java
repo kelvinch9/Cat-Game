@@ -255,12 +255,12 @@ public class Stage extends JPanel implements ActionListener {
 	private void updateGhosts() {
 
 		//randomly adds a ghost
-		if(Math.random() < 0.008 && ghosts.isEmpty()) {
+		if(Math.random() < 0.005 && ghosts.isEmpty()) {
 			Ghost temp = new Ghost(400, FLOOR - 35);
 			ghosts.add(temp);
 		}
 
-		else if(Math.random() < .0002) {
+		else if(Math.random() < .0001) {
 			if(!ghosts.isEmpty()) {
 				if(!(ghosts.get(ghosts.size() - 1).getX() >= 360)) {
 					Ghost temp = new Ghost(390, FLOOR);
