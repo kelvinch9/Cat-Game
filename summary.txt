@@ -1,0 +1,22 @@
+Summary – Team 68’s Cat Game!
+Kelvin Cheung, Danielle Coates, and Matt Ordway
+https://github.com/UPenn-CIT599/final-project-team68_platformer
+
+The game was developed using Swing as a GUI.  The user plays as a cat in a scrolling platformer game.  
+The cat must jump over boxes or else it crashes and gets a game over.  The cat may collect coins (each worth 100 points) 
+to try to get a high score, which combines points from coins and total distance traveled.  After every 1000 distance traveled, 
+the speed of the game increases. A user can replay the game to try to beat the high score.  Additionally, there is a ghost 
+that the cat may collect as a power up. The player can activate ghost mode and travel through boxes for 6 seconds. 
+ 
+Work Breakdown:
+
+Kelvin Cheung –
+
+Danielle Coates – Danielle worked on the mechanics of the game. She generated the objects that appear onscreen, 
+modifying the random generation to acceptable levels.  She made sure coins don’t appear over boxes, boxes don’t 
+generate too closely together, boxes don’t generate too soon after a speed increase, and that there can only be 
+one ghost on screen at a time. She also created and modified the cat’s jump ability and adjusted the hit box so 
+collisions look realistic. She also programmed the speed increase, so that all of the objects travel faster (and 
+the cat jumps faster) every 1000 distance traveled. 
+
+Matt Ordway - 
