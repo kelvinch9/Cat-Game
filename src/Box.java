@@ -26,11 +26,9 @@ public class Box extends Object{
 	 */
 	public void move() {
 		
-		
 		if(x < 0) {
 			x = 400;
 		}
 		x -= 1 * factor;
 	}
-	
 }

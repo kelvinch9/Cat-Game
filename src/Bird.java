@@ -26,12 +26,13 @@ public class Bird extends Object{
 	 */
 	public void move() {
 		
+		//randomly generates y position for the bird
 		Random random = new Random();
 		int r = random.nextInt(50)-1;
 
 		x -= 1 * factor;
 		
-		
+		//scrolls the bird back across the screen at a new y
 		if(x < 0) {
 			x = 400;
 			y = (250 - 90) + r;

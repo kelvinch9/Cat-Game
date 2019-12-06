@@ -50,11 +50,13 @@ public class Cat extends Object{
 	public void move() {
         y += dy;
 
+        //starts bringing the cat down again
         if (y < 180) {
-            y = 180;
+            y = 180; // 180 is max height
             dy = 1 * factor;
         }
         
+        //back on floor
         if(y >= 250) {
         	y = 250;
         	dy = 0;
@@ -117,8 +119,6 @@ public class Cat extends Object{
 	public void ghost() {
 		
 		ghost_mode = true;
-		
-		
 		
 		Timer timer = new Timer();
 		

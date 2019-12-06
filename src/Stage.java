@@ -158,6 +158,7 @@ public class Stage extends JPanel implements ActionListener {
 		updateBoxes();
 		updateCoins();
 		updateGhosts();
+		bird.setFactor(factor);
 		bird.move();
 
 		//checks if the objects collide
@@ -254,25 +255,12 @@ public class Stage extends JPanel implements ActionListener {
 	 */
 	private void updateGhosts() {
 
-		//randomly adds a ghost
-		if(Math.random() < 0.005 && ghosts.isEmpty()) {
+		//randomly adds a ghost if there are no ghosts on screen
+		if(Math.random() < 0.003 && ghosts.isEmpty()) {
 			Ghost temp = new Ghost(400, FLOOR - 35);
 			ghosts.add(temp);
 		}
 
-		else if(Math.random() < .0001) {
-			if(!ghosts.isEmpty()) {
-				if(!(ghosts.get(ghosts.size() - 1).getX() >= 360)) {
-					Ghost temp = new Ghost(390, FLOOR);
-					ghosts.add(temp);
-				}
-			}
-			else {
-				Ghost temp = new Ghost (390, FLOOR);
-				ghosts.add(temp);
-			}
-
-		}
 		if(!ghosts.isEmpty()) {
 			//for each ghost, moves it across the screen
 			for (int i = 0; i < ghosts.size(); i++) {
@@ -306,6 +294,8 @@ public class Stage extends JPanel implements ActionListener {
 			coins.add(temp);
 		}
 		else if(Math.random() < .01) {
+			
+			//makes sure a coin doesn't generate over a box
 			if(!boxes.isEmpty()) {
 				if(!(boxes.get(boxes.size() - 1).getX() >= 360)) {
 					Coin temp = new Coin(390, FLOOR);
@@ -371,6 +361,7 @@ public class Stage extends JPanel implements ActionListener {
 			}
 		}
 
+		//checks to see if cat gets a ghost, if so, removes it
 		for(int i = 0; i < ghosts.size(); i++) {
 			Ghost ghost = ghosts.get(i);
 			Rectangle ghost_collision = ghost.getBounds();
