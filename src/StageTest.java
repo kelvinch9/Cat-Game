@@ -69,6 +69,7 @@ class StageTest {
 			score.displayHighScore(1));
 	}
 	
+	
 	@Test
 	void testCollision() {
 		
