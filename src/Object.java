@@ -11,6 +11,7 @@ import javax.swing.ImageIcon;
  */
 public class Object {
 	
+	//variable are protected so subclasses can access
     protected int x;
     protected int y;
     protected int factor;
@@ -38,9 +39,9 @@ public class Object {
     protected void getImageDimensions() {
 
     	// the dimensions determine collision
-    	// subtracted 5 to make the visual look more accurate
-        width = image.getWidth(null) - 5;
-        height = image.getHeight(null) - 5;
+    	// subtracted 6 to make the visual look more accurate
+        width = image.getWidth(null) - 6;
+        height = image.getHeight(null) - 6;
     }
 
     /**

@@ -18,9 +18,7 @@ import javax.swing.JPanel;
  * (1) gamePanel - the actual game (Stage class)
  * (2) guidePanel - instructions on game
  * (3) creditsPanel - credits for game
- * 
  * @author Team 68
- *
  */
 public class GamePanels extends JFrame {
 
@@ -30,18 +28,15 @@ public class GamePanels extends JFrame {
 	CardLayout cards;   // cards organized the JPanels (layout-related)
 
 
-
 	/**
 	 * Constructor for the GamePanels class.
 	 * The constructor creates all the panels in the Game UI.
-	 * 
 	 * @param game
 	 */
 	GamePanels(Stage game) {
 		this.game = game;
 		inGamePanel = false;
 		createPanels();
-
 	}
 
 	
@@ -51,19 +46,19 @@ public class GamePanels extends JFrame {
 	 */
 	private void createPanels() {
 
-		// creating main JPanel (UI) that holds all the other JPanels (Guide, Credits, Game)
+		/* creating main JPanel (UI) that holds all the other JPanels
+		 *  (Guide, Credits, Game) */
 		cards = new CardLayout();
 		UI = new JPanel();
 		UI.setLayout(cards);
 		UI.setFocusable(true);
 		UI.addKeyListener(new MyKeyListener()); // allows KeyListener to work across panels
 
-		// call helper methods to create each panel and respective buttons / formatting
+		// call helper methods to create each panel and respective buttons/formatting
 		JPanel startPanel = createStartPanel();
 		JPanel guidePanel = createGuidePanel();
 		JPanel creditsPanel = createCreditsPanel();
 		JPanel gamePanel = createGamePanel();
-
 
 		// add all panels to the UI (main panel)
 		UI.add("startPanel", startPanel);
@@ -72,8 +67,6 @@ public class GamePanels extends JFrame {
 		UI.add("gamePanel", gamePanel);
 		this.setContentPane(UI);
 		cards.show(UI, "1");
-
-
 	}
 
 
@@ -97,7 +90,6 @@ public class GamePanels extends JFrame {
 				+ "<p><b>Welcome to Team 68's Cat Game!</b></p> "
 				+ "<br>" // line break
 				+ "<br>" // line break
-//				+ "<p><i>Italicized text.</i></p>"
 				+ "</div></html>";
 
 		JLabel startText = new JLabel(startString);
@@ -120,8 +112,6 @@ public class GamePanels extends JFrame {
 		// set backgrounds of each panel making up the main panel
 		buttonPanel.setBackground(Color.ORANGE);
 		labelPanel.setBackground(Color.ORANGE);
-
-		
 		
 		// add action to "start" button
 		// if you click start, the panel changes to the gamePanel
@@ -151,15 +141,13 @@ public class GamePanels extends JFrame {
 			}
 		});
 
-
 		return startPanel;
 	}
 
 
 	/**
 	 * Helper method to create the guidePanel.
-	 * 
-	 * @return
+ 	 * @return
 	 */
 	private JPanel createGuidePanel() {
 		// Create Panel for Guide
@@ -180,7 +168,7 @@ public class GamePanels extends JFrame {
 				+ "<p><i>Speed increases every 1000 distance.</i></p>"
 				+ "<br>" // line break
 				+ "<p>Collect ghosts to active ghost mode!</p>"
-				+ "<p>Press the L key to activate ghost mode.</p>"
+				+ "<p>Press the G key to activate ghost mode.</p>"
 				+ "<p><i>In ghost mode, you can run through boxes </i></p>"
 				+ "<p><i>for a short period of time. </i></p>"
 				+ "</div></html>";
@@ -209,15 +197,12 @@ public class GamePanels extends JFrame {
 				cards.show(UI, "startPanel");
 			}
 		});
-
-
 		return guidePanel;
 	}
 
 
 	/**
 	 * Helper method for the creditsPanel.
-	 * 
 	 * @return
 	 */
 	private JPanel createCreditsPanel() {
@@ -265,15 +250,12 @@ public class GamePanels extends JFrame {
 			}
 		});
 
-
 		return creditsPanel;
 	}
 
 
 	/**
 	 * Helper method to create the gamePanel.
-	 * 
-	 * 
 	 * @return
 	 */
 	private JPanel createGamePanel() {
@@ -292,7 +274,6 @@ public class GamePanels extends JFrame {
 	
 	/**
 	 * Getter for the UI JPanel.
-	 * 
 	 * @return
 	 */
 	public JPanel getUI() {
@@ -300,22 +281,17 @@ public class GamePanels extends JFrame {
 	}
 
 
-
-
-
-
 	/**
 	 * MyKeyListener Class that allows keys to be pressed in the gamePanel (Stage Class). 
-	 * 
-	 * @author matthewordway
-	 *
+	 * @author Team 68
 	 */
 	private class MyKeyListener extends KeyAdapter {
 		@Override
 		public void keyPressed(KeyEvent e) {
 
 			// allow replay if at beginning or cat died
-			if( inGamePanel == true && (game.getStageOfGame() == 0 || game.getStageOfGame() == 2) ) {
+			if( inGamePanel == true 
+					&& (game.getStageOfGame() == 0 || game.getStageOfGame() == 2) ) {
 				game.play(e);
 			}
 
@@ -325,7 +301,4 @@ public class GamePanels extends JFrame {
 			}
 		}
 	}
-
-
-
 }

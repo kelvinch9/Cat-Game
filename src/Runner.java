@@ -10,8 +10,8 @@ import javax.swing.JFrame;
  */
 public class Runner extends JFrame{
 	
-	GamePanels panels;
-	Stage gameStage;
+	private GamePanels panels;
+	private Stage gameStage;
 
 	/**
 	 * This method runs the game
@@ -28,7 +28,6 @@ public class Runner extends JFrame{
 		setTitle("Cat Game");
 		setLocationRelativeTo(null); // centers the window onto screen
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // exit game if window is closed
-		
 	}
 
 
@@ -42,5 +41,4 @@ public class Runner extends JFrame{
             ex.setVisible(true);
         });
     }
-	
 }

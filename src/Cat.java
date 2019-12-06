@@ -11,16 +11,15 @@ import javax.swing.ImageIcon;
  * This class represents the cat (the player of the game)
  * This class extends from the Object class
  * @author Team 68
- *
  */
 public class Cat extends Object{
 
 	private int dx;
 	private int dy;
-	public int ghostsCollected = 0;
-	private boolean ghost_mode = false;
-	private Image normal_cat;
-	private Image ghost_cat;
+	private int ghostsCollected;
+	private boolean ghostMode;
+	private Image normalCat;
+	private Image ghostCat;
 	
 	/**
 	 * Constructor to initialize values
@@ -30,16 +29,18 @@ public class Cat extends Object{
 	 */
 	public Cat(int x, int y) {
 		super(x, y);
-		ghostsCollected = 0;
 		
 		ImageIcon normal = new ImageIcon("small_cat.png");
-		normal_cat = normal.getImage();
-		this.image = normal_cat; // default image of cat
+		normalCat = normal.getImage();
+		this.image = normalCat; // default image of cat
 		
 		ImageIcon ghost = new ImageIcon("ghost_cat.png");
-		ghost_cat = ghost.getImage();
+		ghostCat = ghost.getImage();
 		
 		getImageDimensions();
+		
+		ghostsCollected = 0;
+		ghostMode = false;
 		
 	}
 	
@@ -63,18 +64,19 @@ public class Cat extends Object{
         }
         
         // updates image of cat based off ghost_mode
-        if(ghost_mode) {
-        	this.image = ghost_cat;
+        if(ghostMode) {
+        	this.image = ghostCat;
         }
         else {
-        	this.image = normal_cat;
+        	this.image = normalCat;
         }
                
     }
 	
 	/**
-	 * This method checks to see if the space bar was pressed
-	 * If so, it calls the jump method
+	 * This method checks to see if the a key was pressed
+	 * If the space bar was pressed, it calls the jump method
+	 * If the g key was pressed, it activates ghost mode
 	 * @param e
 	 */
 	public void keyPressed(KeyEvent e) {
@@ -85,9 +87,8 @@ public class Cat extends Object{
 			jump();
 		}
 		
-		// no other actions but can add some
-		if(key == KeyEvent.VK_L) {
-			if(ghostsCollected > 0 && !ghost_mode) {
+		if(key == KeyEvent.VK_G) {
+			if(ghostsCollected > 0 && !ghostMode) {
 				ghost();
 				ghostsCollected--;
 			}
@@ -118,25 +119,40 @@ public class Cat extends Object{
 	 */	
 	public void ghost() {
 		
-		ghost_mode = true;
+		ghostMode = true;
 		
 		Timer timer = new Timer();
 		
 		TimerTask task = new TimerTask() {
 			public void run() {
-				ghost_mode = false;
+				ghostMode = false;
 			}
 		};
-		timer.schedule(task, 6000); // waits 6000 milliseconds, then sets ghost_mode = false;
-	
+		timer.schedule(task, 5000); // waits 5000 milliseconds, then sets ghost_mode = false;
 	}
 
 	/**
 	 * Getter for ghost mode
+	 * @return
 	 */
 	public boolean getGhost() {
-		return ghost_mode;
+		return ghostMode;
 	}
 
+	/**
+	 * Getter for the number of ghosts collected
+	 * @return
+	 */
+	public int getGhostsCollected() {
+		return ghostsCollected;
+	}
+
+	/**
+	 * Setter for the number of ghosts collected
+	 * @param ghostsCollected
+	 */
+	public void setGhostsCollected(int ghostsCollected) {
+		this.ghostsCollected = ghostsCollected;
+	}
 
 }

@@ -2,7 +2,6 @@
  * This class represents a coin object for
  * the cat to obtain. It extends the object class.
  * @author Team 68
- *
  */
 public class Coin extends Object{
 
@@ -29,6 +28,8 @@ public class Coin extends Object{
 		if(x < 0) {
 			x = 400;
 		}
+		
+		//factor for speed increase
 		x -= 1 * factor;	
 	}
 

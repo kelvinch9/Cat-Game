@@ -4,7 +4,6 @@ import java.util.ArrayList;
  * This class represents a box that the cat
  * must avoid. It extends from the object class.
  * @author Team 68
- *
  */
 public class Box extends Object{
 	
@@ -29,6 +28,8 @@ public class Box extends Object{
 		if(x < 0) {
 			x = 400;
 		}
+		
+		// factor for speed increase
 		x -= 1 * factor;
 	}
 }

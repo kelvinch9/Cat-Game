@@ -3,9 +3,7 @@
  * This class represents a ghost that the cat
  * can catch. It extends from the object class.
  * @author Team 68
- *
  */
-
 public class Ghost extends Object{
 	
 	/**
@@ -27,6 +25,8 @@ public class Ghost extends Object{
 		if(x < 0) {
 			x = 400;
 		}
+		
+		// factor for speed increase
 		x -= 1 * factor;	
 	}
 

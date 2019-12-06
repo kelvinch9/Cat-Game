@@ -1,9 +1,9 @@
 /**
- * This class creates a score for the game just played
+ * This class creates a score for the game just played.
  * It compares the previous high score to the current high score
- * to set the current high score
+ * to set the current high score.
  * It also checks if the game has been played before to display
- * a unique message after the first game
+ * a unique message after the first game.
  * @author Team 68
  */
 public class Score {
@@ -11,7 +11,7 @@ public class Score {
 	private int score;
 	private int prevHighScore; // high score before new high score (based on current score)			
 	private int highScore;
-	private boolean ifGameRetried; // determine if this is first play of game. used for scoring
+	private boolean ifGameRetried; // determines if first play of game. Used for scoring
 	
 	/**
 	 * Constructor to initialize values
@@ -42,7 +42,7 @@ public class Score {
 	 * @param score
 	 */
 	public void calcHighScore(int score) {
-		//prevHighScore helps determine if the score has been tied
+		//prevHighScore helps determine unique scoring message
 		prevHighScore = highScore;
 		if (score > highScore) {
 			highScore = score;
@@ -101,7 +101,6 @@ public class Score {
 	
 	//The rest of these getters and setters are only used for JUnit
 	//They can be commented out while the program is running
-	
 
 	/**
 	 * Sets the previous high score

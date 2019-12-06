@@ -13,13 +13,11 @@ import java.util.TimerTask;
  * It draws the game start screen and game over screen
  * It also draws all of the objects 
  * @author Team 68
- *
  */
 public class GameGraphics extends JPanel {
 
-	Stage stage;
-	ImageIcon gameBackground;
-
+	private Stage stage;
+	private ImageIcon gameBackground;
 
 	/**
 	 * Constructor to initialize values
@@ -34,25 +32,25 @@ public class GameGraphics extends JPanel {
 
 	/**
 	 * Start screen for the game
+	 * This is after the user has hit the play button
 	 * @param g
 	 */
 	public void drawGameStart(Graphics g) {
+		//string message
 		String msg = "Press ENTER to play!";
 		Font small = new Font("Helvetica", Font.BOLD, 14);
 		FontMetrics fm = getFontMetrics(small);
 
+		//sets color and font
 		g.setColor(Color.white);
 		g.setFont(small);
 
+		//sets height on screen
 		int lineDisplayHeight = (stage.getB_HEIGHT() / 2);
 
-		// drawString does not handle new line characters - split on "\n"
-		for (String line : msg.split("\n")) {
-			g.drawString(line, (stage.getB_WIDTH() - fm.stringWidth(line)) / 2,
-					lineDisplayHeight);
-			lineDisplayHeight += fm.getHeight() + 5;
-		}
-
+		//draws on screen
+		g.drawString(msg, (stage.getB_WIDTH() - fm.stringWidth(msg)) / 2,
+				lineDisplayHeight);
 	}
 
 
@@ -100,7 +98,7 @@ public class GameGraphics extends JPanel {
 		//writes the scores
 		g.setColor(Color.WHITE);
 		g.drawString("Coins: " + stage.getCoinsCollected(), 5, 15);
-		g.drawString("Ghosts:" + stage.getCat().ghostsCollected, 5, 30);
+		g.drawString("Ghosts:" + stage.getCat().getGhostsCollected(), 5, 30);
 		g.drawString("Distance: 0" + stage.getDistance(), 5, 45);
 		g.drawLine(0, 280, stage.getB_WIDTH(), 280);
 
@@ -115,10 +113,10 @@ public class GameGraphics extends JPanel {
 			g.setColor(Color.RED);
 			g.drawString("GHOST MODE", (stage.getB_WIDTH() - 80) / 2,
 					stage.getB_HEIGHT() / 3);
-			
+
 		}
 	}
-	
+
 
 
 	/**
@@ -128,15 +126,17 @@ public class GameGraphics extends JPanel {
 	public void drawGameOver(Graphics g) {
 
 		//final score is 100 points per coin plus total distance traveled
-		String msg = "Game Over!\n\nTotal Score: " + stage.gameScore.getScore() + "    |    " +
-				stage.gameScore.displayHighScore(stage.gameScore.getScore()) + 
-				"\n\nPress 'Enter' to replay\n";
+		String msg = "Game Over!\n\nTotal Score: " + stage.getGameScore().getScore() 
+		+ "    |    " +	stage.getGameScore().displayHighScore(stage.getGameScore().getScore())
+		+ "\n\nPress 'Enter' to replay\n";
 		Font small = new Font("Helvetica", Font.BOLD, 14);
 		FontMetrics fm = getFontMetrics(small);
 
+		//sets fond and color
 		g.setColor(Color.white);
 		g.setFont(small);
 
+		//height to display message
 		int lineDisplayHeight = (stage.getB_HEIGHT() / 3);
 
 		// drawString does not handle new line characters - split on "\n"

@@ -4,9 +4,7 @@ import java.util.Random;
  * This class represents a bird for animation purposes.
  * It extends from the object class.
  * @author Team 68
- *
  */
-
 public class Bird extends Object{
 	
 	/**
@@ -30,6 +28,7 @@ public class Bird extends Object{
 		Random random = new Random();
 		int r = random.nextInt(50)-1;
 
+		// factor for speed increase
 		x -= 1 * factor;
 		
 		//scrolls the bird back across the screen at a new y

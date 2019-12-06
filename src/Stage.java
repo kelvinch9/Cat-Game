@@ -18,7 +18,6 @@ import javax.swing.Timer;
  * JPanel and implements ActionListener, both of which are
  * parts of the Swing library
  * @author Team 68
- *
  */
 public class Stage extends JPanel implements ActionListener {
 
@@ -38,9 +37,8 @@ public class Stage extends JPanel implements ActionListener {
 	private int factor = 1;
 	private int speedUpDistance = 1000;
 	private final ImageIcon background = new ImageIcon("grass.png");
-
-	Score gameScore;
-	GameGraphics gameGraphics;
+	private Score gameScore;
+	private GameGraphics gameGraphics;
 
 	/**
 	 * This method calls to set the stage of the game
@@ -59,7 +57,6 @@ public class Stage extends JPanel implements ActionListener {
 		setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
 
 	}
-
 
 
 	/**
@@ -119,7 +116,6 @@ public class Stage extends JPanel implements ActionListener {
 	}
 
 
-
 	/**
 	 * Play / replay method. Called in TAdapter Class at bottom.
 	 * If user presses enter, starts the game.
@@ -147,6 +143,9 @@ public class Stage extends JPanel implements ActionListener {
 	}
 
 
+	/**
+	 * this method performs actions continuously as the game runs
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
@@ -228,6 +227,8 @@ public class Stage extends JPanel implements ActionListener {
 				}
 			}
 		}
+
+		//makes sure a box doesn't generate right after speed up
 		if(!(((speedUpDistance * factor) - distance < 400) &&
 				((speedUpDistance * factor) - distance > 200))){
 			//if there are boxes in the array list
@@ -262,24 +263,20 @@ public class Stage extends JPanel implements ActionListener {
 		}
 
 		if(!ghosts.isEmpty()) {
-			//for each ghost, moves it across the screen
-			for (int i = 0; i < ghosts.size(); i++) {
+			Ghost a = ghosts.get(0);
 
-				Ghost a = ghosts.get(i);
-
-				if (a.isVisible()) {
-					a.move();
-					if(a.getX() < 2) {
-						ghosts.remove(i);
-					}
-					a.setFactor(factor);
-				} 
-				else {
-					ghosts.remove(i);
+			if (a.isVisible()) {
+				a.move();
+				if(a.getX() < 2) {
+					ghosts.remove(0);
 				}
+				a.setFactor(factor);
+			} 
+			else {
+				ghosts.remove(0);
+
 			}
 		}
-
 	}
 
 	/**
@@ -294,7 +291,7 @@ public class Stage extends JPanel implements ActionListener {
 			coins.add(temp);
 		}
 		else if(Math.random() < .01) {
-			
+
 			//makes sure a coin doesn't generate over a box
 			if(!boxes.isEmpty()) {
 				if(!(boxes.get(boxes.size() - 1).getX() >= 360)) {
@@ -307,7 +304,6 @@ public class Stage extends JPanel implements ActionListener {
 				coins.add(temp);
 			}
 		}
-
 
 		if(!coins.isEmpty()) {
 			//for each coin, moves it across the screen
@@ -329,12 +325,10 @@ public class Stage extends JPanel implements ActionListener {
 		}
 	}
 
-
-
 	/**
 	 * This method checks to see if the cat collides with
 	 * objects. If it hits a box, the game is over. If it hits
-	 * a coin, the score is updated.
+	 * a coin or ghost, the score is updated.
 	 */
 	public void checkCollisions() {
 
@@ -366,67 +360,120 @@ public class Stage extends JPanel implements ActionListener {
 			Ghost ghost = ghosts.get(i);
 			Rectangle ghost_collision = ghost.getBounds();
 			if(cat_collision.intersects(ghost_collision)) {
-				cat.ghostsCollected++;
+				cat.setGhostsCollected(cat.getGhostsCollected() + 1);
 				ghosts.remove(i); 
 			}
 		}
 	}
 
+	/**
+	 * Getter for the game score
+	 * @return
+	 */
+	public Score getGameScore() {
+		return gameScore;
+	}
 
+	/**
+	 * Getter for the cat
+	 * @return
+	 */
 	public Cat getCat() {
 		return cat;
 	}
 
+	/**
+	 * Getter for the bird
+	 * @return
+	 */
 	public Bird getBird() {
 		return bird;
 	}
 
+	/**
+	 * Getter for the stage of game
+	 * @return
+	 */
 	public int getStageOfGame() {
 		return stageOfGame;
 	}
 
+	/**
+	 * Getter for the box list
+	 * @return
+	 */
 	public List<Box> getBoxes() {
 		return boxes;
 	}
 
-
+	/**
+	 * Getter for the coin list
+	 * @return
+	 */
 	public List<Coin> getCoins() {
 		return coins;
 	}
 
+	/**
+	 * Getter for the ghost list
+	 * @return
+	 */
 	public List<Ghost> getGhosts(){
 		return ghosts;
 	}
 
-
+	/**
+	 * Getter for the screen width
+	 * @return
+	 */
 	public int getB_WIDTH() {
 		return B_WIDTH;
 	}
 
-
+	/**
+	 * Getter for the screen height
+	 * @return
+	 */
 	public int getB_HEIGHT() {
 		return B_HEIGHT; 
 	}
 
-
+	/**
+	 * Getter for the number of coins collected
+	 * @return
+	 */
 	public int getCoinsCollected() {
 		return coinsCollected;
 	}
 
+	/**
+	 * Getter for the distance traveled
+	 * @return
+	 */
 	public int getDistance() {
 		return distance;
 	}
 
-
+	/**
+	 * Getter for the factor for speed increase
+	 * @return
+	 */
 	public int getFactor() {
 		return factor;
 	}
 
-
+	/**
+	 * Getter for the speed up distance
+	 * @return
+	 */
 	public int getSpeedUpDistance() {
 		return speedUpDistance;
 	}
 
+	/**
+	 * Checks if enter is pressed to start/restard the game
+	 * @author Team 68
+	 */
 	private class TAdapter extends KeyAdapter {
 
 		@Override
