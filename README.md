@@ -1,7 +1,7 @@
 # final-project-team68_platformer
 final-project-team68_platformer created by GitHub Classroom
 
-**Members:** 
+**Members:** \
 Danielle Coates, Matthew Ordway, Kelvin Cheung
 
 **Overview:** 
