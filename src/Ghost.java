@@ -5,10 +5,10 @@
  * @author Team 68
  */
 public class Ghost extends Object{
-	
+
 	/**
 	 * Constructor to initialize values
-	 * Loads image and its dimensions
+	 * Loads ghost image and its dimensions
 	 * @param x
 	 * @param y
 	 */
@@ -17,7 +17,7 @@ public class Ghost extends Object{
 		loadImage("ghost.png");
 		getImageDimensions();
 	}
-	
+
 	/**
 	 * This method moves the ghost across the screen
 	 */
@@ -25,7 +25,7 @@ public class Ghost extends Object{
 		if(x < 0) {
 			x = 400;
 		}
-		
+
 		// factor for speed increase
 		x -= 1 * factor;	
 	}

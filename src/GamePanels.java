@@ -39,7 +39,7 @@ public class GamePanels extends JFrame {
 		createPanels();
 	}
 
-	
+
 	/**
 	 * The method is called in the Constructor and is responsible
 	 * for creating all of the panels.
@@ -78,13 +78,13 @@ public class GamePanels extends JFrame {
 	private JPanel createStartPanel() {
 		JPanel startPanel = new JPanel();
 		startPanel.setLayout(new BorderLayout()); // BorderLayout is a layout manager for JPanel
-		
+
 		// create buttons to access other panels
 		JButton start = new JButton("Play");
 		JButton guide = new JButton("Guide");
 		JButton credits = new JButton("Credits");
-		
-		
+
+
 		// create a JLabel to display text for the panel - includes HTML for formatting
 		String startString = "<html><div style='text-align: center;'>"
 				+ "<p><b>Welcome to Team 68's Cat Game!</b></p> "
@@ -98,21 +98,21 @@ public class GamePanels extends JFrame {
 		// create sub-panels for label and buttons - this is for formatting
 		JPanel labelPanel = new JPanel();
 		JPanel buttonPanel = new JPanel();
-		
+
 		// add labels and buttons to respective panels
 		buttonPanel.add(start);
 		buttonPanel.add(guide);
 		buttonPanel.add(credits);
 		labelPanel.add(startText);
-		
+
 		// add label and button panels to main Panel
 		startPanel.add(buttonPanel, BorderLayout.CENTER);
 		startPanel.add(labelPanel, BorderLayout.PAGE_START);
-		
+
 		// set backgrounds of each panel making up the main panel
 		buttonPanel.setBackground(Color.ORANGE);
 		labelPanel.setBackground(Color.ORANGE);
-		
+
 		// add action to "start" button
 		// if you click start, the panel changes to the gamePanel
 		start.addActionListener(new ActionListener() {
@@ -147,13 +147,13 @@ public class GamePanels extends JFrame {
 
 	/**
 	 * Helper method to create the guidePanel.
- 	 * @return
+	 * @return
 	 */
 	private JPanel createGuidePanel() {
 		// Create Panel for Guide
 		JPanel guidePanel = new JPanel();
 		guidePanel.setLayout(new BorderLayout()); // BorderLayout is a layout manager for JPanel
-		
+
 		// create back button to go back to the startPanel
 		JButton guideBack = new JButton("Back");
 
@@ -179,16 +179,16 @@ public class GamePanels extends JFrame {
 		// add panels for the Button and the JLabel - this is for formatting 
 		JPanel labelPanel = new JPanel();
 		JPanel buttonPanel = new JPanel();
-		
+
 		// add labels and buttons to respective panels
 		labelPanel.add(guideText);
 		buttonPanel.add(guideBack);
-		
+
 		// add label and button panels to main Panel
 		guidePanel.add(labelPanel, BorderLayout.NORTH); // puts in north quadrant
 		guidePanel.add(buttonPanel, BorderLayout.SOUTH); // puts in south quadrant
 
-		
+
 		// add action to "back" button
 		// if you click back, the panel changes back to the startPanel 
 		guideBack.addActionListener(new ActionListener() {
@@ -206,16 +206,16 @@ public class GamePanels extends JFrame {
 	 * @return
 	 */
 	private JPanel createCreditsPanel() {
-		
+
 		// Create Panel for Credits
 		JPanel creditsPanel = new JPanel();
 		creditsPanel.setLayout(new BorderLayout()); // BorderLayout is a layout manager for JPanel
-		
-		
+
+
 		// create back button to go back to the startPanel
 		JButton creditsBack = new JButton("Back");
-		
-		
+
+
 		// create a JLabel to display text for the panel - w/ HTML for display
 		String creditsString = "<html><div style='text-align: center;'>"
 				+ "<p><b>Created by Team 68.</b></p> "
@@ -262,16 +262,16 @@ public class GamePanels extends JFrame {
 		// Create Panel for Game
 		JPanel gamePanel = new JPanel();
 		gamePanel.setBackground(Color.BLACK);
-		
+
 		// Add the game (Stage Class) to the gamePanel
 		game = new Stage();
 		gamePanel.add(game);
 		//		gamePanel.setFocusable(true);
-		
+
 		return gamePanel;
 	}
-	
-	
+
+
 	/**
 	 * Getter for the UI JPanel.
 	 * @return

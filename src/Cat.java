@@ -14,13 +14,13 @@ import javax.swing.ImageIcon;
  */
 public class Cat extends Object{
 
-	private int dx;
-	private int dy;
+	private int dx; // used to update y location (on y-axis) 
+	private int dy; // used to update x location (on x-axis)
 	private int ghostsCollected;
 	private boolean ghostMode;
 	private Image normalCat;
 	private Image ghostCat;
-	
+
 	/**
 	 * Constructor to initialize values
 	 * Sets the cat image and its dimensions
@@ -29,50 +29,50 @@ public class Cat extends Object{
 	 */
 	public Cat(int x, int y) {
 		super(x, y);
-		
+
 		ImageIcon normal = new ImageIcon("small_cat.png");
 		normalCat = normal.getImage();
 		this.image = normalCat; // default image of cat
-		
+
 		ImageIcon ghost = new ImageIcon("ghost_cat.png");
-		ghostCat = ghost.getImage();
-		
+		ghostCat = ghost.getImage(); // image of cat for ghost mode
+
 		getImageDimensions();
-		
+
 		ghostsCollected = 0;
 		ghostMode = false;
-		
+
 	}
-	
+
 	/**
 	 * This method moves the cat through its jump
 	 * It will pull the cat back down after it jumps
 	 */
 	public void move() {
-        y += dy;
+		y += dy;
 
-        //starts bringing the cat down again
-        if (y < 180) {
-            y = 180; // 180 is max height
-            dy = 1 * factor;
-        }
-        
-        //back on floor
-        if(y >= 250) {
-        	y = 250;
-        	dy = 0;
-        }
-        
-        // updates image of cat based off ghost_mode
-        if(ghostMode) {
-        	this.image = ghostCat;
-        }
-        else {
-        	this.image = normalCat;
-        }
-               
-    }
-	
+		//starts bringing the cat down again
+		if (y < 180) {
+			y = 180; // 180 is max height
+			dy = 1 * factor;
+		}
+
+		//back on floor
+		if(y >= 250) {
+			y = 250;
+			dy = 0;
+		}
+
+		// updates image of cat based off ghost_mode
+		if(ghostMode) {
+			this.image = ghostCat;
+		}
+		else {
+			this.image = normalCat;
+		}
+
+	}
+
 	/**
 	 * This method checks to see if the a key was pressed
 	 * If the space bar was pressed, it calls the jump method
@@ -80,13 +80,13 @@ public class Cat extends Object{
 	 * @param e
 	 */
 	public void keyPressed(KeyEvent e) {
-		
+
 		int key = e.getKeyCode();
-		
+
 		if(key == KeyEvent.VK_SPACE) {
 			jump();
 		}
-		
+
 		if(key == KeyEvent.VK_G) {
 			if(ghostsCollected > 0 && !ghostMode) {
 				ghost();
@@ -94,7 +94,7 @@ public class Cat extends Object{
 			}
 		}
 	}
-	
+
 	/**
 	 * This method makes the cat jump
 	 */
@@ -103,7 +103,7 @@ public class Cat extends Object{
 			dy  = -1 * factor;
 		}
 	}
-	
+
 	/**
 	 * This method checks to see if the cat can jump
 	 * The cat must be on the ground to jump
@@ -111,19 +111,23 @@ public class Cat extends Object{
 	 */
 	//to run JUnit, this needs to be public, for actual program can be private
 	public boolean canJump() {
-		if(y == 250) return true;
-		else return false;
+		if(y == 250) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
-	
+
 	/**
 	 * Activates ghost mode w/ timer
 	 */	
 	public void ghost() {
-		
+
 		ghostMode = true;
-		
+
 		Timer timer = new Timer();
-		
+
 		TimerTask task = new TimerTask() {
 			public void run() {
 				ghostMode = false;

@@ -9,7 +9,7 @@ import javax.swing.JFrame;
  *
  */
 public class Runner extends JFrame{
-	
+
 	private GamePanels panels;
 	private Stage gameStage;
 
@@ -37,8 +37,8 @@ public class Runner extends JFrame{
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(() -> {
-            Runner ex = new Runner();
-            ex.setVisible(true);
-        });
-    }
+			Runner ex = new Runner();
+			ex.setVisible(true);
+		});
+	}
 }
