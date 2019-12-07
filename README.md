@@ -7,6 +7,8 @@ Danielle Coates, Matthew Ordway, Kelvin Cheung
 **Overview:** \
 We are creating a scrolling platformer game. The game theme is a cat who jumps over obstacles. The cat can also collect coins for points. The gameplay gets faster as the game continues.
 
+![First gif] (https://github.com/UPenn-CIT599/final-project-team68_platformer/blob/master/game1%20basic.gif)
+
 **User Needs:** \
 We used Swing as our GUI, which is automatically built into Java, so no additional downloads are needed for that.  We used JDK 11, so this version may be required to run the program. If switching to JDK 11, make sure to update the JRE for the file.
 
