@@ -109,7 +109,8 @@ public class Cat extends Object{
 	 * The cat must be on the ground to jump
 	 * @return
 	 */
-	private boolean canJump() {
+	//to run JUnit, this needs to be public, for actual program can be private
+	public boolean canJump() {
 		if(y == 250) return true;
 		else return false;
 	}
