@@ -26,7 +26,7 @@ public class Bird extends Object{
 		
 		//randomly generates y position for the bird
 		Random random = new Random();
-		int r = random.nextInt(50)-1;
+		int r = random.nextInt(100);
 
 		// factor for speed increase
 		x -= 1 * factor;
@@ -34,7 +34,7 @@ public class Bird extends Object{
 		//scrolls the bird back across the screen at a new y
 		if(x < 0) {
 			x = 400;
-			y = (250 - 90) + r;
+			y = 200 - r;
 		}
 		
 	}
