@@ -16,7 +16,8 @@ We used Swing as our GUI, which is automatically built into Java, so no addition
 To run the game, use the runner.java file.  This will open a new window on your screen.
 
 **Opening Screen:** \
-//include screenshot of game here \
+![Opening](https://github.com/UPenn-CIT599/final-project-team68_platformer/blob/master/Opening_Screen.PNG)
+
 There are three options on the opening screen of the game: Play, Guide, and Credits //make sure these are the actual titles \
 You may click on any of these options. \
 The Play button starts the game (see below). \
@@ -24,9 +25,12 @@ The Guide button explains the rules of the game. \
 The Credits buttons shows the authors of the game. 
 
 **After Clicking Play Button:** \
-//screenshot of press enter to begin \
+![Enter](https://github.com/UPenn-CIT599/final-project-team68_platformer/blob/master/Enter.PNG)
+
 To begin a game, press the enter button. \
-//screenshot of game start \
+
+![Start](https://github.com/UPenn-CIT599/final-project-team68_platformer/blob/master/Game_Start.PNG)
+
 When playing the game, your goal is to get the high score by traveling the farthest distance (distance = points) and collecting the most coins (each coin = 100 points). \
 You must avoid boxes or you will get a game over. \
 You may also collect a ghost for ghost mode (see below). \
@@ -38,7 +42,7 @@ You can see your distance traveled, coins collected, and ghosts collected in the
 Final score will be displayed at the end of the game. Score = Distance + coins * 100. \
 The game will also remember your high score and display this at the end of the game as well.
 
-**Ghost Mode:** \
+**Ghost Mode:** 
 
 ![Ghost](https://raw.githubusercontent.com/UPenn-CIT599/final-project-team68_platformer/master/ghost.gif?token=ANWOM6OVYX63F57AGYYFNLK56RWMS)
 
@@ -51,7 +55,9 @@ You remain a ghost for 6 seconds.
 
 **Game End:** \
 When you collide with a box when you are not in game mode, the game ends. \
-//screen shot of game over screen \
+
+![End](https://github.com/UPenn-CIT599/final-project-team68_platformer/blob/master/Game_Over.PNG)
+
 You will see a game over screen that displays your score and the high score. \
 If you would like to replay the game, you may do so by pressing enter. \
 High scores will only be saved if you choose to replay the game, if you exit the window, the memory is erased.
