@@ -12,6 +12,7 @@ import org.junit.jupiter.api.Test;
  */
 class StageTest {
 	Stage stage = new Stage();
+	Score score = new Score();
 
 	@Test
 	void testInitStage() {
@@ -28,7 +29,7 @@ class StageTest {
 		assertEquals(stage.getBird().getY(), 160);
 
 	}
-	
+
 	@Test
 	void testCalcScore() {
 		assertEquals(score.calcScore(0, 0), 0);
@@ -67,7 +68,7 @@ class StageTest {
 				"\nBetter luck next time!"), 
 			score.displayHighScore(1));
 	}
-
+	
 	@Test
 	void testBoxCollision() {
 		Stage stage = new Stage();
