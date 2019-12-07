@@ -24,7 +24,7 @@ public class CatTest {
 	@Test
 	public void testGhost() {
 		cat.ghost();
-		assertEquals(cat.getGhost(), true);
+		assertEquals(cat.getGhostMode(), true);
 	}
 
 	@Test

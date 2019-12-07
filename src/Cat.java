@@ -128,19 +128,27 @@ public class Cat extends Object{
 
 		Timer timer = new Timer();
 
-		TimerTask task = new TimerTask() {
+		TimerTask taskSetGhostFalse = new TimerTask() {
 			public void run() {
 				ghostMode = false;
 			}
 		};
-		timer.schedule(task, 5000); // waits 5000 milliseconds, then sets ghost_mode = false;
+		
+//		TimerTask taskGhostDisappWarning = new TimerTask() {
+//			public void run() {
+//				System.out.println("ghost mode expires in 1 sec");
+//			}
+//		};
+//		
+//		timer.schedule(taskGhostDisappWarning, 4000); // waits 3000 milliseconds (3 seconds), then gives 1 second warning
+		timer.schedule(taskSetGhostFalse, 5000); // waits 5000 milliseconds (5 seconds), then sets ghost_mode = false;
 	}
 
 	/**
 	 * Getter for ghost mode
 	 * @return
 	 */
-	public boolean getGhost() {
+	public boolean getGhostMode() {
 		return ghostMode;
 	}
 

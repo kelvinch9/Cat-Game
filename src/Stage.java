@@ -338,7 +338,7 @@ public class Stage extends JPanel implements ActionListener {
 		for(Box box : boxes) {
 			Rectangle box_collision = box.getBounds();
 			// intersects is a Rectangle method
-			if(cat_collision.intersects(box_collision) && (!cat.getGhost())) { 
+			if(cat_collision.intersects(box_collision) && (!cat.getGhostMode())) { 
 				cat.setVisible(false);
 				box.setVisible(false);
 				stageOfGame = 2;
