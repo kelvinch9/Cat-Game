@@ -133,6 +133,7 @@ public class Cat extends Object{
 		TimerTask taskSetGhostFalse = new TimerTask() {
 			public void run() {
 				ghostMode = false;
+				ghostModeExpiration = false;
 			}
 		};
 		

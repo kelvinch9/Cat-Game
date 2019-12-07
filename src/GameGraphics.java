@@ -118,7 +118,7 @@ public class GameGraphics extends JPanel {
 		//displays a message while in ghost mode and ghost mode expiring
 		if(stage.getCat().getGhostMode() && stage.getCat().getGhostModeExpiration()) {
 			g.setColor(Color.RED);
-			g.drawString("GHOST MODE EXPIRING IN 1 SECOND", (stage.getB_WIDTH() - 80) / 3,
+			g.drawString("GHOST MODE EXPIRING IN 1 SECOND", (stage.getB_WIDTH() - 100) / 3,
 					stage.getB_HEIGHT() / 3);
 		}	
 	}
