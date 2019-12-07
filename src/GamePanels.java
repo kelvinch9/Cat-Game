@@ -167,7 +167,7 @@ public class GamePanels extends JFrame {
 				+ "<p>Watch out for speed increases!</p>"
 				+ "<p><i>Speed increases every 1000 distance.</i></p>"
 				+ "<br>" // line break
-				+ "<p>Collect ghosts to active ghost mode!</p>"
+				+ "<p>Collect ghosts to become a ghost cat!</p>"
 				+ "<p>Press the G key to activate ghost mode.</p>"
 				+ "<p><i>In ghost mode, you can run through boxes </i></p>"
 				+ "<p><i>for a short period of time. </i></p>"
