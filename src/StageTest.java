@@ -29,11 +29,43 @@ class StageTest {
 
 	}
 
+	@Test
+	void testBoxCollision() {
+		Stage stage = new Stage();
+		stage.initStage();
+		stage.getCat().setX(100);
+		int Y = stage.getCat().getY();
+		Box box = new Box(100, Y);
+		stage.getBoxes().add(box);
+		stage.checkCollisions();
+		assertEquals(stage.getStageOfGame(), 2);
+	}
 	
 	@Test
-	void testCollision() {
-		
+	void testCoinCollision() {
+		Stage stage = new Stage();
+		stage.initStage();
+		stage.getCat().setX(100);
+		int Y = stage.getCat().getY();
+		Coin coin = new Coin(100, Y);
+		stage.getCoins().add(coin);
+		stage.checkCollisions();
+		assertEquals(stage.getCoinsCollected(), 1);
 	}
+	
+	@Test
+	void testGhostCollision() {
+		Stage stage = new Stage();
+		stage.initStage();
+		stage.getCat().setX(100);
+		int Y = stage.getCat().getY();
+		Ghost ghost = new Ghost(100, Y);
+		stage.getGhosts().add(ghost);
+		stage.checkCollisions();
+		assertEquals(stage.getCat().getGhostsCollected(), 1);
+	}
+	
+	
 }
 
 
