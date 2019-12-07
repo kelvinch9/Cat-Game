@@ -7,6 +7,8 @@ Danielle Coates, Matthew Ordway, Kelvin Cheung
 **Overview:** \
 We are creating a scrolling platformer game. The game theme is a cat who jumps over obstacles. The cat can also collect coins for points. The gameplay gets faster as the game continues.
 
+![Main](https://raw.githubusercontent.com/UPenn-CIT599/final-project-team68_platformer/master/game1%20basic.gif?token=ANWOM6IA4EEPA7SLEWPUDF256RWI6)
+
 **User Needs:** \
 We used Swing as our GUI, which is automatically built into Java, so no additional downloads are needed for that.  We used JDK 11, so this version may be required to run the program. If switching to JDK 11, make sure to update the JRE for the file.
 
@@ -37,7 +39,9 @@ Final score will be displayed at the end of the game. Score = Distance + coins *
 The game will also remember your high score and display this at the end of the game as well.
 
 **Ghost Mode:** \
-//screen shot of ghost mode, ideally with cat through a box \ 
+
+![Ghost](https://raw.githubusercontent.com/UPenn-CIT599/final-project-team68_platformer/master/ghost.gif?token=ANWOM6OVYX63F57AGYYFNLK56RWMS)
+
 You may collect ghosts throughout the game (although they are much rarer when compared to coins). \
 The number of ghosts you have is displayed at the top left of the screen. \
 If you have a ghost, you may enter ghost mode (which will remove this ghost from your inventory).
