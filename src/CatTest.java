@@ -23,7 +23,7 @@ public class CatTest {
 
 	@Test
 	public void testGhost() {
-		cat.ghost();
+		cat.activateGhostMode();
 		assertEquals(cat.getGhostMode(), true);
 	}
 

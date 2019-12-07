@@ -17,7 +17,8 @@ public class Cat extends Object{
 	private int dx; // used to update y location (on y-axis) 
 	private int dy; // used to update x location (on x-axis)
 	private int ghostsCollected;
-	private boolean ghostMode;
+	private boolean ghostMode; 
+	private boolean ghostModeExpiration; // determine if ghost mode is about to expire
 	private Image normalCat;
 	private Image ghostCat;
 
@@ -41,6 +42,7 @@ public class Cat extends Object{
 
 		ghostsCollected = 0;
 		ghostMode = false;
+		ghostModeExpiration = false;
 
 	}
 
@@ -89,7 +91,7 @@ public class Cat extends Object{
 
 		if(key == KeyEvent.VK_G) {
 			if(ghostsCollected > 0 && !ghostMode) {
-				ghost();
+				activateGhostMode();
 				ghostsCollected--;
 			}
 		}
@@ -122,7 +124,7 @@ public class Cat extends Object{
 	/**
 	 * Activates ghost mode w/ timer
 	 */	
-	public void ghost() {
+	public void activateGhostMode() {
 
 		ghostMode = true;
 
@@ -134,13 +136,13 @@ public class Cat extends Object{
 			}
 		};
 		
-//		TimerTask taskGhostDisappWarning = new TimerTask() {
-//			public void run() {
-//				System.out.println("ghost mode expires in 1 sec");
-//			}
-//		};
-//		
-//		timer.schedule(taskGhostDisappWarning, 4000); // waits 3000 milliseconds (3 seconds), then gives 1 second warning
+		TimerTask taskGhostDisappWarning = new TimerTask() {
+			public void run() {
+				ghostModeExpiration = true;
+			}
+		};
+		
+		timer.schedule(taskGhostDisappWarning, 3500); // waits 3500 milliseconds (3.5 seconds), then gives 1.5 second warning
 		timer.schedule(taskSetGhostFalse, 5000); // waits 5000 milliseconds (5 seconds), then sets ghost_mode = false;
 	}
 
@@ -150,6 +152,14 @@ public class Cat extends Object{
 	 */
 	public boolean getGhostMode() {
 		return ghostMode;
+	}
+	
+	/**
+	 * Getter for ghost mode expiration
+	 * @return
+	 */
+	public boolean getGhostModeExpiration() {
+		return ghostModeExpiration;
 	}
 
 	/**

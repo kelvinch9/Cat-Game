@@ -108,26 +108,19 @@ public class GameGraphics extends JPanel {
 					stage.getB_HEIGHT() / 2);
 		}
 
-		//displays a message while in ghost mode
-		if(stage.getCat().getGhostMode()) {
-			g.setColor(Color.RED);
+		//displays a message while in ghost mode and ghost mode not expiring
+		if(stage.getCat().getGhostMode() && !stage.getCat().getGhostModeExpiration()) {
+			g.setColor(Color.BLACK);
 			g.drawString("GHOST MODE", (stage.getB_WIDTH() - 80) / 2,
 					stage.getB_HEIGHT() / 3);
-			
-//			TimerTask taskGhostDisappWarning = new TimerTask() {
-//				public void run() {
-//					System.out.println("test");
-//					g.drawString("GHOST MODE EXPIRES 1 SECOND", (stage.getB_WIDTH() - 80) / 2,
-//							stage.getB_HEIGHT() / 3);
-//				}
-//			};
-//			
-//			Timer timer = new Timer();
-//			timer.schedule(taskGhostDisappWarning, 4000); // waits 3000 milliseconds (3 seconds), then gives 1 second warning			
-
 		}
 		
-		
+		//displays a message while in ghost mode and ghost mode expiring
+		if(stage.getCat().getGhostMode() && stage.getCat().getGhostModeExpiration()) {
+			g.setColor(Color.RED);
+			g.drawString("GHOST MODE EXPIRING IN 1 SECOND", (stage.getB_WIDTH() - 80) / 3,
+					stage.getB_HEIGHT() / 3);
+		}	
 	}
 
 
