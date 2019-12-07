@@ -20,7 +20,7 @@ public class GameGraphics extends JPanel {
 	private ImageIcon gameBackground;
 
 	/**
-	 * Constructor to initialize values
+	 * Constructor to initialize values (Stage class and image of game background)
 	 * @param stage
 	 * @param gameBackground
 	 */
@@ -138,7 +138,7 @@ public class GameGraphics extends JPanel {
 		Font small = new Font("Helvetica", Font.BOLD, 14);
 		FontMetrics fm = getFontMetrics(small);
 
-		//sets fond and color
+		//sets font and color
 		g.setColor(Color.white);
 		g.setFont(small);
 
