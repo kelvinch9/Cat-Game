@@ -1,4 +1,4 @@
-Summary – Team 68’s Cat Game!
+Summary â€“ Team 68â€™s Cat Game!
 Kelvin Cheung, Danielle Coates, and Matt Ordway
 https://github.com/UPenn-CIT599/final-project-team68_platformer
 
@@ -10,12 +10,15 @@ that the cat may collect as a power up. The player can activate ghost mode and t
  
 Work Breakdown:
 
-Kelvin Cheung –
+Kelvin Cheung â€“ Kelvin worked on the objects of the game. He broke down the different types of objects and designed
+the inheritance heiarchy between them. He also implemented the methods of these objects, including the ghost mode
+ability of the cat. He also sourced the art and modified the sizes for the game, none of which are copyrighted and
+can be found for free use in websites such as https://opengameart.org/.
 
-Danielle Coates – Danielle worked on the mechanics of the game. She generated the objects that appear onscreen, 
-modifying the random generation to acceptable levels.  She made sure coins don’t appear over boxes, boxes don’t 
-generate too closely together, boxes don’t generate too soon after a speed increase, and that there can only be 
-one ghost on screen at a time. She also created and modified the cat’s jump ability and adjusted the hit box so 
+Danielle Coates â€“ Danielle worked on the mechanics of the game. She generated the objects that appear onscreen, 
+modifying the random generation to acceptable levels.  She made sure coins donâ€™t appear over boxes, boxes donâ€™t 
+generate too closely together, boxes donâ€™t generate too soon after a speed increase, and that there can only be 
+one ghost on screen at a time. She also created and modified the catâ€™s jump ability and adjusted the hit box so 
 collisions look realistic. She also programmed the speed increase, so that all of the objects travel faster (and 
 the cat jumps faster) every 1000 distance traveled. 
 
