@@ -17,7 +17,7 @@ We used Swing as our GUI, which is automatically built into Java, so no addition
 **Game Start:** \
 To run the game, use the runner.java file.  This will open a new window on your screen.
 
-**Opening Screen:** \
+**Opening Screen:** 
 <p align="center">
 <img src="https://github.com/UPenn-CIT599/final-project-team68_platformer/blob/master/Opening_Screen.PNG">
 </p>
@@ -28,12 +28,12 @@ The Play button starts the game (see below). \
 The Guide button explains the rules of the game. \
 The Credits buttons shows the authors of the game. 
 
-**After Clicking Play Button:** \
+**After Clicking Play Button:** 
 <p align="center">
 <img src="https://github.com/UPenn-CIT599/final-project-team68_platformer/blob/master/Enter.PNG">
 </p>
 
-To begin a game, press the enter button. \
+To begin a game, press the enter button. 
 
 <p align="center">
 <img src="https://github.com/UPenn-CIT599/final-project-team68_platformer/blob/master/Game_Start.PNG>
@@ -64,7 +64,7 @@ While in ghost mode, you can travel through boxes without being harmed. \
 You remain a ghost for 6 seconds.
 
 **Game End:** \
-When you collide with a box when you are not in game mode, the game ends. \
+When you collide with a box when you are not in game mode, the game ends. 
 
 <p align="center">
 <img src="https://github.com/UPenn-CIT599/final-project-team68_platformer/blob/master/Game_Over.PNG">
