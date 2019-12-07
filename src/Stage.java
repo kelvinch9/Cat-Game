@@ -31,7 +31,7 @@ public class Stage extends JPanel implements ActionListener {
 	private final int B_WIDTH = 400; // screen width
 	private final int B_HEIGHT = 300; // screen height
 	private final int DELAY = 15;
-	private final int FLOOR = 250; // this is considered the floor. Leave as public
+	private final int FLOOR = 250; // this is considered the floor
 	private int coinsCollected = 0;
 	private int distance = 1;
 	private int factor = 1;
