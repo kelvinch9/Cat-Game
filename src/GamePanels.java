@@ -16,7 +16,7 @@ import javax.swing.JPanel;
 /**
  * Class for all the Panels in the game. Includes:
  * (1) gamePanel - the actual game (Stage class)
- * (2) guidePanel - instructions on game
+ * (2) guidePanel - instructions for game
  * (3) creditsPanel - credits for game
  * @author Team 68
  */
@@ -237,8 +237,8 @@ public class GamePanels extends JFrame {
 		buttonPanel.add(creditsBack);
 
 		// add label and button panels to main Panel
-		creditsPanel.add(labelPanel, BorderLayout.NORTH); // puts in north quadrant
-		creditsPanel.add(buttonPanel, BorderLayout.SOUTH); // puts in south quadrant
+		creditsPanel.add(labelPanel, BorderLayout.NORTH); // put in north quadrant
+		creditsPanel.add(buttonPanel, BorderLayout.SOUTH); // put in south quadrant
 
 
 		// add action to "back" button
@@ -266,7 +266,7 @@ public class GamePanels extends JFrame {
 		// Add the game (Stage Class) to the gamePanel
 		game = new Stage();
 		gamePanel.add(game);
-		//		gamePanel.setFocusable(true);
+		//gamePanel.setFocusable(true);
 
 		return gamePanel;
 	}

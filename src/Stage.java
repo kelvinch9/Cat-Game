@@ -31,7 +31,7 @@ public class Stage extends JPanel implements ActionListener {
 	private final int B_WIDTH = 400; // screen width
 	private final int B_HEIGHT = 300; // screen height
 	private final int DELAY = 15;
-	public final int FLOOR = 250; // this is considered the floor. Leave as public
+	private final int FLOOR = 250; // this is considered the floor. Leave as public
 	private int coinsCollected = 0;
 	private int distance = 1;
 	private int factor = 1;
@@ -345,7 +345,7 @@ public class Stage extends JPanel implements ActionListener {
 			}
 		}
 
-		//checks if the cat get a coin, if so, it removes it
+		//checks if the cat get a coin, if so, it removes it and adds to coinsCollected
 		for(int i = 0; i < coins.size(); i++) {
 			Coin coin = coins.get(i);
 			Rectangle coin_collision = coin.getBounds();
@@ -355,7 +355,7 @@ public class Stage extends JPanel implements ActionListener {
 			}
 		}
 
-		//checks to see if cat gets a ghost, if so, removes it
+		//checks to see if cat gets a ghost, if so, removes it and adds to ghostsCollected
 		for(int i = 0; i < ghosts.size(); i++) {
 			Ghost ghost = ghosts.get(i);
 			Rectangle ghost_collision = ghost.getBounds();
@@ -471,7 +471,10 @@ public class Stage extends JPanel implements ActionListener {
 	}
 
 	/**
-	 * Checks if enter is pressed to start/restard the game
+	 * Allows KeyListener to work in the Stage class
+	 * This includes checking if "enter" is pressed to start/restart the game,
+	 * if "space" is pressed to jump the cat, and if "g" is pressed to use ghost mode
+	 * 
 	 * @author Team 68
 	 */
 	private class TAdapter extends KeyAdapter {
