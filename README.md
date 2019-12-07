@@ -17,21 +17,21 @@ To run the game, use the runner.java file.  This will open a new window on your 
 
 **Opening Screen:** \
 //include screenshot of game here \
-There are three options on the opening screen of the game: Start, Guide, and Credits //make sure these are the actual titles \
+There are three options on the opening screen of the game: Play, Guide, and Credits //make sure these are the actual titles \
 You may click on any of these options. \
-The Start button starts the game (see below). \
+The Play button starts the game (see below). \
 The Guide button explains the rules of the game. \
 The Credits buttons shows the authors of the game. 
 
-**After Clicking Start Button:** \
+**After Clicking Play Button:** \
 //screenshot of press enter to begin \
-To begin a game, press the enter button. The enter button will also restart the game //(check that this is true). \
+To begin a game, press the enter button. \
 //screenshot of game start \
 When playing the game, your goal is to get the high score by traveling the farthest distance (distance = points) and collecting the most coins (each coin = 100 points). \
 You must avoid boxes or you will get a game over. \
 You may also collect a ghost for ghost mode (see below). \
 Press space to jump over boxes, collect coins, or collect a ghost. \
-Every 1000 distance, the game will speed up. There is a warning 100 //(might be 50) distance before the speed up occurs. You will not have to jump over a box in the first //check distance  after the speed up (to give you a little time to figure out the speed), although you may already be above a box when speed up occurs (since your previous jump was still at the old speed). 
+Every 1000 distance, the game will speed up. There is a warning 50 distance before the speed up occurs. You will not have to jump over a box in the first 200 distance  after the speed up (to give you a little time to figure out the speed), although you may already be above a box when speed up occurs (since your previous jump was still at the old speed). 
 
 **Score:** \
 You can see your distance traveled, coins collected, and ghosts collected in the top left corner of the game screen. \
