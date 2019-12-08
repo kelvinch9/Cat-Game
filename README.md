@@ -30,13 +30,13 @@ The Credits buttons shows the authors of the game.
 
 **After Clicking Play Button:** 
 <p align="center">
-<img src="https://github.com/UPenn-CIT599/final-project-team68_platformer/blob/master/Enter.PNG">
+<img src="https://raw.githubusercontent.com/UPenn-CIT599/final-project-team68_platformer/master/sample_images/Enter.PNG?token=ANWOM6OI63WGLHHFKOGOKY256V4L2">
 </p>
 
 To begin a game, press the enter button. 
 
 <p align="center">
-<img src="https://github.com/UPenn-CIT599/final-project-team68_platformer/blob/master/Game_Start.PNG>
+<img src="https://raw.githubusercontent.com/UPenn-CIT599/final-project-team68_platformer/master/sample_images/Game_Start.PNG?token=ANWOM6LBQLCHRHZDDZFOOCC56V4M4">
           </p>
 
 When playing the game, your goal is to get the high score by traveling the farthest distance (distance = points) and collecting the most coins (each coin = 100 points). \
@@ -53,7 +53,7 @@ The game will also remember your high score and display this at the end of the g
 **Ghost Mode:** 
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/UPenn-CIT599/final-project-team68_platformer/master/ghost.gif?token=ANWOM6OVYX63F57AGYYFNLK56RWMS">
+<img src="https://raw.githubusercontent.com/UPenn-CIT599/final-project-team68_platformer/master/sample_images/ghost.gif?token=ANWOM6LI5E7ZY7Q3DEARRAC56V4OM">
   </p>
 
 You may collect ghosts throughout the game (although they are much rarer when compared to coins). \
@@ -67,7 +67,7 @@ You remain a ghost for 6 seconds.
 When you collide with a box when you are not in game mode, the game ends. 
 
 <p align="center">
-<img src="https://github.com/UPenn-CIT599/final-project-team68_platformer/blob/master/Game_Over.PNG">
+<img src="https://raw.githubusercontent.com/UPenn-CIT599/final-project-team68_platformer/master/sample_images/Game_Over.PNG?token=ANWOM6NQVMTIWKD7YXRXHDS56V4PW">
   </p>
 
 You will see a game over screen that displays your score and the high score. \
