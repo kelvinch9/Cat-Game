@@ -14,6 +14,10 @@ class StageTest {
 	Stage stage = new Stage();
 	Score score = new Score();
 
+	/**
+	 * Tests the method responsible for creating the initial
+	 * state of the game.
+	 */
 	@Test
 	void testInitStage() {
 		stage.initStage();
@@ -32,6 +36,9 @@ class StageTest {
 
 	
 	
+	/**
+	 * Tests the checkCollision method for the cat and a box.
+	 */
 	@Test
 	void testBoxCollision() {
 		Stage stage = new Stage();
@@ -45,6 +52,11 @@ class StageTest {
 		assertEquals(2, stage.getStageOfGame());
 	}
 	
+	
+	/**
+	 * Tests the checkCollision method for the cat and a coin.
+	 * 
+	 */
 	@Test
 	void testCoinCollision() {
 		Stage stage = new Stage();
@@ -58,6 +70,11 @@ class StageTest {
 		assertEquals(1, stage.getCoinsCollected());
 	}
 	
+	
+	/**
+	 * Tests the checkCollision method for the cat and a ghost.
+	 * 
+	 */
 	@Test
 	void testGhostCollision() {
 		Stage stage = new Stage();

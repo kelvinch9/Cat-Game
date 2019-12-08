@@ -11,6 +11,10 @@ import org.junit.jupiter.api.Test;
  */
 class GamePanelsTest {
 	
+	/**
+	 * Tests the start button and whether it changes
+	 * the panel the game.
+	 */
 	@Test
 	void testStartButton() {
 		GamePanels panels = new GamePanels(new Stage());
@@ -19,10 +23,6 @@ class GamePanelsTest {
 		JButton start = panels.getStart();
 		start.doClick();
 		assertEquals(true, panels.isInGamePanel());
-		
 	}
-	
-
-
 
 }

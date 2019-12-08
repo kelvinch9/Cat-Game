@@ -10,6 +10,11 @@ import org.junit.jupiter.api.Test;
 class ScoreTest {
 	Score score = new Score();
 	
+	/**
+	 * Tests the method responsible for calculating
+	 * the score.
+	 * 
+	 */
 	@Test
 	void testCalcScore() {
 		assertEquals(0, score.calcScore(0, 0));
@@ -19,6 +24,10 @@ class ScoreTest {
 		assertEquals(600, score.calcScore(0, 600));
 	}
 
+	/**
+	 * Tests the method responsible for calculating the high score.
+	 * 
+	 */
 	@Test
 	void testCalcHighScore() {
 		score.setHighScore(100);
@@ -29,7 +38,10 @@ class ScoreTest {
 		assertEquals(1000, score.getHighScore());
 	}
 
-	
+	/**
+	 * Tests the logic to display a high score
+	 * (i.e. is the score a new  high score).
+	 */
 	@Test
 	void testDisplayHighScore() {
 		score.setIfGameRetried(false);
