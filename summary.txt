@@ -14,7 +14,7 @@ Additionally, there is a ghost that the cat may collect as a power up.
 The player can activate ghost mode and travel through boxes for 5 seconds. 
 
 
---------------
+---------------
 
  
 Work Breakdown:
