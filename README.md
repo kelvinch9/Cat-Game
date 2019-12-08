@@ -40,15 +40,15 @@ To begin a game, press the "Enter" button.
           </p>
 
 When playing the game, your goal is to get the high score by traveling the farthest distance (distance = points) and collecting the most coins (each coin = 100 points). \
-You must avoid boxes or you will get a game over. \
-You may also collect a ghost for ghost mode (see below). \
-Press "Space" to jump over boxes, collect coins, or collect a ghost. \
+Press "Space" to jump over boxes, collect coins, or collect a ghost (see Ghost Mode below). \
+If you hit a box, you will get a game over. \
+
 Every 1000 distance, the game will speed up. There is a warning 50 distance before the speed up occurs. You will not have to jump over a box in the first 200 distance after the speed up (to give you a little time to figure out the speed), although you may already be above a box when speed up occurs (since your previous jump was still at the old speed). 
 
 **Score:** \
 You can see your distance traveled, coins collected, and ghosts collected in the top left corner of the game screen. \
 The final score will be displayed at the end of the game. Score = Distance + coins * 100. \
-The game will also remember your high score and display this at the end of the game as well (if you replay the game).
+The game will also remember your high score (if you replay the game) and display this at the end of the game.
 
 **Ghost Mode:** 
 
