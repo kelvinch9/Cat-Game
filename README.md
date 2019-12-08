@@ -26,7 +26,7 @@ There are three options on the opening screen of the game: Play, Guide, and Cred
 You may click on any of these options. \
 The Play button starts the game (see below). \
 The Guide button explains the rules of the game. \
-The Credits buttons shows the authors of the game. 
+The Credit buttons shows the authors of the game. 
 
 **After Clicking Play Button:** 
 <p align="center">
