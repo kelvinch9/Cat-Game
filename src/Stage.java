@@ -25,9 +25,9 @@ public class Stage extends JPanel implements ActionListener {
 	private Timer timer;
 	private Cat cat;
 	private Bird bird;
-	private List<Box> boxes;
-	private List<Coin> coins;
-	private List<Ghost> ghosts;
+	private ArrayList<Box> boxes;
+	private ArrayList<Coin> coins;
+	private ArrayList<Ghost> ghosts;
 	private int stageOfGame;   // 0 = start screen; 1 = in game; 2 = game over
 	private final int B_WIDTH = 400; // screen width
 	private final int B_HEIGHT = 300; // screen height
