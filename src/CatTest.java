@@ -17,6 +17,16 @@ public class CatTest {
 
 	
 	/**
+	 * Tests if the cat is visible after Class creation.
+	 * Cat should inherit visible = true from Object class.
+	 */
+	@Test
+	public void testVisible() {
+		assertEquals(true, cat.isVisible());
+	}
+	
+	
+	/**
 	 * Tests the jump method for the cat.
 	 * 
 	 */

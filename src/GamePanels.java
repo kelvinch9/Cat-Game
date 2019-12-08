@@ -23,12 +23,18 @@ import javax.swing.JPanel;
 public class GamePanels extends JFrame {
 
 	private Stage game;
-	private boolean inGamePanel;   // is panel currently in focus the gamePanel
+	private boolean inGamePanel;   // is gamePanel currently in focus
 	private JPanel UI;	// main JPanel
 	private CardLayout cards;   // cards organize the JPanels (layout-related)
 	
 	
-	private JButton start; // start button is an instance variable for JUnit test
+	private JButton start; // start button is an instance variable for JUnit test only
+	private JButton guide; // guide button is an instance variable for JUnit test only
+	private JButton credits; // credits button is an instance variable for JUnit test only
+	
+	private boolean inGuidePanel; // is guidePanel currently in focus (used for JUnit test only)
+	private boolean inCreditsPanel; // is creditsPanel currently in focus (used for JUnit test only)
+	
 
 
 	/**
@@ -84,8 +90,8 @@ public class GamePanels extends JFrame {
 
 		// create buttons to access other panels
 		start = new JButton("Play");
-		JButton guide = new JButton("Guide");
-		JButton credits = new JButton("Credits");
+		guide = new JButton("Guide");
+		credits = new JButton("Credits");
 
 
 		// create a JLabel to display text for the panel - includes HTML for formatting
@@ -132,6 +138,7 @@ public class GamePanels extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				cards.show(UI, "guidePanel");
+				inGuidePanel = true;
 			}
 		});
 
@@ -141,6 +148,7 @@ public class GamePanels extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				cards.show(UI, "creditsPanel");
+				inCreditsPanel = true;
 			}
 		});
 
@@ -198,6 +206,7 @@ public class GamePanels extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				cards.show(UI, "startPanel");
+				inGuidePanel = false;
 			}
 		});
 		return guidePanel;
@@ -250,6 +259,7 @@ public class GamePanels extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				cards.show(UI, "startPanel");
+				inCreditsPanel = false;
 			}
 		});
 
@@ -302,6 +312,45 @@ public class GamePanels extends JFrame {
 	public JButton getStart() {
 		return start;
 	}
+	
+	/**
+	 * Getter for guide button.
+	 * Used for JUnit test only.
+	 * @return
+	 */
+	public JButton getGuide() {
+		return guide;
+	}
+	
+	/**
+	 * Getter for credits button.
+	 * Used for JUnit test only.
+	 * @return
+	 */
+	public JButton getCredits() {
+		return credits;
+	}
+	
+	/**
+	 * Getter for inGuidePanel.
+	 * Used for JUnit test only.
+	 * @return
+	 */
+	public boolean isInGuidePanel() {
+		return inGuidePanel;
+	}
+
+	/**
+	 * Getter for inCreditsPanel.
+	 * Used for JUnit test only.
+	 * 
+	 * @return
+	 */
+	public boolean isInCreditsPanel() {
+		return inCreditsPanel;
+	}
+
+
 
 
 
