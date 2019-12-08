@@ -41,7 +41,7 @@ To begin a game, press the "Enter" button.
 
 When playing the game, your goal is to get the high score by traveling the farthest distance (distance = points) and collecting the most coins (each coin = 100 points). \
 Press "Space" to jump over boxes, collect coins, or collect a ghost (see Ghost Mode below). \
-If you hit a box, you will get a game over. \
+If you hit a box, you will get a game over. 
 
 Every 1000 distance, the game will speed up. There is a warning 50 distance before the speed up occurs. You will not have to jump over a box in the first 200 distance after the speed up (to give you a little time to figure out the speed), although you may already be above a box when speed up occurs (since your previous jump was still at the old speed). 
 
@@ -72,6 +72,6 @@ If the cat hits a box, the game ends.
 
 You will see a game over screen that displays your score and the high score. \
 If you would like to replay the game, you may do so by pressing "Enter". \
-High scores will only be saved if you choose to replay the game, if you exit the window, the memory is erased.
+High scores will only be saved if you choose to replay the game; if you exit the window, the memory is erased.
 
 
