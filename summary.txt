@@ -36,4 +36,5 @@ a user to switch between three different screens (Play screen (the game), Guide 
 Credits screen (game designers). He created game functionality, such as the ability to replay the game,
 warn the user when ghost mode will expire, and to display a high score (if the game is replayed). He also worked on 
 refactoring the code to increase DRYness, such as separating out the Score and GameGraphics functionality into their 
-own Classes.    
+own Classes.   
+  
