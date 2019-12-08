@@ -3,6 +3,7 @@ import java.util.Random;
 /**
  * This class represents a bird. It is for visual purposes only.
  * It extends from the object class.
+ * 
  * @author Team 68
  */
 public class Bird extends Object{

@@ -17,6 +17,7 @@ import javax.swing.Timer;
  * This class represents the stage of the game. It extends
  * JPanel and implements ActionListener, both of which are
  * parts of the Swing library
+ * 
  * @author Team 68
  */
 public class Stage extends JPanel implements ActionListener {
@@ -60,7 +61,8 @@ public class Stage extends JPanel implements ActionListener {
 
 
 	/**
-	 * This method sets the initial state of the game
+	 * This method sets the initial state of the game.
+	 * 
 	 */
 	//for JUnit, this need to be public, can set to private when not running JUnit
 	public void initStage() { 
@@ -144,7 +146,7 @@ public class Stage extends JPanel implements ActionListener {
 
 
 	/**
-	 * this method performs actions continuously as the game runs
+	 * This method performs actions continuously as the game runs
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {

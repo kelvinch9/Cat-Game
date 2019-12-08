@@ -2,6 +2,7 @@
 /**
  * This class represents a ghost that the cat
  * can catch. It extends from the object class.
+ * 
  * @author Team 68
  */
 public class Ghost extends Object{

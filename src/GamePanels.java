@@ -18,6 +18,7 @@ import javax.swing.JPanel;
  * (1) gamePanel - the actual game (Stage class)
  * (2) guidePanel - instructions for game
  * (3) creditsPanel - credits for game
+ * 
  * @author Team 68
  */
 public class GamePanels extends JFrame {
@@ -349,8 +350,6 @@ public class GamePanels extends JFrame {
 	public boolean isInCreditsPanel() {
 		return inCreditsPanel;
 	}
-
-
 
 
 

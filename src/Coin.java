@@ -1,6 +1,7 @@
 /**
  * This class represents a coin object for
  * the cat to obtain. It extends the object class.
+ * 
  * @author Team 68
  */
 public class Coin extends Object{

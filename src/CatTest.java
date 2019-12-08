@@ -4,9 +4,8 @@ import org.junit.Test;
 
 
 /**
- * JUnit tests for methods
- * Difficult to test many GUI methods, so made sure it functions properly.
- * Easier to test by playing the game!
+ * JUnit tests for the Cat class.
+ * 
  * @author Team 68
  */
 

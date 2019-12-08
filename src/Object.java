@@ -6,6 +6,7 @@ import javax.swing.ImageIcon;
  * This class represents the objects, including the cat 
  * and what it interacts with. It can represent barriers 
  * that cause game over or coins to improve score.
+ * 
  * @author Team 68
  *
  */

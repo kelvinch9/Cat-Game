@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 /**
  * This is a JUnit test class for the Score class
+ * 
  * @author Team 68
  *
  */

@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 /**
  * This class represents the cat (the player of the game)
  * This class extends from the Object class
+ * 
  * @author Team 68
  */
 public class Cat extends Object{

@@ -5,13 +5,12 @@ import java.awt.FontMetrics;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import java.awt.Graphics;
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  * This class sets up all of the graphics for the game
  * It draws the game start screen and game over screen
  * It also draws all of the objects 
+ * 
  * @author Team 68
  */
 public class GameGraphics extends JPanel {

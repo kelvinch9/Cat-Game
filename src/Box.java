@@ -3,6 +3,7 @@ import java.util.ArrayList;
 /**
  * This class represents a box that the cat
  * must avoid. It extends from the object class.
+ * 
  * @author Team 68
  */
 public class Box extends Object{

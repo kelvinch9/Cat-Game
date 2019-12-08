@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
 
 /**
- * JUnit tests for methods
- * Difficult to test many GUI methods, so made sure it initialized properly
+ * This is a JUnit test class for the Stage class.
+ * Note that it's difficult to use JUnit tests for GUI-heavy code.
+ * 
  * @author Team 68
  *
  */

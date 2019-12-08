@@ -1,9 +1,13 @@
 /**
- * This class creates a score for the game just played.
- * It compares the previous high score to the current high score
- * to set the current high score.
+ * This Class represents the score of the game.
+ * 
+ * It contains a score for the game just played.
+ * 
+ * It compares the previous high score to the current score.
+ * 
  * It also checks if the game has been played before to display
- * a unique message after the first game.
+ * a unique message for whether the score is a high score.
+ * 
  * @author Team 68
  */
 public class Score {

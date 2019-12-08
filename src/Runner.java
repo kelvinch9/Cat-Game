@@ -17,6 +17,7 @@ public class Runner extends JFrame{
 	 * This method runs the game
 	 */
 	public Runner() {
+		
 		// instantiate Stage and GamePanels variables
 		gameStage = new Stage();
 		panels = new GamePanels(gameStage);
