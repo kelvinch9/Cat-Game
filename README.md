@@ -8,7 +8,7 @@ Danielle Coates, Matthew Ordway, Kelvin Cheung
 We are creating a scrolling platformer game. The game theme is a cat who jumps over obstacles. The cat can also collect coins for points. The gameplay gets faster as the game continues.
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/UPenn-CIT599/final-project-team68_platformer/master/game1%20basic.gif?token=ANWOM6IA4EEPA7SLEWPUDF256RWI6">
+<img src="https://raw.githubusercontent.com/UPenn-CIT599/final-project-team68_platformer/master/sample_images/game1%20basic.gif?token=ANWOM6NFYUZZVEBF22IXSBC56V4G6">
 </p>
 
 **User Needs:** \
@@ -19,7 +19,7 @@ To run the game, use the runner.java file.  This will open a new window on your 
 
 **Opening Screen:** 
 <p align="center">
-<img src="https://github.com/UPenn-CIT599/final-project-team68_platformer/blob/master/Opening_Screen.PNG">
+<img src="https://raw.githubusercontent.com/UPenn-CIT599/final-project-team68_platformer/master/sample_images/Opening_Screen.PNG?token=ANWOM6O22UGMKBUIM2EZKV256V4JQ">
 </p>
 
 There are three options on the opening screen of the game: Play, Guide, and Credits //make sure these are the actual titles \
