@@ -25,7 +25,10 @@ public class GamePanels extends JFrame {
 	private Stage game;
 	private boolean inGamePanel;   // is panel currently in focus the gamePanel
 	private JPanel UI;	// main JPanel
-	CardLayout cards;   // cards organized the JPanels (layout-related)
+	private CardLayout cards;   // cards organize the JPanels (layout-related)
+	
+	
+	private JButton start; // start button is an instance variable for JUnit test
 
 
 	/**
@@ -80,7 +83,7 @@ public class GamePanels extends JFrame {
 		startPanel.setLayout(new BorderLayout()); // BorderLayout is a layout manager for JPanel
 
 		// create buttons to access other panels
-		JButton start = new JButton("Play");
+		start = new JButton("Play");
 		JButton guide = new JButton("Guide");
 		JButton credits = new JButton("Credits");
 
@@ -279,6 +282,30 @@ public class GamePanels extends JFrame {
 	public JPanel getUI() {
 		return UI;
 	}
+	
+	
+	/**
+	 * Getter for inGamePanel boolean.
+	 * Used for JUnit test only.
+	 * @return
+	 */
+	public boolean isInGamePanel() {
+		return inGamePanel;
+	}
+	
+
+	/**
+	 * Getter for start button.
+	 * Used for JUnit test only.
+	 * @return
+	 */
+	public JButton getStart() {
+		return start;
+	}
+
+
+
+
 
 
 	/**
