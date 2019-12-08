@@ -2,24 +2,38 @@ Summary – Team 68’s Cat Game!
 Kelvin Cheung, Danielle Coates, and Matt Ordway
 https://github.com/UPenn-CIT599/final-project-team68_platformer
 
-The game was developed using Swing as a GUI.  The user plays as a cat in a scrolling platformer game.  
-The cat must jump over boxes or else it crashes and gets a game over.  The cat may collect coins (each worth 100 points) 
-to try to get a high score, which combines points from coins and total distance traveled.  After every 1000 distance traveled, 
-the speed of the game increases. A user can replay the game to try to beat the high score.  Additionally, there is a ghost 
-that the cat may collect as a power up. The player can activate ghost mode and travel through boxes for 6 seconds. 
+Game summary: 
+
+The Cat Game is a scrolling platformer game that uses Swing as a GUI. 
+The cat must jump over boxes to avoid crashing and getting a game over.  
+The cat may collect coins (each worth 100 points) to increase its score, a combination of points from coins 
+and total distance traveled. The game also records high scores, if you replay the game.
+
+After every 1000 distance traveled, the speed of the game increases. 
+Additionally, there is a ghost that the cat may collect as a power up. 
+The player can activate ghost mode and travel through boxes for 5 seconds. 
+
+
+--------------
+
  
 Work Breakdown:
 
 Kelvin Cheung – Kelvin worked on the objects of the game. He broke down the different types of objects and designed
 the inheritance heiarchy between them. He also implemented the methods of these objects, including the ghost mode
 ability of the cat. He also sourced the art and modified the sizes for the game, none of which are copyrighted and
-can be found for free use in websites such as https://opengameart.org/.
+can be found for free on websites such as https://opengameart.org/.
 
-Danielle Coates – Danielle worked on the mechanics of the game. She generated the objects that appear onscreen, 
+Danielle Coates – Danielle worked on the mechanics of the game. She generated the objects that appear on screen, 
 modifying the random generation to acceptable levels.  She made sure coins don’t appear over boxes, boxes don’t 
 generate too closely together, boxes don’t generate too soon after a speed increase, and that there can only be 
 one ghost on screen at a time. She also created and modified the cat’s jump ability and adjusted the hit box so 
 collisions look realistic. She also programmed the speed increase, so that all of the objects travel faster (and 
 the cat jumps faster) every 1000 distance traveled. 
 
-Matt Ordway - 
+Matt Ordway - Matt worked on the user interface (UI) of the game. He created the panels and logic that allows
+a user to switch between three different screens (Play screen (the game), Guide screen (game instructions), and 
+Credits screen (game designers). He created game functionality, such as the ability to replay the game,
+warn the user when ghost mode will expire, and to display a high score (if the game is replayed). He also worked on 
+refactoring the code to increase DRYness, such as separating out the Score and GameGraphics functionality into their 
+own Classes.    
