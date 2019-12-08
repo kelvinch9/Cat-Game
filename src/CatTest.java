@@ -18,35 +18,35 @@ public class CatTest {
 	@Test
 	public void testJump() {
 		cat.jump();
-		assertEquals(cat.getY(), 250);
+		assertEquals(250, cat.getY());
 	}
 
 	@Test
 	public void testGhost() {
 		cat.activateGhostMode();
-		assertEquals(cat.getGhostMode(), true);
+		assertEquals(true, cat.getGhostMode());
 	}
 
 	@Test
 	public void testGhostsCollected() {
 		cat.getGhostsCollected();
-		assertEquals(cat.getGhostsCollected(), 0); 
+		assertEquals(0, cat.getGhostsCollected()); 
 		cat.setGhostsCollected(cat.getGhostsCollected() + 1);
-		assertEquals(cat.getGhostsCollected(), 1);
+		assertEquals(1, cat.getGhostsCollected());
 	}
 
 	@Test
 	public void testHeight() {
 		cat.y = 400;
 		cat.move();
-		assertEquals(cat.getY(), 250);
+		assertEquals(250, cat.getY());
 	}
 
 	@Test
 	public void testDoubleJump() {
-		assertEquals(cat.canJump(), true);
+		assertEquals(true, cat.canJump());
 		cat.y = 400;
-		assertEquals(cat.canJump(), false);
+		assertEquals(false, cat.canJump());
 	}
 }
 
