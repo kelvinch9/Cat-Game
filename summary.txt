@@ -17,7 +17,7 @@ The player can activate ghost mode and travel through boxes for 5 seconds.
 ---------------
 
  
-Work Breakdown:
+Work Breakdown: 
 
 Kelvin Cheung – Kelvin worked on the objects of the game. He broke down the different types of objects and designed
 the inheritance heiarchy between them. He also implemented the methods of these objects, including the ghost mode
