@@ -12,7 +12,7 @@ We created a scrolling platformer game. The game theme is a cat that jumps over 
 </p>
 
 **User Needs:** \
-We used Swing as our GUI, which is automatically built into Java.  We used the lastest version of Eclipse and Java (JDK 13), so this version may be required to run the program. If you switch your JDK, make sure to update the JRE for the file. Note that one user noted a black screen on the GUI, whicih we believe is due to outdated versions.
+We used Swing as our GUI, which is automatically built into Java.  We used the lastest version of Eclipse and Java (JDK 13), so this version may be required to run the program. If you switch your JDK, make sure to update the JRE for the file. Note that one user noted a black screen on the GUI, which we believe is due to outdated versions.
 
 **Game Start:** \
 To run the game, use the runner.java file. This will open a new window on your screen to interact with the game.
@@ -42,7 +42,7 @@ To begin a game, press the "Enter" button.
 When playing the game, your goal is to get the high score by traveling the farthest distance (distance = points) and collecting the most coins (each coin = 100 points). \
 You must avoid boxes or you will get a game over. \
 You may also collect a ghost for ghost mode (see below). \
-Press space to jump over boxes, collect coins, or collect a ghost. \
+Press "Space" to jump over boxes, collect coins, or collect a ghost. \
 Every 1000 distance, the game will speed up. There is a warning 50 distance before the speed up occurs. You will not have to jump over a box in the first 200 distance after the speed up (to give you a little time to figure out the speed), although you may already be above a box when speed up occurs (since your previous jump was still at the old speed). 
 
 **Score:** \
