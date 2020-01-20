@@ -8,7 +8,7 @@ Danielle Coates, Matthew Ordway, Kelvin Cheung
 We created a scrolling platformer game. The game theme is a cat that jumps over obstacles. The cat can also collect coins for points. The gameplay gets faster as the game continues.
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/UPenn-CIT599/final-project-team68_platformer/master/sample_images/game1%20basic.gif?token=ANWOM6NFYUZZVEBF22IXSBC56V4G6">
+<img src="https://github.com/kelvinch9/Cat-Game/blob/master/sample_images/game1%20basic.gif">
 </p>
 
 **User Needs:** \
@@ -19,7 +19,7 @@ To run the game, use the runner.java file. This will open a new window on your s
 
 **Opening Screen:** 
 <p align="center">
-<img src="https://raw.githubusercontent.com/UPenn-CIT599/final-project-team68_platformer/master/sample_images/Opening_Screen.PNG?token=ANWOM6O22UGMKBUIM2EZKV256V4JQ">
+<img src="https://github.com/kelvinch9/Cat-Game/blob/master/sample_images/Opening_Screen.PNG">
 </p>
 
 There are three options on the opening screen of the game: Play, Guide, and Credits  \
@@ -30,13 +30,13 @@ The Credit buttons shows the authors of the game.
 
 **After Clicking Play Button:** 
 <p align="center">
-<img src="https://raw.githubusercontent.com/UPenn-CIT599/final-project-team68_platformer/master/sample_images/Enter.PNG?token=ANWOM6OI63WGLHHFKOGOKY256V4L2">
+<img src="https://github.com/kelvinch9/Cat-Game/blob/master/sample_images/Enter.PNG">
 </p>
 
 To begin a game, press the "Enter" button. 
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/UPenn-CIT599/final-project-team68_platformer/master/sample_images/Game_Start.PNG?token=ANWOM6LBQLCHRHZDDZFOOCC56V4M4">
+<img src="https://github.com/kelvinch9/Cat-Game/blob/master/sample_images/Game_Start.PNG">
           </p>
 
 When playing the game, your goal is to get the high score by traveling the farthest distance (distance = points) and collecting the most coins (each coin = 100 points). \
@@ -53,7 +53,7 @@ The game will also remember your high score (if you replay the game) and display
 **Ghost Mode:** 
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/UPenn-CIT599/final-project-team68_platformer/master/sample_images/ghost.gif?token=ANWOM6LI5E7ZY7Q3DEARRAC56V4OM">
+<img src="https://github.com/kelvinch9/Cat-Game/blob/master/sample_images/ghost.gif">
   </p>
 
 You may collect ghosts throughout the game (although they are much rarer when compared to coins). \
@@ -67,7 +67,7 @@ You will be warned when the ghost mode will expire (1.5 seconds left).
 If the cat hits a box, the game ends. 
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/UPenn-CIT599/final-project-team68_platformer/master/sample_images/Game_Over.PNG?token=ANWOM6NQVMTIWKD7YXRXHDS56V4PW">
+<img src="https://github.com/kelvinch9/Cat-Game/blob/master/sample_images/Game_Over.PNG">
   </p>
 
 You will see a game over screen that displays your score and the high score. \
